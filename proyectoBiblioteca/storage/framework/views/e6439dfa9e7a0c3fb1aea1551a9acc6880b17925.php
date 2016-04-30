@@ -8,7 +8,6 @@
                     <table class="table table-condensed table-hover table-bordered table-responsive">
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Equipo</th>
                                 <th>Marca</th>
                                 <th>Modelo</th>
@@ -16,17 +15,22 @@
                                 <th>Acciones</th>
                             </tr>
                         </thead>
+                        <?php foreach($audiovisuales as $audiovisual): ?>
                         <tbody>
                             <tr>
-                                <td>1</td>
-                                <td>Video Beam</td>
-                                <td>Epson</td>
-                                <td>EP-X5698</td>
-                                <td>023159856</td>
-                                <td><a href="<?php echo URL::to("audiovisual/editar"); ?>" class="btn-warning btn-sm">Editar</a>&nbsp; <a href="<?php echo URL::to("audiovisual/prestar"); ?>" class="btn-warning btn-sm">Prestar</a><br><br><a class="btn-danger btn-sm">Eliminar</a> </td>
+                                <td><?php echo e($audiovisual->equipo); ?></td>
+                                <td><?php echo e($audiovisual->marca); ?></td>
+                                <td><?php echo e($audiovisual->modelo); ?></td>
+                                <td><?php echo e($audiovisual->numeroSerie); ?></td>
+                                <td>
+                                  <?php echo link_to_route('audiovisual.edit', $title = 'Editar', $parameters = $audiovisual->id, $attributes = ['class'=>'btn-warning btn-sm']); ?>
+
+
+                                </td>
                             </tr>
 
                         </tbody>
+                        <?php endforeach; ?>
                     </table>
                 </form>
                 <br>

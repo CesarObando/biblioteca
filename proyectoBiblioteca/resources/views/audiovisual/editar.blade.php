@@ -8,31 +8,30 @@
                 <h2 class="h2">Biblioteca Omar Flores</h2>
             </div>
             <h1>Modificar Audiovisual</h1>
-            {!!Form::open(['route'=>'audiovisual.edit','method'=>'post'])!!}
-                <label for="equipo">Equipo:</label>
-                <select name="equipo" id="equipo" class="form-control" required="" onchange="especificarOtro()">
-                  <option value="">Seleccione el equipo</option>
-                  <option value="Computadora">Computadora</option>
-                  <option value="Pantalla">Pantalla</option>
-                  <option value="Retroproyector">Retroproyector</option>
-                  <option value="Video Beam">Video Beam</option>
-                  <option value=" Radiograbadora">Radiograbadora</option>
-                  <option value="Extensión eléctrica">Extensión eléctrica</option>
-                  <option value="Parlantes">Parlantes</option>
-                  <option value="Televisor">Televisor</option>
-                  <option value="Regleta">Regleta</option>
-                  <option value="10">Otro</option>
-                </select>
+            {!!Form::model($audiovisual,['route'=>['audiovisual.update',$audiovisual->id],'method'=>'PUT'])!!}
+
+                <div class="form-group">
+                {!!Form::label('equipo','Equipo:')!!}
+                {!!Form::select('equipo', ['Computadora' => 'Computadora', 'Pantalla' => 'Pantalla','Retroproyector'=>'Retroproyector',
+                'Video Beam'=>'Video Beam','Radiograbadora'=>'Radiograbadora','Extensión eléctrica'=>'Extensión eléctrica','Parlantes'=>'Parlantes',
+                'Televisor'=>'Televisor','Regleta'=>'Regleta','10'=>'Otro'],null,['class'=>'form-control','onchange'=>'especificarOtro()'])!!}
+                </div>
+
                 <label for="otro" id="l_otro" style="visibility: hidden">Otro:</label>
                 <input type="text" class="form-control" name="equipo" id="otro" style="visibility: hidden">
-                <label for="marca">Marca:</label>
-                <input type="text" class="form-control" name="marca" required="">
-                <label for="modelo">Modelo:</label>
-                <input type="text" class="form-control" name="modelo" required="">
-                <label for="serie">Número de serie:</label>
-                <input type="text" class="form-control" name="serie" required="">
-                <hr>
-                <input type="submit" name="modificarAudiovisual" value="Modificar" class="btn-warning btn-lg">
+                <div class="form-group">
+                {!!Form::label('marca','Marca:')!!}
+                {!!Form::text('marca',null,['class'=>'form-control','placeholder'=>'Ingrese la marca'])!!}
+                </div>
+                <div class="form-group">
+                {!!Form::label('modelo','Modelo:')!!}
+                {!!Form::text('modelo',null,['class'=>'form-control','placeholder'=>'Ingrese el modelo'])!!}
+                </div>
+                <div class="form-group">
+                {!!Form::label('numeroSerie','Número de serie:')!!}
+                {!!Form::text('numeroSerie',null,['class'=>'form-control','placeholder'=>'Ingrese el número de serie'])!!}
+              </div>
+              {!!Form::submit('Editar',['class'=>'btn-warning btn-lg'])!!}
             {!!Form::close()!!}
         </div>
 

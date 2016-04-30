@@ -7,12 +7,12 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>Day - HTML Bootstrap Template</title>
 
-        <!-- Bootstrap -->
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link rel="../stylesheet" href="css/font-awesome.min.css">
-        <link rel="../stylesheet" href="css/animate.css">
-        <link href="../css/animate.min.css" rel="stylesheet">
-        <link href="../css/style.css" rel="stylesheet" />
+        {!!Html::style("css/bootstrap.min.css")!!}
+        {!!Html::style("css/font-awesome.min.css")!!}
+        {!!Html::style("css/animate.css")!!}
+        {!!Html::style("/css/animate.min.css")!!}
+        {!!Html::style("/css/style.css")!!}
+
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -97,7 +97,6 @@
         </header>
 
         @yield('content')
-
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="js/jquery.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->

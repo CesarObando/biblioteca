@@ -9,7 +9,6 @@
                     <table class="table table-condensed table-hover table-bordered table-responsive">
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Equipo</th>
                                 <th>Marca</th>
                                 <th>Modelo</th>
@@ -17,17 +16,21 @@
                                 <th>Acciones</th>
                             </tr>
                         </thead>
+                        @foreach($audiovisuales as $audiovisual)
                         <tbody>
                             <tr>
-                                <td>1</td>
-                                <td>Video Beam</td>
-                                <td>Epson</td>
-                                <td>EP-X5698</td>
-                                <td>023159856</td>
-                                <td><a href="{!!URL::to("audiovisual/editar")!!}" class="btn-warning btn-sm">Editar</a>&nbsp; <a href="{!!URL::to("audiovisual/prestar")!!}" class="btn-warning btn-sm">Prestar</a><br><br><a class="btn-danger btn-sm">Eliminar</a> </td>
+                                <td>{{$audiovisual->equipo}}</td>
+                                <td>{{$audiovisual->marca}}</td>
+                                <td>{{$audiovisual->modelo}}</td>
+                                <td>{{$audiovisual->numeroSerie}}</td>
+                                <td>
+                                  {!!link_to_route('audiovisual.edit', $title = 'Editar', $parameters = $audiovisual->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
+
+                                </td>
                             </tr>
 
                         </tbody>
+                        @endforeach
                     </table>
                 </form>
                 <br>

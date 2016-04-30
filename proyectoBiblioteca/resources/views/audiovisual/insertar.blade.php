@@ -9,7 +9,7 @@
             </div>
             <h1>Insertar Nuevo Audiovisual</h1>
 
-            {!!Form::open(['route'=>'audiovisual.insertar','method'=>'post'])!!}
+            {!!Form::open(['route'=>'audiovisual.store','method'=>'post'])!!}
 
                 <label for="equipo">Equipo:</label>
                 <select name="equipo" id="equipo" class="form-control" required="" onchange="especificarOtro()">
