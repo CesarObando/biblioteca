@@ -4,7 +4,7 @@ composer.json
 npm-debug.log
 .env.*.php
 .env.php
-.env.*
+*.env
 .DS_Store
 .idea
 Thumbs.db
