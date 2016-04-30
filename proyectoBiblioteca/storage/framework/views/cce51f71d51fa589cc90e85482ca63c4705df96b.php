@@ -8,34 +8,40 @@
             </div>
             <h1>Insertar Nuevo Audiovisual</h1>
 
-            <?php echo Form::open(['route'=>'audiovisual.insertar','method'=>'post']); ?>
+            <?php echo Form::open(['route'=>'audiovisual.store','method'=>'post']); ?>
 
 
-                <label for="equipo">Equipo:</label>
-                <select name="equipo" id="equipo" class="form-control" required="" onchange="especificarOtro()">
-                    <option value="">Seleccione el equipo</option>
-                    <option value="Computadora">Computadora</option>
-                    <option value="Pantalla">Pantalla</option>
-                    <option value="Retroproyector">Retroproyector</option>
-                    <option value="Video Beam">Video Beam</option>
-                    <option value=" Radiograbadora">Radiograbadora</option>
-                    <option value="Extensión eléctrica">Extensión eléctrica</option>
-                    <option value="Parlantes">Parlantes</option>
-                    <option value="Televisor">Televisor</option>
-                    <option value="Regleta">Regleta</option>
-                    <option value="10">Otro</option>
-                </select>
-                <label for="otro" id="l_otro" style="visibility: hidden">Otro:</label>
-                <input type="text" class="form-control" name="otro" id="otro" style="visibility: hidden">
-                <label for="marca">Marca:</label>
-                <input type="text" class="form-control" name="marca" required="">
-                <label for="modelo">Modelo:</label>
-                <input type="text" class="form-control" name="modelo" required="">
-                <label for="serie">Número de serie:</label>
-                <input type="text" class="form-control" name="serie" required="">
-                <hr>
-                <input type="submit" name="insertarAudiovisual" value="Insertar" class="btn-success btn-lg">
-                <?php echo Form::close(); ?>
+            <div class="form-group">
+            <?php echo Form::label('equipo','Equipo:'); ?>
+
+            <?php echo Form::select('equipo', ['Computadora' => 'Computadora', 'Pantalla' => 'Pantalla','Retroproyector'=>'Retroproyector',
+            'Video Beam'=>'Video Beam','Radiograbadora'=>'Radiograbadora','Extensión eléctrica'=>'Extensión eléctrica','Parlantes'=>'Parlantes',
+            'Televisor'=>'Televisor','Regleta'=>'Regleta','10'=>'Otro'],null,['class'=>'form-control','onchange'=>'especificarOtro()']); ?>
+
+            </div>
+            <label for="otro" id="l_otro" style="visibility: hidden">Otro:</label>
+            <input type="text" class="form-control" name="equipo" id="otro" style="visibility: hidden">
+            <div class="form-group">
+            <?php echo Form::label('marca','Marca:'); ?>
+
+            <?php echo Form::text('marca',null,['class'=>'form-control','placeholder'=>'Ingrese la marca']); ?>
+
+            </div>
+            <div class="form-group">
+            <?php echo Form::label('modelo','Modelo:'); ?>
+
+            <?php echo Form::text('modelo',null,['class'=>'form-control','placeholder'=>'Ingrese el modelo']); ?>
+
+            </div>
+            <div class="form-group">
+            <?php echo Form::label('numeroSerie','Número de serie:'); ?>
+
+            <?php echo Form::text('numeroSerie',null,['class'=>'form-control','placeholder'=>'Ingrese el número de serie']); ?>
+
+            </div>
+            <?php echo Form::submit('Registrar',['class'=>'btn-success btn-lg']); ?>
+
+            <?php echo Form::close(); ?>
 
 
             <script>

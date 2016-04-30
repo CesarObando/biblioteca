@@ -7,12 +7,17 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>Day - HTML Bootstrap Template</title>
 
-        <!-- Bootstrap -->
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link rel="../stylesheet" href="css/font-awesome.min.css">
-        <link rel="../stylesheet" href="css/animate.css">
-        <link href="../css/animate.min.css" rel="stylesheet">
-        <link href="../css/style.css" rel="stylesheet" />
+        <?php echo Html::style("css/bootstrap.min.css"); ?>
+
+        <?php echo Html::style("css/font-awesome.min.css"); ?>
+
+        <?php echo Html::style("css/animate.css"); ?>
+
+        <?php echo Html::style("/css/animate.min.css"); ?>
+
+        <?php echo Html::style("/css/style.css"); ?>
+
+
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -47,7 +52,7 @@
                                 <li role="presentation">
                                     <a>Libro</a>
                                     <ul>
-                                        <li role="presentation"><a href="<?php echo URL::to("audiovisual.insertar"); ?>">Insertar</a></li>
+                                        <li role="presentation"><a href="<?php echo URL::to("libro/insertar"); ?>">Insertar</a></li>
                                         <li role="presentation"><a href="<?php echo URL::to("libro/buscar"); ?>">Prestar/Modificar/Eliminar</a></li>
                                         <li role="presentation">
                                             <a>Ver Préstamos</a>
@@ -97,7 +102,6 @@
         </header>
 
         <?php echo $__env->yieldContent('content'); ?>
-
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="js/jquery.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
