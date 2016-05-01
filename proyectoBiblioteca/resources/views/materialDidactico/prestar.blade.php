@@ -3,7 +3,7 @@
 <div class="container">
             <h1>Préstamo de material didactico</h1>
             <br>
-            <form name="prestamoDidactico" action="listarPrestamoDidactico.html">
+            {!!form::model($materialDidactico, ['route'=>['materialDidactico.update', $materialDidactico->id], 'method'=>'PUT')!!}
                 <label for="nombreSolicitante">Nombre del solicitante:</label>
                 <input type="text" class="form-control" name="nombreSolicitante" id="signatura" required="">
                 <br>
@@ -21,12 +21,12 @@
                 <label for="equipo">Equipo:</label>
                 <select name="equipo" id="equipo" class="form-control" required="" onchange="especificarOtroEquipo()">
                     <option value="">Seleccione el material didactico</option>
-                    <option value="1">Mapa</option>
-                    <option value="2">Juego</option>
-                    <option value="3">Abaco</option>
-                    <option value="4">Lapices y lapiceros</option>
-                    <option value="5">Laminas educativas</option>
-                    <option value="6">Otro</option>
+                    <option value="Mapa">Mapa</option>
+                    <option value="Juego">Juego</option>
+                    <option value="Abaco">Abaco</option>
+                    <option value="Lapices">Lapices y lapiceros</option>
+                    <option value="Laminas">Laminas educativas</option>
+                    <option value="Otro">Otro</option>
                 </select>
                 <label for="otro" id="l_otro" style="visibility: hidden">Otro:</label>
                 <input type="text" class="form-control" name="otro" id="otro" style="visibility: hidden">
@@ -34,12 +34,12 @@
                 <label for="finalidad">Fines del préstamo:</label>
                 <select name="finalidad" id="finalidad" class="form-control" required="" onchange="especificarOtroMotivo()">
                     <option value="">Seleccione el equipo</option>
-                    <option value="1">Desarollo curricular</option>
-                    <option value="2">Reunión de padres de familia</option>
-                    <option value="3">Escuela de padres</option>
-                    <option value="4">Capacitación docente</option>
-                    <option value="5">Consejo de profesores</option>
-                    <option value="6">Otro</option>
+                    <option value="Desarrollo Curricular">Desarollo curricular</option>
+                    <option value="Reunion de padres de familia">Reunión de padres de familia</option>
+                    <option value="Escuela de padres">Escuela de padres</option>
+                    <option value="Capacitación docente">Capacitación docente</option>
+                    <option value="Consejo de profesores">Consejo de profesores</option>
+                    <option value="Otro">Otro</option>
                 </select>
                 <label for="otromotivo" id="l_otromotivo" style="visibility: hidden">Otro:</label>
                 <input type="text" class="form-control" name="otromotivo" id="otromotivo" style="visibility: hidden">
@@ -52,7 +52,7 @@
                 <hr>
                 <input type="submit" name="prestamoDidactico" value="Préstamo" class="btn-success btn-lg">
                 <br><br>
-            </form>
+            {!!form::close()!!}
             <script>
                 function especificarOtroEquipo(){
                     opcion = document.getElementById("equipo");
@@ -85,5 +85,5 @@
                     }
                 }
             </script>
-        </div>    
+        </div>
 @stop

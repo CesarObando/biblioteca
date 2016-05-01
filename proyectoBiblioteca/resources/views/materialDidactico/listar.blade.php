@@ -23,7 +23,13 @@
                                 <td>{{$materialDidactico->marca}}</td>
                                 <td>{{$materialDidactico->especificacion}}</td>
                                 <td>{{$materialDidactico->numeroSerie}}</td>
-                                <td><a href="{!!URL::to("materialDidactico/editar")!!}" class="btn-warning btn-sm">Editar</a>&nbsp; <a href="{!!URL::to("materialDidactico/prestar")!!}" class="btn-warning btn-sm">Prestar</a><br><br><a class="btn-danger btn-sm">Eliminar</a> </td>
+                                <td>
+                                  {!!link_to_action('MaterialDidacticoController@prestar', $title = 'Prestar', $parameters = $materialDidactico->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
+
+                                  <a href="{!!URL::to("materialDidactico/editar")!!}" class="btn-warning btn-sm">Editar</a>
+
+                                  <br><br><a class="btn-danger btn-sm">Eliminar</a>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
