@@ -28,7 +28,8 @@
                                 <td>{{$audiovisual->descartado}}</td>
                                 <td>
                                   {!!link_to_route('audiovisual.edit', $title = 'Editar', $parameters = $audiovisual->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
-                                  {!!link_to_action('AudiovisualController@eliminar', $title = 'Eliminar', $parameters = $audiovisual->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
+                                  {!!link_to_action('PrestamoAudiovisualController@show', $title = 'Prestar', $parameters = $audiovisual->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
+                                  {!!link_to_action('AudiovisualController@eliminar', $title = 'Eliminar', $parameters = $audiovisual->id, $attributes = ['class'=>'btn-danger btn-sm'])!!}
                                 </td>
                             </tr>
                         </tbody>
