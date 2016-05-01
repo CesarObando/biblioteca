@@ -37,6 +37,7 @@ Route::get('audiovisual/insertar','AudiovisualController@insertar');
 Route::get('audiovisual/listar','AudiovisualController@listar');
 Route::get('audiovisual/listarPrestamos','AudiovisualController@listarPrestamos');
 Route::get('audiovisual/prestar','AudiovisualController@prestar');
+Route::get('audiovisual/eliminar/{id}','AudiovisualController@eliminar');
 
 Route::resource('audiovisual','AudiovisualController');
 
