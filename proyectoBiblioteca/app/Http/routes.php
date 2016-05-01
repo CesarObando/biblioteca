@@ -44,7 +44,7 @@ Route::get('materialDidactico/insertar','MaterialDidacticoController@insertar');
 Route::get('materialDidactico/listar','MaterialDidacticoController@listar');
 Route::get('materialDidactico/listarPrestamos','MaterialDidacticoController@listarPrestamos');
 Route::get('materialDidactico/prestar','MaterialDidacticoController@prestar');
-
+Route::resource('materialDidactico', 'MaterialDidacticoController');
 //SalaAudiovisuales
 Route::get('salaAudiovisuales/buscarPrestamos','SalaAudiovisualesController@buscarPrestamos');
 Route::get('salaAudiovisuales/listar','SalaAudiovisualesController@listar');

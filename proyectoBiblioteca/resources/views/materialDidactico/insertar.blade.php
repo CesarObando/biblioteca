@@ -8,7 +8,7 @@
                 <h2 class="h2">Biblioteca Omar Flores</h2>
             </div>
             <h1>Insertar Nuevo Material Didactico</h1>
-            <form name="insertarAudiovisual" action="index.html">
+            {!!Form::open(['route'=>'materialDidactico.store','method'=>'post'])!!}
                 <label for="equipo">Material didactico:</label>
                 <select name="equipo" id="equipo" class="form-control" required="" onchange="especificarOtro()">
                     <option value="">Seleccione el material didactico</option>
@@ -29,7 +29,7 @@
                 <input type="text" class="form-control" name="serie" required="">
                 <hr>
                 <input type="submit" name="insertarDidactico" value="Insertar" class="btn-success btn-lg">
-            </form>
+            {!!Form::close()!!}
             <script>
                 function especificarOtro() {
                     opcion = document.getElementById("equipo");
@@ -43,5 +43,5 @@
                 }
             </script>
 
-        </div>			
+        </div>
 @stop
