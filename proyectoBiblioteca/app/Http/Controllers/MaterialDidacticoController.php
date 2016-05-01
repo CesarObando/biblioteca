@@ -24,6 +24,18 @@ class MaterialDidacticoController extends Controller
   {
     return view ('materialDidactico/insertar');
   }
+
+  public function store(Request $request)
+  {
+    \gestorBiblioteca\MaterialDidactico::create([
+      'nombre' => $request['equipo'],
+      'marca' => $request['marca'],
+      'especificacion' => $request['especificacion'],
+      'numeroSerie' => $request['serie']
+    ]);
+    return view ('index');
+  }
+
   public function listar()
   {
     return view ('materialDidactico/listar');
