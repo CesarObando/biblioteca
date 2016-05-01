@@ -53,7 +53,7 @@ class MaterialDidacticoController extends Controller
     return view ('materialDidactico.prestar', ['materialDidactico'=>$materialDidactico]);
   }
 
-  public function store_prestamo()
+  public function storePrestamo($id)
   {
     return view ('index');
   }
