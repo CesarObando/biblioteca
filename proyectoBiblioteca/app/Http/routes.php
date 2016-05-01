@@ -36,10 +36,13 @@ Route::get('audiovisual/editar','AudiovisualController@editar');
 Route::get('audiovisual/insertar','AudiovisualController@insertar');
 Route::get('audiovisual/listar','AudiovisualController@listar');
 Route::get('audiovisual/listarPrestamos','AudiovisualController@listarPrestamos');
-Route::get('audiovisual/prestar','AudiovisualController@prestar');
+Route::get('audiovisual/vistaPrestar/{id}','AudiovisualController@vistaPrestar');
 Route::get('audiovisual/eliminar/{id}','AudiovisualController@eliminar');
 
 Route::resource('audiovisual','AudiovisualController');
+
+Route::get('audiovisual/prestar','PrestamoAudiovisualController@prestar');
+Route::resource('prestamoAudiovisual','PrestamoAudiovisualController');
 
 //MaterialDidactico
 Route::get('materialDidactico/buscar','MaterialDidacticoController@buscar');

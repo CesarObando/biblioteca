@@ -28,16 +28,27 @@ class AudiovisualController extends Controller
   }
   public function listar(Request $request)
   {
-    $audiovisuales = DB::select('CALL sp_buscar_audiovisuales(?,?)',[$request['equipo'],$request['marca']]);
+    $audiovisuales = \gestorBiblioteca\Audiovisual::where('equipo', 'like', '%'.$request['equipo'].'%')
+                                                               -> where('marca', 'like', '%'.$request['marca'].'%')
+                                                               -> where ('descartado','=', 0)
+                                                               -> get();
     return view ('audiovisual/listar',compact('audiovisuales'));
   }
   public function listarPrestamos()
   {
     return view ('audiovisual/listarPrestamos');
   }
-  public function prestar()
+  public function vistaPrestar($id)
   {
-    return view ('audiovisual/prestar');
+    $audiovisual = \gestorBiblioteca\Audiovisual::find($id);
+    return view ('audiovisual/prestar',['audiovisual'=>$audiovisual]);
+  }
+
+  public function prestar($id, Request $request)
+  {
+    DB::table('prestamo_audiovisual')->insert(
+    ['equipo'=>$request['equipo'],'nombreSolicitante'=>$request['nombreSolicitante'],'condicion'=>$request['condicion'],'finesPrestamo'=>$request['finesPrestamo'],'fecha'=>$request['fecha'],'hora'=>$request['hora']]
+  );
   }
 
   public function store(Request $request)

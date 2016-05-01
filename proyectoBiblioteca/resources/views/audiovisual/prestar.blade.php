@@ -3,46 +3,51 @@
 <div class="container">
             <h1>Préstamo de material audiovisual</h1>
             <br>
-            <form name="prestamoAudiovisual" action="{!!URL::to("audiovisual/listarPrestamos")!!}">
+            {!!Form::model($audiovisual,['route'=>['prestamoAudiovisual.store',$audiovisual->id],'method'=>'post'])!!}
+            <div class="form-group">
+            {!!Form::hidden('id',null,['class'=>'form-control'])!!}
+            {!!Form::label('equipo','Equipo:')!!}
+            {!!Form::text('equipo',null,['class'=>'form-control','disabled'=>''])!!}
+          </div>
+            <div class="form-group">
+            {!!Form::label('marca','Marca:')!!}
+            {!!Form::text('marca',null,['class'=>'form-control','disabled'=>''])!!}
+          </div>
+          <div class="form-group">
+          {!!Form::label('modelo','Modelo:')!!}
+          {!!Form::text('modelo',null,['class'=>'form-control','disabled'=>''])!!}
+          </div>
+          <div class="form-group">
+          {!!Form::label('numeroSerie','Número de serie:')!!}
+          {!!Form::text('numeroSerie',null,['class'=>'form-control','disabled'=>''])!!}
+        </div>
+
                 <label for="nombreSolicitante">Nombre del solicitante:</label>
                 <input type="text" class="form-control" name="nombreSolicitante" id="signatura" required="">
                 <br>
                 <label for="condicion">Condición:</label>
                 <select name="condicion" id="condicion" class="form-control" required="" onchange="especificarOtraCondicion()">
                     <option value="">Seleccione la condición del solicitante</option>
-                    <option value="1">Docente</option>
-                    <option value="2">Administrativo</option>
-                    <option value="3">Estudiante</option>
+                    <option value="Docente">Docente</option>
+                    <option value="Administrativo">Administrativo</option>
+                    <option value="Estudiante">Estudiante</option>
                     <option value="4">Otro</option>
                 </select>
                 <label for="otro" id="l_otracondicion" style="visibility: hidden">Otro:</label>
                 <input type="text" class="form-control" name="otracondicion" id="otracondicion" style="visibility: hidden">
                 <br>
-                <label for="equipo">Equipo:</label>
-                <select name="equipo" id="equipo" class="form-control" required="" onchange="especificarOtroEquipo()">
-                    <option value="">Seleccione el equipo</option>
-                    <option value="1">Computadora</option>
-                    <option value="2">Pantalla</option>
-                    <option value="3">Retroproyector</option>
-                    <option value="4">Video Beam</option>
-                    <option value="5">Radiograbadora</option>
-                    <option value="6">Extensión eléctrica</option>
-                    <option value="7">Parlantes</option>
-                    <option value="8">Televisor</option>
-                    <option value="9">Regleta</option>
-                    <option value="10">Otro</option>
-                </select>
+
                 <label for="otro" id="l_otro" style="visibility: hidden">Otro:</label>
                 <input type="text" class="form-control" name="otro" id="otro" style="visibility: hidden">
                 <br>
-                <label for="finalidad">Fines del préstamo:</label>
-                <select name="finalidad" id="finalidad" class="form-control" required="" onchange="especificarOtroMotivo()">
+                <label for="finesPrestamo">Fines del préstamo:</label>
+                <select name="finesPrestamo" id="finesPrestamo" class="form-control" required="" onchange="especificarOtroMotivo()">
                     <option value="">Seleccione el equipo</option>
-                    <option value="1">Desarollo curricular</option>
-                    <option value="2">Reunión de padres de familia</option>
-                    <option value="3">Escuela de padres</option>
-                    <option value="4">Capacitación docente</option>
-                    <option value="5">Consejo de profesores</option>
+                    <option value="Desarollo curricular">Desarollo curricular</option>
+                    <option value="Reunión de padres de familia">Reunión de padres de familia</option>
+                    <option value="Escuela de padres">Escuela de padres</option>
+                    <option value="Capacitación docente">Capacitación docente</option>
+                    <option value="Consejo de profesores">Consejo de profesores</option>
                     <option value="6">Otro</option>
                 </select>
                 <label for="otromotivo" id="l_otromotivo" style="visibility: hidden">Otro:</label>
@@ -54,9 +59,8 @@
                 <label for="hora">Hora:</label>
                 <input type="time" class="form-control" name="hora" required="">
                 <hr>
-                <input type="submit" name="prestamoAudiovisual" value="Préstamo" class="btn-success btn-lg">
-                <br><br>
-            </form>
+                {!!Form::submit('Prestar',['class'=>'btn-success btn-lg'])!!}
+            {!!Form::close()!!}
             <script>
                 function especificarOtroEquipo(){
                     opcion = document.getElementById("equipo");
@@ -69,7 +73,7 @@
                     }
                 }
                 function especificarOtroMotivo(){
-                    opcion = document.getElementById("finalidad");
+                    opcion = document.getElementById("finesPrestamo");
                     if(opcion.value === "6"){
                         document.getElementById("l_otromotivo").setAttribute("style","visibility: visible");
                         document.getElementById("otromotivo").setAttribute("style","visibility: visible");
