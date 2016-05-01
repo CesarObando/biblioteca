@@ -13,10 +13,7 @@ class AudiovisualController extends Controller
   {
     return view ('audiovisual/buscar');
   }
-  public function buscarPrestamos()
-  {
-    return view ('audiovisual/buscarPrestamos');
-  }
+
   public function edit($id)
   {
     $audiovisual = \gestorBiblioteca\Audiovisual::find($id);
@@ -33,22 +30,6 @@ class AudiovisualController extends Controller
                                                                -> where ('descartado','=', 0)
                                                                -> get();
     return view ('audiovisual/listar',compact('audiovisuales'));
-  }
-  public function listarPrestamos()
-  {
-    return view ('audiovisual/listarPrestamos');
-  }
-  public function vistaPrestar($id)
-  {
-    $audiovisual = \gestorBiblioteca\Audiovisual::find($id);
-    return view ('audiovisual/prestar',['audiovisual'=>$audiovisual]);
-  }
-
-  public function prestar($id, Request $request)
-  {
-    DB::table('prestamo_audiovisual')->insert(
-    ['equipo'=>$request['equipo'],'nombreSolicitante'=>$request['nombreSolicitante'],'condicion'=>$request['condicion'],'finesPrestamo'=>$request['finesPrestamo'],'fecha'=>$request['fecha'],'hora'=>$request['hora']]
-  );
   }
 
   public function store(Request $request)
@@ -75,4 +56,5 @@ class AudiovisualController extends Controller
     DB::update('update audiovisual set descartado = 1 where id = ?',[$id]);
     return redirect ('/');
   }
+
 }
