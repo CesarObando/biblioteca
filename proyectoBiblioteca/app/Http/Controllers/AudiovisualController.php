@@ -5,6 +5,7 @@ namespace gestorBiblioteca\Http\Controllers;
 use Illuminate\Http\Request;
 use gestorBiblioteca\Http\Requests;
 use gestorBiblioteca\Audiovisual;
+use DB;
 
 class AudiovisualController extends Controller
 {
@@ -25,9 +26,9 @@ class AudiovisualController extends Controller
   {
     return view ('audiovisual/insertar');
   }
-  public function listar()
+  public function listar(Request $request)
   {
-    $audiovisuales = \gestorBiblioteca\Audiovisual::All();
+    $audiovisuales = DB::select('CALL sp_buscar_audiovisuales(?,?)',[$request['equipo'],$request['marca']]);
     return view ('audiovisual/listar',compact('audiovisuales'));
   }
   public function listarPrestamos()
@@ -55,6 +56,12 @@ class AudiovisualController extends Controller
     $audiovisual = \gestorBiblioteca\Audiovisual::find($id);
     $audiovisual->fill($request->all());
     $audiovisual->save();
-    return view ('index');
+    return redirect ('/');
+  }
+
+  public function eliminar($id)
+  {
+    DB::update('update audiovisual set descartado = 1 where id = ?',[$id]);
+    return redirect ('/');
   }
 }

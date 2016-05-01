@@ -13,7 +13,9 @@
                                 <th>Marca</th>
                                 <th>Modelo</th>
                                 <th>Serie</th>
+                                <th>Descartado</th>
                                 <th>Acciones</th>
+
                             </tr>
                         </thead>
                         @foreach($audiovisuales as $audiovisual)
@@ -23,8 +25,10 @@
                                 <td>{{$audiovisual->marca}}</td>
                                 <td>{{$audiovisual->modelo}}</td>
                                 <td>{{$audiovisual->numeroSerie}}</td>
+                                <td>{{$audiovisual->descartado}}</td>
                                 <td>
                                   {!!link_to_route('audiovisual.edit', $title = 'Editar', $parameters = $audiovisual->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
+                                  {!!link_to_action('AudiovisualController@eliminar', $title = 'Eliminar', $parameters = $audiovisual->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
                                 </td>
                             </tr>
                         </tbody>
