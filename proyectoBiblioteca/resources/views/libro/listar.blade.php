@@ -36,7 +36,7 @@
                                 <td>{{$libro->ano}}</td>
                                 <td>{{$libro->observaciones}}</td>
                                 <td>
-                                   {!!link_to_route('libro.editar', $title = 'Editar', $parameters = $libro->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
+                                   {!!link_to_route('libro.edit', $title = 'Editar', $parameters = $libro->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
                                 </td>
                             </tr>
                         </tbody>

@@ -25,16 +25,13 @@
                                 <td>{{$audiovisual->numeroSerie}}</td>
                                 <td>
                                   {!!link_to_route('audiovisual.edit', $title = 'Editar', $parameters = $audiovisual->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
-
                                 </td>
                             </tr>
-
                         </tbody>
                         @endforeach
                     </table>
                 </form>
                 <br>
                 <br>
-
             </div>
 @stop
