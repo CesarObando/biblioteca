@@ -39,7 +39,7 @@ class MaterialDidacticoController extends Controller
   public function listar(Request $request)
   {
     $materialesDidacticos = \gestorBiblioteca\MaterialDidactico::where('nombre', $request['equipo'])
-                                                               -> where('marca', 'like', '%'.$request['marca'].'%')        
+                                                               -> where('marca', 'like', '%'.$request['marca'].'%')
                                                                -> get();
     return view ('materialDidactico/listar', compact('materialesDidacticos'));
   }
@@ -47,8 +47,14 @@ class MaterialDidacticoController extends Controller
   {
     return view ('materialDidactico/listarPrestamos');
   }
-  public function prestar()
+  public function prestar($id)
   {
-    return view ('materialDidactico/prestar');
+    $materialDidactico = \gestorBiblioteca\MaterialDidactico::find($id);
+    return view ('materialDidactico.prestar', ['materialDidactico'=>$materialDidactico]);
+  }
+
+  public function store_prestamo()
+  {
+    return view ('index');
   }
 }
