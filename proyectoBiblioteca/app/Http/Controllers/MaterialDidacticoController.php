@@ -36,9 +36,12 @@ class MaterialDidacticoController extends Controller
     return view ('index');
   }
 
-  public function listar()
+  public function listar(Request $request)
   {
-    return view ('materialDidactico/listar');
+    $materialesDidacticos = \gestorBiblioteca\MaterialDidactico::where('nombre', $request['equipo'])
+                                                               -> where('marca', 'like', '%'.$request['marca'].'%')        
+                                                               -> get();
+    return view ('materialDidactico/listar', compact('materialesDidacticos'));
   }
   public function listarPrestamos()
   {

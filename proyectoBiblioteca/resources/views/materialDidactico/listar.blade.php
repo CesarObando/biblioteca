@@ -9,24 +9,23 @@
                     <table class="table table-condensed table-hover table-bordered table-responsive">
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Equipo</th>
                                 <th>Marca</th>
                                 <th>Especificación</th>
-                                <th>Serie</th>
+                                <th>Numero de Serie</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
+                          @foreach($materialesDidacticos as $materialDidactico)
                             <tr>
-                                <td>1</td>
-                                <td>Mapa</td>
-                                <td>d-maps</td>
-                                <td>Mapa Mundi</td>
-                                <td>02856</td>
+                                <td>{{$materialDidactico->nombre}}</td>
+                                <td>{{$materialDidactico->marca}}</td>
+                                <td>{{$materialDidactico->especificacion}}</td>
+                                <td>{{$materialDidactico->numeroSerie}}</td>
                                 <td><a href="{!!URL::to("materialDidactico/editar")!!}" class="btn-warning btn-sm">Editar</a>&nbsp; <a href="{!!URL::to("materialDidactico/prestar")!!}" class="btn-warning btn-sm">Prestar</a><br><br><a class="btn-danger btn-sm">Eliminar</a> </td>
                             </tr>
-
+                        @endforeach
                         </tbody>
                     </table>
                 </form>
