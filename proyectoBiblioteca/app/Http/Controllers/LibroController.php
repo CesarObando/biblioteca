@@ -20,7 +20,7 @@ class LibroController extends Controller
   {
     return view ('libro/buscarPrestamosEstudiante');
   }
-  {
+  public function edit($id){
     $libro = \gestorBiblioteca\Libro::find($id);
     return view ('libro/editar',['libro'=>$libro]);
   }
