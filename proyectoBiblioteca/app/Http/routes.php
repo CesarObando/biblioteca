@@ -14,6 +14,8 @@
 Route::get('/','Controller@index');
 
 //Libro
+
+
 Route::get('libro/buscar','LibroController@buscar');
 Route::get('libro/buscarPrestamosDocente','LibroController@buscarPrestamosDocente');
 Route::get('libro/buscarPrestamosEstudiante','LibroController@buscarPrestamosEstudiante');
@@ -24,6 +26,8 @@ Route::get('libro/listarPrestamosDocente','LibroController@listarPrestamosDocent
 Route::get('libro/listarPrestamosEstudiante','LibroController@listarPrestamosEstudiante');
 Route::get('libro/prestarDocente','LibroController@prestarDocente');
 Route::get('libro/prestarEstudiante','LibroController@prestarEstudiante');
+
+Route::resource('libro','LibroController');
 
 //Audiovisual
 Route::get('audiovisual/buscar','AudiovisualController@buscar');

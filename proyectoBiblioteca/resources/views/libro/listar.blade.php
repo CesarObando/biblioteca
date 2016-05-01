@@ -13,26 +13,34 @@
                                 <th>No. de Inscripción</th>
                                 <th>Autor</th>
                                 <th>Título</th>
+                                <th>Edicón</th>
                                 <th>Fecha</th>
+                                <th>Lugar</th>
                                 <th>Editorial</th>
                                 <th>Año</th>
+                                <th>Observaciones</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
+                        @foreach($libros as $libro)
                         <tbody>
                             <tr>
-                                <td>Est.Sociales</td>
-                                <td>4521</td>
-                                <td>Jiménez Floria</td>
-                                <td>Historia de Costa Rica</td>
-                                <td>05/04/2016</td>
-                                <td>Santillana</td>
-                                <td>2000</td>
-                                <td><a href="{!!URL::to("libro/editar")!!}" class="btn-warning btn-sm">Editar</a>&nbsp;<a href="{!!URL::to("libro/prestarEstudiante")!!}" class="btn-warning btn-sm">Prestar a Estudiante</a>
-                                    <br><br><a class="btn-danger btn-sm">Eliminar</a>&nbsp;<a href="{!!URL::to("libro/prestarDocente")!!}" class="btn-warning btn-sm">Prestar a Profesor</a> </td>
+                                <td>{{$libro->signatura}}</td>
+                                <td>{{$libro->numeroInscripcion}}</td>
+                                <td>{{$libro->autor}}</td>
+                                <td>{{$libro->titulo}}</td>
+                                <td>{{$libro->edicion}}</td>
+                                <td>{{$libro->fecha}}</td>
+                                <td>{{$libro->lugar}}</td>
+                                <td>{{$libro->editorial}}</td>
+                                <td>{{$libro->ano}}</td>
+                                <td>{{$libro->observaciones}}</td>
+                                <td>
+                                   {!!link_to_route('libro.editar', $title = 'Editar', $parameters = $libro->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
+                                </td>
                             </tr>
-
                         </tbody>
+                        @endforeach
                     </table>
                 </form>
                 <br>

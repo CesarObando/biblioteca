@@ -3,6 +3,9 @@
 <div class="container">
             <h1>Insertar Nuevo Libro</h1>
             <br>
+
+            {!!Form::open(['route'=>'libro.store','method'=>'post'])!!}
+
             <form name="insertarLibro" action="index.html">
                <label for="signatura">Signatura:</label>
                 <input type="text" class="form-control" name="signatura" id="signatura" required="">
@@ -35,7 +38,8 @@
                 <input type="text" class="form-control" name="observaciones" required="">
                 <hr>
                 <input type="submit" name="insertarLibro" value="Insertar" class="btn-success btn-lg">
+                {!!Form::close()!!}
                 <br><br>
             </form>
-        </div>    
+        </div>
 @stop
