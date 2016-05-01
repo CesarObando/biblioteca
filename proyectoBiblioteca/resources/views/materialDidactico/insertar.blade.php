@@ -12,12 +12,12 @@
                 <label for="equipo">Material didactico:</label>
                 <select name="equipo" id="equipo" class="form-control" required="" onchange="especificarOtro()">
                     <option value="">Seleccione el material didactico</option>
-                    <option value="1">Mapa</option>
-                    <option value="2">Juego</option>
-                    <option value="3">Abaco</option>
-                    <option value="4">Lapices y lapiceros</option>
-                    <option value="5">Laminas educativas</option>
-                    <option value="6">Otro</option>
+                    <option value="Mapa">Mapa</option>
+                    <option value="Juego">Juego</option>
+                    <option value="Abaco">Abaco</option>
+                    <option value="Lapices">Lapices y lapiceros</option>
+                    <option value="Laminas">Laminas educativas</option>
+                    <option value="Otro">Otro</option>
                 </select>
                 <label for="otro" id="l_otro" style="visibility: hidden">Otro:</label>
                 <input type="text" class="form-control" name="otro" id="otro" style="visibility: hidden">
