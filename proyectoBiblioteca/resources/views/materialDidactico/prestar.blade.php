@@ -3,7 +3,7 @@
 <div class="container">
             <h1>Préstamo de material didactico</h1>
             <br>
-            {!!form::model($materialDidactico, ['route'=>['materialDidactico.update', $materialDidactico->id], 'method'=>'PUT')!!}
+            {!!Form::model($materialDidactico, ['route'=>['materialDidactico.storePrestamo', $materialDidactico->id], 'method'=>'PUT'])!!}
                 <label for="nombreSolicitante">Nombre del solicitante:</label>
                 <input type="text" class="form-control" name="nombreSolicitante" id="signatura" required="">
                 <br>
@@ -52,7 +52,7 @@
                 <hr>
                 <input type="submit" name="prestamoDidactico" value="Préstamo" class="btn-success btn-lg">
                 <br><br>
-            {!!form::close()!!}
+            {!!Form::close()!!}
             <script>
                 function especificarOtroEquipo(){
                     opcion = document.getElementById("equipo");
