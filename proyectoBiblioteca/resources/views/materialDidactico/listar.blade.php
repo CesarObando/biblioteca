@@ -32,9 +32,11 @@
                                   @endif
                                   <td>
                                     @if($materialDidactico->prestado===1)
+                                    {!!link_to_action('PrestamoMaterialDidacticoController@show', $title = 'Prestar', $parameters = $materialDidactico->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
+                                    {!!link_to_route('materialDidactico.edit', $title = 'Editar', $parameters = $materialDidactico->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
                                     {!!link_to_action('MaterialDidacticoController@eliminar', $title = 'Eliminar', $parameters = $materialDidactico->id, $attributes = ['class'=>'btn-danger btn-sm'])!!}
                                     @else
-                                    {!!link_to_action('PrestamoMaterialDidacticoController@show', $title = 'Prestar', $parameters = $materialDidactico->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
+                                    {!!link_to_route('materialDidactico.edit', $title = 'Editar', $parameters = $materialDidactico->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
                                     {!!link_to_action('MaterialDidacticoController@eliminar', $title = 'Eliminar', $parameters = $materialDidactico->id, $attributes = ['class'=>'btn-danger btn-sm'])!!}
                                     @endif
                                 </td>

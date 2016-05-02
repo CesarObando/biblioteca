@@ -77,4 +77,18 @@ class MaterialDidacticoController extends Controller
     return redirect ('/');
   }
 
+  public function edit($id)
+  {
+    $materialDidactico = \gestorBiblioteca\MaterialDidactico::find($id);
+    return view ('materialDidactico/editar',['materialDidactico'=>$materialDidactico]);
+  }
+
+  public function update($id, Request $request)
+  {
+    $materialDidactico = \gestorBiblioteca\MaterialDidactico::find($id);
+    $materialDidactico->fill($request->all());
+    $materialDidactico->save();
+    return redirect ('/');
+  }
+
 }
