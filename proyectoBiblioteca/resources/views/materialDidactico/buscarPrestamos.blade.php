@@ -10,11 +10,11 @@
                 <label for="equipo">Equipo:</label>
                 <select name="equipo" id="equipo" class="form-control">
                     <option value="">Seleccione el material didactico</option>
-                    <option value="1">Mapa</option>
-                    <option value="2">Juego</option>
-                    <option value="3">Abaco</option>
-                    <option value="4">Lapices y lapiceros</option>
-                    <option value="5">Laminas educativas</option>
+                    <option value="Mapa">Mapa</option>
+                    <option value="Juego">Juego</option>
+                    <option value="Abaco">Abaco</option>
+                    <option value="Lapices">Lapices y lapiceros</option>
+                    <option value="Laminas">Laminas educativas</option>
                     <option value="6">Otro</option>
                 </select>
                 <br>

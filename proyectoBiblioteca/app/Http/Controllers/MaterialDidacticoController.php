@@ -3,7 +3,7 @@
 namespace gestorBiblioteca\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use DB;
 use gestorBiblioteca\Http\Requests;
 
 class MaterialDidacticoController extends Controller
@@ -40,12 +40,19 @@ class MaterialDidacticoController extends Controller
   {
     $materialesDidacticos = \gestorBiblioteca\MaterialDidactico::where('nombre', $request['equipo'])
                                                                -> where('marca', 'like', '%'.$request['marca'].'%')
+                                                               -> where('descartado', '=', 0)
                                                                -> get();
     return view ('materialDidactico/listar', compact('materialesDidacticos'));
   }
-  public function listarPrestamos()
+  public function listarPrestamos(Request $request)
   {
-    return view ('materialDidactico/listarPrestamos');
+    //$prestamosMaterialDidactico = \gestorBiblioteca\PrestamoMaterialDidactico::join('material_didactico', 'materialComplementario.id', '=', 'material_complemetario.id')
+    $prestamosMaterialDidactico = \gestorBiblioteca\PrestamoMaterialDidactico::where('nombreSolicitante', 'like', '%'.$request['nombreSolicitante'].'%')
+                                                               //-> where('material_complementario.nombre', $request['equipo'])
+                                                               ->where('fecha', '=', $request['fecha'])
+                                                               ->where('terminado','=',0)
+                                                               -> get();
+    return view ('materialDidactico/listarPrestamos', compact('prestamosMaterialDidactico'));
   }
   public function prestar($id)
   {
@@ -57,4 +64,17 @@ class MaterialDidacticoController extends Controller
   {
     return view ('index');
   }
+
+  public function eliminar($id)
+  {
+    DB::table('material_complementario')
+        ->where('id', $id)
+        ->decrement('prestado');
+    DB::table('material_complementario')
+        ->where('id', $id)
+        ->increment('descartado');
+
+    return redirect ('/');
+  }
+
 }

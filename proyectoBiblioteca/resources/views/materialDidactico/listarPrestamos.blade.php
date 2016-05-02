@@ -3,7 +3,7 @@
 <div class="table-responsive container">
                 <br>
                 <br>
-                <h1>Material didactico</h1>
+                <h1>Prestamos Material didactico</h1>
                 <br>
                 <form>
                     <table class="table table-condensed table-hover table-bordered table-responsive">
@@ -19,16 +19,21 @@
                             </tr>
                         </thead>
                         <tbody>
+                          @foreach($prestamosMaterialDidactico as $prestamoMaterialDidactico)
                             <tr>
-                                <td>Jonathan Bonilla Umaña</td>
-                                <td>Mapa</td>
-                                <td>d-maps</td>
-                                <td>Mapa mundi</td>
-                                <td>02856</td>
-                                <td>05/04/2016</td>
-                                <td><a href="listarPrestamoDidactico.html" class="btn-danger btn-sm">Terminar préstamo</a> </td>
-                            </tr>
+                                <td>{{$prestamoMaterialDidactico->nombreSolicitante}}</td>
 
+                                <td>{{$prestamoMaterialDidactico->fecha}}</td>
+                                <td>
+                                  {!!link_to_action('PrestamoMaterialDidacticoController@terminarPrestamo',
+                                                    $title = 'Terminar Prestamo',
+                                                    $parameters = $prestamoMaterialDidactico->id,
+                                                    $attributes = ['class'=>'btn-warning btn-sm'])!!}
+
+
+                                </td>
+                            </tr>
+                          @endforeach
                         </tbody>
                     </table>
                 </form>

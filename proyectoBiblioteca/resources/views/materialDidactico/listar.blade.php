@@ -24,11 +24,19 @@
                                 <td>{{$materialDidactico->especificacion}}</td>
                                 <td>{{$materialDidactico->numeroSerie}}</td>
                                 <td>
-                                  {!!link_to_action('MaterialDidacticoController@prestar', $title = 'Prestar', $parameters = $materialDidactico->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
 
-                                  <a href="{!!URL::to("materialDidactico/editar")!!}" class="btn-warning btn-sm">Editar</a>
-
-                                  <br><br><a class="btn-danger btn-sm">Eliminar</a>
+                                  @if($materialDidactico->prestado===0)
+                                  <td>Disponible</td>
+                                  @else
+                                  <td>Prestado</td>
+                                  @endif
+                                  <td>
+                                    @if($materialDidactico->prestado===1)
+                                    {!!link_to_action('MaterialDidacticoController@eliminar', $title = 'Eliminar', $parameters = $materialDidactico->id, $attributes = ['class'=>'btn-danger btn-sm'])!!}
+                                    @else
+                                    {!!link_to_action('PrestamoMaterialDidacticoController@show', $title = 'Prestar', $parameters = $materialDidactico->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
+                                    {!!link_to_action('MaterialDidacticoController@eliminar', $title = 'Eliminar', $parameters = $materialDidactico->id, $attributes = ['class'=>'btn-danger btn-sm'])!!}
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
