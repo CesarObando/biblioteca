@@ -4,8 +4,23 @@
             <h1>Préstamo de Libro</h1>
             <br>
             {!!Form::model($libro,['route'=>['PrestamoLibroDocente.store',$libro->id],'method'=>'post'])!!}
-                <label for="nombreDocente">nombreDocente:</label>
-                <input type="text" class="form-control" name="nombreDocente" id="signatura" required="">
+            <div class="form-group">
+            {!!Form::hidden('id',null,['class'=>'form-control'])!!}
+            {!!Form::label('titulo','Libro:')!!}
+            {!!Form::text('titulo',null,['class'=>'form-control','disabled'=>''])!!}
+          </div>
+          <label for="signatura">Signatura:</label>
+          <input type="text" class="form-control" name="signatura" id="signatura" disabled="" value= {{$libro->signatura}}>
+          <br>
+          <label for="numeroInscripcion">Número de Inscripción:</label>
+          <input type="number" class="form-control" name="numeroInscripcion" disabled="" value= {{$libro->numeroInscripcion}}>
+          <br>
+          <label for="autor">Autor:</label>
+          <input type="text" class="form-control" name="autor" disabled="" value= {{$libro->autor}}>
+          <br>
+                <br>
+                <label for="nombreSolicitante">Nombre Docente:</label>
+                <input type="text" class="form-control" name="nombreSolicitante" id="signatura" required="">
                 <br>
                 <label for="seccion">Sección:</label>
                 <input type="text" class="form-control" name="seccion" required="">
