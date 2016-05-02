@@ -3,6 +3,7 @@
 <div class="container">
             <h1>Buscar uso de Internet</h1>
             <br>
+
             <form name="buscarUsoServicioInternet" action="{!!URL::to("servicioInternet/listar")!!}">
                 <label for="fecha">Fecha:</label>
                 <input type="date" class="form-control" name="fecha" id="fecha">

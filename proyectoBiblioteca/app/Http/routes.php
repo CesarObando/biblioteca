@@ -84,3 +84,4 @@ Route::get('salaAudiovisuales/prestar','SalaAudiovisualesController@prestar');
 Route::get('servicioInternet/buscarPrestamos','ServicioInternetController@buscarPrestamos');
 Route::get('servicioInternet/listar','ServicioInternetController@listar');
 Route::get('servicioInternet/prestar','ServicioInternetController@prestar');
+Route::resource('servicioInternet', 'ServicioInternetController');
