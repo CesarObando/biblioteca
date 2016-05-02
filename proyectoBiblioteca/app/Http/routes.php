@@ -34,14 +34,14 @@ Route::get('audiovisual/buscar','AudiovisualController@buscar');
 Route::get('audiovisual/editar','AudiovisualController@editar');
 Route::get('audiovisual/insertar','AudiovisualController@insertar');
 Route::get('audiovisual/listar','AudiovisualController@listar');
-Route::get('audiovisual/vistaPrestar/{id}','AudiovisualController@vistaPrestar');
 Route::get('audiovisual/eliminar/{id}','AudiovisualController@eliminar');
 
-Route::resource('audiovisual','AudiovisualController');
+Route::resource('audiovisual','AudiovisualController',['only'=> ['create','store','edit','update','destroy']]);
 
 Route::get('audiovisual/prestar','PrestamoAudiovisualController@prestar');
 Route::get('audiovisual/buscarPrestamos','PrestamoAudiovisualController@buscarPrestamos');
 Route::get('audiovisual/listarPrestamos','PrestamoAudiovisualController@listarPrestamos');
+Route::get('audiovisual/eliminarPrestamo/{id}','PrestamoAudiovisualController@eliminarPrestamo');
 Route::resource('prestamoAudiovisual','PrestamoAudiovisualController');
 
 //MaterialDidactico

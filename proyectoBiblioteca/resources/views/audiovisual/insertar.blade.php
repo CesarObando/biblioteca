@@ -31,8 +31,8 @@
                 <input type="text" class="form-control" name="marca" required="">
                 <label for="modelo">Modelo:</label>
                 <input type="text" class="form-control" name="modelo" required="">
-                <label for="serie">Número de serie:</label>
-                <input type="text" class="form-control" name="serie" required="">
+                <label for="numeroSerie">Número de serie:</label>
+                <input type="text" class="form-control" name="numeroSerie" required="">
                 <hr>
                 <input type="submit" name="insertarAudiovisual" value="Insertar" class="btn-success btn-lg">
                 {!!Form::close()!!}

@@ -57,4 +57,8 @@ class AudiovisualController extends Controller
     return redirect ('/');
   }
 
+  public function buscarPrestamos()
+  {
+    return view ('audiovisual/buscarPrestamos');
+  }
 }
