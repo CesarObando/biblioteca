@@ -10,7 +10,13 @@ use DB;
 class PrestamoLibroEstudianteController extends Controller
 {
 
-  public function show($id)
+  public function show()
+  {
+    $libro = \gestorBiblioteca\PrestamoLibroEstudiante::find($id);
+    return view ('libro/prestarEstudiante',['libro'=>$libro]);
+  }
+
+  public function mostrar($id)
   {
     $libro = \gestorBiblioteca\PrestamoLibroEstudiante::find($id);
     return view ('libro/prestarEstudiante',['libro'=>$libro]);

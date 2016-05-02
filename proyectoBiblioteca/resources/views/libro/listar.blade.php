@@ -47,8 +47,8 @@
                                    {!!link_to_action('LibroController@eliminar', $title = 'Eliminar', $parameters = $libro->id, $attributes = ['class'=>'btn-danger btn-sm'])!!}
                                    @else
                                    {!!link_to_route('libro.edit', $title = 'Editar', $parameters = $libro->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}<hr>
-                                   {!!link_to_action('PrestamoLibroDocenteController@show', $title = 'Prestar Docente', $parameters = $libro->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}<hr>
-                                   {!!link_to_action('PrestamoLibroEstudianteController@show', $title = 'Prestar Estudiante', $parameters = $libro->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}<hr>
+                                   {!!link_to_action('PrestamoLibroDocenteController@mostrar', $title = 'Prestar Docente', $parameters = $libro->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}<hr>
+                                   {!!link_to_action('PrestamoLibroEstudianteController@mostrar', $title = 'Prestar Estudiante', $parameters = $libro->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}<hr>
                                    {!!link_to_action('LibroController@eliminar', $title = 'Eliminar', $parameters = $libro->id, $attributes = ['class'=>'btn-danger btn-sm'])!!}
                                    @endif
                                 </td>

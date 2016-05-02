@@ -11,8 +11,13 @@ use DB;
 class PrestamoLibroDocenteController extends Controller
 {
 
-  public function show($id)
+  public function show()
   {
+    $libro = \gestorBiblioteca\PrestamoLibroDocente::find($id);
+    return view ('libro/prestarDocente',['libro'=>$libro]);
+  }
+
+  public function mostrar($id){
     $libro = \gestorBiblioteca\PrestamoLibroDocente::find($id);
     return view ('libro/prestarDocente',['libro'=>$libro]);
   }
