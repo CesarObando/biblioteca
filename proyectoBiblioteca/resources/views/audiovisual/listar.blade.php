@@ -13,7 +13,7 @@
                                 <th>Marca</th>
                                 <th>Modelo</th>
                                 <th>Serie</th>
-                                <th>Descartado</th>
+                                <th>Estado</th>
                                 <th>Acciones</th>
 
                             </tr>
@@ -25,11 +25,24 @@
                                 <td>{{$audiovisual->marca}}</td>
                                 <td>{{$audiovisual->modelo}}</td>
                                 <td>{{$audiovisual->numeroSerie}}</td>
-                                <td>{{$audiovisual->descartado}}</td>
+                                @if($audiovisual->prestado===0)
+                                <td>Disponible</td>
+                                @else
+                                <td>Prestado</td>
+                                @endif
+
                                 <td>
+
+                                  @if($audiovisual->prestado===1)
+                                  {!!link_to_route('audiovisual.edit', $title = 'Editar', $parameters = $audiovisual->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
+                                  {!!link_to_action('AudiovisualController@eliminar', $title = 'Eliminar', $parameters = $audiovisual->id, $attributes = ['class'=>'btn-danger btn-sm'])!!}
+                                  @else
                                   {!!link_to_route('audiovisual.edit', $title = 'Editar', $parameters = $audiovisual->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
                                   {!!link_to_action('PrestamoAudiovisualController@show', $title = 'Prestar', $parameters = $audiovisual->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
                                   {!!link_to_action('AudiovisualController@eliminar', $title = 'Eliminar', $parameters = $audiovisual->id, $attributes = ['class'=>'btn-danger btn-sm'])!!}
+                                  @endif
+
+
                                 </td>
                             </tr>
                         </tbody>

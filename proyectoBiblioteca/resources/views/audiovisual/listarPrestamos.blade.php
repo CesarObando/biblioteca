@@ -18,15 +18,16 @@
                                 <th>Acciones</th>
                             </tr>
                         </thead>
+                        @foreach($Prestamosaudiovisual as $prestamoAudiovisual)
                         <tbody>
                             <tr>
-                                <td>Cesar Obando Solano</td>
-                                <td>Video Beam</td>
-                                <td>Epson</td>
-                                <td>EP-X5698</td>
-                                <td>023159856</td>
-                                <td>05/04/2016</td>
-                                <td><a href="listarPrestamoAudiovisuales.html" class="btn-danger btn-sm">Terminar préstamo</a> </td>
+                                <td>{{$prestamoAudiovisual->nombreSolicitante}}</td>
+                                <td>{{$prestamoAudiovisual->equipo->equipo}}</td>
+                                <td>{{$prestamoAudiovisual->equipo->marca}}</td>
+                                <td>{{$prestamoAudiovisual->equipo->modelo}}</td>
+                                <td>{{$prestamoAudiovisual->equipo->serie}}</td>
+                                <td>{{$prestamoAudiovisual->fecha}}</td>
+                                <td>{!!link_to_action('PrestamoAudiovisualController@eliminarPrestamo', $title = 'Eliminar', $parameters = $prestamoAudiovisual->id, $attributes = ['class'=>'btn-danger btn-sm'])!!} </td>
                             </tr>
 
                         </tbody>
