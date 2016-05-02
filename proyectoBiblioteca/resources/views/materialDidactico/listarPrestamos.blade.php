@@ -22,7 +22,10 @@
                           @foreach($prestamosMaterialDidactico as $prestamoMaterialDidactico)
                             <tr>
                                 <td>{{$prestamoMaterialDidactico->nombreSolicitante}}</td>
-
+                                <td>Mapa</td>
+                                <td>Mapax</td>
+                                <td>Mapa Mundi</td>
+                                <td>84378</td>
                                 <td>{{$prestamoMaterialDidactico->fecha}}</td>
                                 <td>
                                   {!!link_to_action('PrestamoMaterialDidacticoController@terminarPrestamo',
