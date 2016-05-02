@@ -12,29 +12,18 @@
 
                 <div class="form-group">
                 {!!Form::label('equipo','Equipo:')!!}
-<<<<<<< HEAD
-                {!!Form::select('equipo', ['Computadora' => 'Computadora',
-=======
                 {!!Form::select('equipo', [''=>'Seleccione el equipo',
                                           'Computadora' => 'Computadora',
->>>>>>> d44f01093a118f16d5ee7b22ec08e1a3ba8cc26c
                                           'Pantalla' => 'Pantalla',
                                           'Retroproyector'=>'Retroproyector',
                                           'Video Beam'=>'Video Beam',
                                           'Radiograbadora'=>'Radiograbadora',
                                           'Extensión eléctrica'=>'Extensión eléctrica',
                                           'Parlantes'=>'Parlantes',
-<<<<<<< HEAD
                                           'Televisor'=>'Televisor',
                                           'Regleta'=>'Regleta',
                                           '10'=>'Otro'],null,['class'=>'form-control',
                                           'placeholder'=>'Seleccione el equipo'])!!}
-=======
-                                          'Televisor'=>'Televisor','
-                                          Regleta'=>'Regleta',
-                                          '10'=>'Otro'],
-                null,['class'=>'form-control', 'id'=>'equipo'])!!}
->>>>>>> d44f01093a118f16d5ee7b22ec08e1a3ba8cc26c
                 </div>
                 <div class="form-group">
                 {!!Form::label('marca','Marca:')!!}
