@@ -4,17 +4,23 @@
             <h1>Préstamo de Libro</h1>
             <br>
             {!!Form::model($libro,['route'=>['PrestamoLibroEstudiante.store',$libro->id],'method'=>'post'])!!}
+
+            <div class="form-group">
+            {!!Form::hidden('id',null,['class'=>'form-control'])!!}
+            {!!Form::label('libro','Libro:')!!}
+            {!!Form::text('libro',null,['class'=>'form-control','disabled'=>''])!!}
+          </div>
                 <label for="signatura">Signatura:</label>
-                <input type="text" class="form-control" name="signatura" id="signatura" required="" value="{{$libro->signatura}}">
+                <input type="text" class="form-control" name="signatura" id="signatura" required="" value= {{$libro->signatura}}>
                 <br>
                 <label for="numeroInscripcion">Número de Inscripción:</label>
-                <input type="number" class="form-control" name="numeroInscripcion" required="" value="{{$libro->numeroInscripcion}}">
+                <input type="number" class="form-control" name="numeroInscripcion" required="" value= {{$libro->numeroInscripcion}}>
                 <br>
                 <label for="autor">Autor:</label>
-                <input type="text" class="form-control" name="autor" required="" value="{{$libro->autor}}">
+                <input type="text" class="form-control" name="autor" required="" value= {{$libro->autor}}>
                 <br>
                 <label for="titulo">Título:</label>
-                <input type="text" class="form-control" name="titulo" required="" value="{{$libro->titulo}}">
+                <input type="text" class="form-control" name="titulo" required="" value= {{$libro->titulo}}>
                 <br>
                 <label for="fecha">Fecha:</label>
                 <input type="date" class="form-control" name="fecha" required="">
