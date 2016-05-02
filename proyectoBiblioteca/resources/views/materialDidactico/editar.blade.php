@@ -8,26 +8,35 @@
                 <h2 class="h2">Biblioteca Omar Flores</h2>
             </div>
             <h1>Modificar material didactico</h1>
-            <form action="listarDidacticos.html">
-                <label for="equipo">Equipo:</label>
-                <select name="equipo" id="equipo" class="form-control" required="">
-                    <option value="">Seleccione el material didactico</option>
-                    <option value="1">Mapa</option>
-                    <option value="2">Juego</option>
-                    <option value="3">Abaco</option>
-                    <option value="4">Lapices y lapiceros</option>
-                    <option value="5">Laminas educativas</option>
-                    <option value="6">Otro</option>
-                </select>
-                <label for="marca">Marca:</label>
-                <input type="text" class="form-control" name="marca" required="">
-                <label for="modelo">Especificación:</label>
-                <input type="text" class="form-control" name="especificacion" required="">
-                <label for="serie">Número de serie:</label>
-                <input type="text" class="form-control" name="serie" required="">
-                <hr>
-                <input type="submit" name="modificarDidactico" value="Modificar" class="btn-warning btn-lg">
-            </form>
+            {!!Form::model($materialDidactico,['route'=>['materialDidactico.update',$materialDidactico->id],'method'=>'PUT'])!!}
+
+                <div class="form-group">
+                {!!Form::label('nombre','Equipo:')!!}
+                {!!Form::select('nombre', ['Mapa' => 'Mapa',
+                                           'Pantalla' => 'Pantalla',
+                                           'Juego'=>'Juego',
+                                           'Abaco'=>'Abaco',
+                                           'Lapices'=>'Lapices',
+                                           'Laminas'=>'Laminas',
+                                           '6'=>'Otro'],null,
+                                           ['class'=>'form-control',
+                                           'placeholder'=>'Seleccione el material didactico'])!!}
+                </div>
+
+                <div class="form-group">
+                {!!Form::label('marca','Marca:')!!}
+                {!!Form::text('marca',null,['class'=>'form-control','placeholder'=>'Ingrese la marca'])!!}
+                </div>
+                <div class="form-group">
+                {!!Form::label('especificacion','Especificación:')!!}
+                {!!Form::text('especificacion',null,['class'=>'form-control','placeholder'=>'Ingrese el modelo'])!!}
+                </div>
+                <div class="form-group">
+                {!!Form::label('numeroSerie','Número de serie:')!!}
+                {!!Form::text('numeroSerie',null,['class'=>'form-control','placeholder'=>'Ingrese el número de serie'])!!}
+              </div>
+              {!!Form::submit('Editar',['class'=>'btn-warning btn-lg'])!!}
+            {!!Form::close()!!}
 
         </div>
 @stop
