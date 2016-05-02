@@ -3,6 +3,7 @@
 <div class="container">
             <h1>Préstamo de Libro</h1>
             <br>
+            {!!Form::open(['route'=>'PrestamoLibroDocente.store','method'=>'post'])!!}
             <form name="prestamoLibroProfesor" action="listarPrestamoLibrosProfesor.html">
                 <label for="nombreDocente">nombreDocente:</label>
                 <input type="text" class="form-control" name="nombreDocente" id="signatura" required="">
@@ -33,6 +34,7 @@
                 <input type="number" class="form-control" name="numeroInscripcion" required="">
                 <hr>
                 <input type="submit" name="prestamoLibroProfesor" value="Préstamo" class="btn-success btn-lg">
+                {!!Form::close()!!}
                 <br><br>
             </form>
         </div>
