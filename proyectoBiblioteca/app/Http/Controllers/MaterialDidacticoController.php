@@ -46,12 +46,12 @@ class MaterialDidacticoController extends Controller
   }
   public function listarPrestamos(Request $request)
   {
-    //$prestamosMaterialDidactico = \gestorBiblioteca\PrestamoMaterialDidactico::join('material_didactico', 'materialComplementario.id', '=', 'material_complemetario.id')
-    $prestamosMaterialDidactico = \gestorBiblioteca\PrestamoMaterialDidactico::where('nombreSolicitante', 'like', '%'.$request['nombreSolicitante'].'%')
-                                                               //-> where('material_complementario.nombre', $request['equipo'])
-                                                               //->where('fecha', '=', $request['fecha'])
-                                                               ->where('terminado','=',0)
-                                                               -> get();
+    $fecha = $request['fecha'];
+    if($fecha=='' || $fecha==null)
+    {
+      $fecha='0000.0.0';
+    }
+    $prestamosMaterialDidactico = DB::select('CALL buscar_prestamos_materiales_didacticos(?,?,?)',[$request['nombreSolicitante'],$request['equipo'],$fecha]);
     return view ('materialDidactico/listarPrestamos', compact('prestamosMaterialDidactico'));
   }
   public function prestar($id)
