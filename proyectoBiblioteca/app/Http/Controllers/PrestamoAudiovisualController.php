@@ -37,10 +37,7 @@ class PrestamoAudiovisualController extends Controller
 
   public function listarPrestamos(Request $request)
   {
-
-    $prestamosAudiovisual = \gestorBiblioteca\PrestamoAudiovisual::where('nombreSolicitante', 'like', '%'.$request['nombreSolicitante'].'%')
-                                                               -> where ('terminado','=', 0)
-                                                               -> get();
+    $prestamosAudiovisual = DB::select('CALL buscar_prestamos_audiovisuales(?,?,?)',[$request['nombreSolicitante'],$request['equipo'],$request['fecha']]);
     return view ('audiovisual/listarPrestamos',compact('prestamosAudiovisual'));
   }
 
