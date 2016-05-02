@@ -18,7 +18,7 @@ class PrestamoLibroEstudianteController extends Controller
 
   public function mostrar($id)
   {
-    $libro = \gestorBiblioteca\PrestamoLibroEstudiante::find($id);
+    $libro = \gestorBiblioteca\Libro::find($id);
     return view ('libro/prestarEstudiante',['libro'=>$libro]);
   }
 
