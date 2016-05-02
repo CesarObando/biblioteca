@@ -43,9 +43,13 @@ class MaterialDidacticoController extends Controller
                                                                -> get();
     return view ('materialDidactico/listar', compact('materialesDidacticos'));
   }
-  public function listarPrestamos()
+  public function listarPrestamos(Request $request)
   {
-    return view ('materialDidactico/listarPrestamos');
+    //$prestamosMaterialDidactico = \gestorBiblioteca\PrestamoMaterialDidactico::join('material_didactico', 'materialComplementario.id', '=', 'material_complemetario.id')
+    $prestamosMaterialDidactico = \gestorBiblioteca\PrestamoMaterialDidactico::where('nombreSolicitante', 'like', '%'.$request['nombreSolicitante'].'%')
+                                                               //-> where('material_complementario.nombre', $request['equipo'])
+                                                               -> get();
+    return view ('materialDidactico/listarPrestamos', compact('prestamosMaterialDidactico'));
   }
   public function prestar($id)
   {

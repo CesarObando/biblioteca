@@ -32,4 +32,9 @@ class PrestamoMaterialDidacticoController extends Controller
       ]);
     return redirect ('/');
   }
+public function terminarPrestamo()
+{
+  return redirect('#');
+}
+
 }

@@ -3,7 +3,7 @@
 <div class="table-responsive container">
                 <br>
                 <br>
-                <h1>Material didactico</h1>
+                <h1>Prestamos Material didactico</h1>
                 <br>
                 <form>
                     <table class="table table-condensed table-hover table-bordered table-responsive">
@@ -19,7 +19,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                          @foreach($prestamosmaterialDidactico as $prestamoMaterialDidactico)
+                          @foreach($prestamosMaterialDidactico as $prestamoMaterialDidactico)
                             <tr>
                                 <td>{{$prestamoMaterialDidactico->nombreSolicitante}}</td>
                                 <td>{{$prestamoMaterialDidactico->materialComplementario->nombre}}</td>
