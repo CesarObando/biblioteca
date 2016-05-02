@@ -41,7 +41,9 @@
                         <div class="navbar-brand" >
 
                         </div>
-                        <img src="../img/logo.jpe" class="img-responsive" alt=""  width="76" height="85">
+
+                        <?php echo Html::image('img/logo.jpe',null,['width'=>'76','height'=>'85']); ?>
+
                     </div>
                     <div class="navbar-collapse collapse">
                         <div class="menu">

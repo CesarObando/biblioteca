@@ -51,9 +51,12 @@ Route::get('materialDidactico/editar','MaterialDidacticoController@editar');
 Route::get('materialDidactico/insertar','MaterialDidacticoController@insertar');
 Route::get('materialDidactico/listar','MaterialDidacticoController@listar');
 Route::get('materialDidactico/listarPrestamos','MaterialDidacticoController@listarPrestamos');
-Route::get('materialDidactico/prestar/{id}','MaterialDidacticoController@prestar');
+Route::get('materialDidactico/prestar','MaterialDidacticoController@prestar');
 Route::get('materialDidactico/storePrestamo/{id}', 'MaterialDidacticoController@storePrestamo');
 Route::resource('materialDidactico', 'MaterialDidacticoController');
+
+Route::resource('prestamoMaterialDidactico', 'PrestamoMaterialDidacticoController');
+
 //SalaAudiovisuales
 Route::get('salaAudiovisuales/buscarPrestamos','SalaAudiovisualesController@buscarPrestamos');
 Route::get('salaAudiovisuales/listar','SalaAudiovisualesController@listar');

@@ -19,16 +19,23 @@
                             </tr>
                         </thead>
                         <tbody>
+                          @foreach($prestamosmaterialDidactico as $prestamoMaterialDidactico)
                             <tr>
-                                <td>Jonathan Bonilla Umaña</td>
-                                <td>Mapa</td>
-                                <td>d-maps</td>
-                                <td>Mapa mundi</td>
-                                <td>02856</td>
-                                <td>05/04/2016</td>
-                                <td><a href="listarPrestamoDidactico.html" class="btn-danger btn-sm">Terminar préstamo</a> </td>
+                                <td>{{$prestamoMaterialDidactico->nombreSolicitante}}</td>
+                                <td>{{$prestamoMaterialDidactico->materialComplementario->nombre}}</td>
+                                <td>{{$prestamoMaterialDidactico->materialComplementario->marca}}</td>
+                                <td>{{$prestamoMaterialDidactico->materialComplementario->especificacion}}</td>
+                                <td>{{$prestamoMaterialDidactico->materialComplementario->numeroSerie}}</td>
+                                <td>{{$prestamoMaterialDidactico->fecha}}</td>
+                                <td>
+                                  {!!link_to_action('PrestamoMaterialDidacticoController@terminarPrestamo',
+                                                    $title = 'Terminar Prestamo',
+                                                    $parameters = $prestamoMaterialDidactico->id,
+                                                    $attributes = ['class'=>'btn-warning btn-sm'])!!}
+                                  <a href="listarPrestamoDidactico.html" class="btn-danger btn-sm">Terminar préstamo</a>
+                                </td>
                             </tr>
-
+                          @endforeach
                         </tbody>
                     </table>
                 </form>
