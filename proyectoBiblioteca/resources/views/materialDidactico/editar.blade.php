@@ -13,7 +13,6 @@
                 <div class="form-group">
                 {!!Form::label('nombre','Equipo:')!!}
                 {!!Form::select('nombre', ['Mapa' => 'Mapa',
-                                           'Pantalla' => 'Pantalla',
                                            'Juego'=>'Juego',
                                            'Abaco'=>'Abaco',
                                            'Lapices'=>'Lapices',

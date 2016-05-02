@@ -12,13 +12,18 @@
 
                 <div class="form-group">
                 {!!Form::label('equipo','Equipo:')!!}
-                {!!Form::select('equipo', [''=>'Seleccione el equipo','Computadora' => 'Computadora', 'Pantalla' => 'Pantalla','Retroproyector'=>'Retroproyector',
-                'Video Beam'=>'Video Beam','Radiograbadora'=>'Radiograbadora','Extensión eléctrica'=>'Extensión eléctrica','Parlantes'=>'Parlantes',
-                'Televisor'=>'Televisor','Regleta'=>'Regleta','10'=>'Otro'],null,['class'=>'form-control','onchange'=>'especificarOtro()','id'=>'equipo'])!!}
+                {!!Form::select('equipo', ['Computadora' => 'Computadora',
+                                          'Pantalla' => 'Pantalla',
+                                          'Retroproyector'=>'Retroproyector',
+                                          'Video Beam'=>'Video Beam',
+                                          'Radiograbadora'=>'Radiograbadora',
+                                          'Extensión eléctrica'=>'Extensión eléctrica',
+                                          'Parlantes'=>'Parlantes',
+                                          'Televisor'=>'Televisor',
+                                          'Regleta'=>'Regleta',
+                                          '10'=>'Otro'],null,['class'=>'form-control',
+                                          'placeholder'=>'Seleccione el equipo'])!!}
                 </div>
-
-                <label for="otro" id="l_otro" style="visibility: hidden">Otro:</label>
-                <input type="text" class="form-control" name="equipo" id="otro" style="visibility: hidden">
                 <div class="form-group">
                 {!!Form::label('marca','Marca:')!!}
                 {!!Form::text('marca',null,['class'=>'form-control','placeholder'=>'Ingrese la marca'])!!}

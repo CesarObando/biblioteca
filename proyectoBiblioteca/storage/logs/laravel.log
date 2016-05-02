@@ -21971,3 +21971,6 @@ Stack trace:
 [2016-05-02 06:23:11] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ''onchange'' (T_CONSTANT_ENCAPSED_STRING), expecting ']'' in C:\Users\Cesar\Desktop\ProyectoLaravel\biblioteca\proyectoBiblioteca\storage\framework\views\cb7ec7bce95fa212cbf8e3bbcda3403f1aad6b7b.php:25
 Stack trace:
 #0 {main}  
+[2016-05-02 07:46:40] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '' => '' (T_CONSTANT_ENCAPSED_STRING), expecting ']'' in C:\Users\Cesar\Desktop\ProyectoLaravel\biblioteca\proyectoBiblioteca\storage\framework\views\5757117d8bec167107a438e795f7a29fcc25527b.php:16
+Stack trace:
+#0 {main}  
