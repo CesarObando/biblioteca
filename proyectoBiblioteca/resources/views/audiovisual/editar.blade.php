@@ -23,7 +23,7 @@
                                           'Televisor'=>'Televisor','
                                           Regleta'=>'Regleta',
                                           '10'=>'Otro'],
-                null,['class'=>'form-control'])!!}
+                null,['class'=>'form-control', 'id'=>'equipo'])!!}
                 </div>
 
                 <label for="otro" id="l_otro" style="visibility: hidden">Otro:</label>
