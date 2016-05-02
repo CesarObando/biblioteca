@@ -35,8 +35,20 @@
                                 <td>{{$libro->editorial}}</td>
                                 <td>{{$libro->ano}}</td>
                                 <td>{{$libro->observaciones}}</td>
+                                @if($libro->prestado===0)
+                                <td>Disponible</td>
+                                @else
+                                <td>Prestado</td>
+                                @endif
                                 <td>
+                                  @if($libro->prestado===1)
                                    {!!link_to_route('libro.edit', $title = 'Editar', $parameters = $libro->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
+                                   {!!link_to_action('LibroController@eliminar', $title = 'Eliminar', $parameters = $libro->id, $attributes = ['class'=>'btn-danger btn-sm'])!!}
+                                   @else
+                                   {!!link_to_route('libro.edit', $title = 'Editar', $parameters = $libro->id, $attributes = ['class'=>'btn-warning btn-sm'])!!}
+
+                                   {!!link_to_action('LibroController@eliminar', $title = 'Eliminar', $parameters = $libro->id, $attributes = ['class'=>'btn-danger btn-sm'])!!}
+                                   @endif
                                 </td>
                             </tr>
                         </tbody>

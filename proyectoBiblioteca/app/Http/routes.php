@@ -22,6 +22,7 @@ Route::get('libro/buscarPrestamosEstudiante','LibroController@buscarPrestamosEst
 Route::get('libro/editar','LibroController@editar');
 Route::get('libro/insertar','LibroController@insertar');
 Route::get('libro/listar','LibroController@listar');
+Route::get('libro/eliminar/{id}','LibroController@eliminar');
 Route::get('libro/listarPrestamosDocente','LibroController@listarPrestamosDocente');
 Route::get('libro/listarPrestamosEstudiante','LibroController@listarPrestamosEstudiante');
 Route::get('libro/prestarDocente','LibroController@prestarDocente');
