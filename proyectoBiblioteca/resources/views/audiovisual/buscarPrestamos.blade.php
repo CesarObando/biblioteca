@@ -23,7 +23,7 @@
                 </select>
                 <br>
                 <label for="fecha">Fecha:</label>
-                <input type="date" class="form-control" name="fecha">
+                <input type="date" class="form-control" name="fecha" value="1111-11-11">
                 <hr>
                 <input type="submit" name="buscarPrestamoAudiovisual" value="Buscar" class="btn-success btn-lg">
                 <br><br>
