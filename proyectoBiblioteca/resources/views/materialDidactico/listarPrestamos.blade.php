@@ -21,13 +21,13 @@
                         <tbody>
                           @foreach($prestamosMaterialDidactico as $prestamoMaterialDidactico)
                             <tr>
-                                <td>{{$prestamoMaterialDidactico->nombreSolicitante}}</td>
-                                <td>Mapa</td>
-                                <td>Mapax</td>
-                                <td>Mapa Mundi</td>
-                                <td>84378</td>
-                                <td>{{$prestamoMaterialDidactico->fecha}}</td>
-                                <td>
+                              <td>{{$prestamoMaterialDidactico->nombreSolicitante}}</td>
+                              <td>{{$prestamoMaterialDidactico->nombre}}</td>
+                              <td>{{$prestamoMaterialDidactico->marca}}</td>
+                              <td>{{$prestamoMaterialDidactico->especificacion}}</td>
+                              <td>{{$prestamoMaterialDidactico->numeroSerie}}</td>
+                              <td>{{$prestamoMaterialDidactico->fecha}}</td>
+                              <td>
                                   {!!link_to_action('PrestamoMaterialDidacticoController@terminarPrestamo',
                                                     $title = 'Terminar Prestamo',
                                                     $parameters = $prestamoMaterialDidactico->id,
