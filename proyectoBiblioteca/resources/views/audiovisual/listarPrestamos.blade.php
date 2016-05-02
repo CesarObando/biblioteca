@@ -10,26 +10,19 @@
                         <thead>
                             <tr>
                                 <th>Nombre del solicitante</th>
-                                <th>Equipo</th>
-                                <th>Marca</th>
-                                <th>Modelo</th>
-                                <th>Serie</th>
                                 <th>Fecha de préstamo</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
-                        @foreach($Prestamosaudiovisual as $prestamoAudiovisual)
+                        @foreach($prestamosAudiovisual as $prestamoAudiovisual)
                         <tbody>
                             <tr>
                                 <td>{{$prestamoAudiovisual->nombreSolicitante}}</td>
-                                <td>{{$prestamoAudiovisual->equipo->equipo}}</td>
-                                <td>{{$prestamoAudiovisual->equipo->marca}}</td>
-                                <td>{{$prestamoAudiovisual->equipo->modelo}}</td>
-                                <td>{{$prestamoAudiovisual->equipo->serie}}</td>
+
                                 <td>{{$prestamoAudiovisual->fecha}}</td>
                                 <td>{!!link_to_action('PrestamoAudiovisualController@eliminarPrestamo', $title = 'Eliminar', $parameters = $prestamoAudiovisual->id, $attributes = ['class'=>'btn-danger btn-sm'])!!} </td>
                             </tr>
-
+                            @endforeach
                         </tbody>
                     </table>
                 </form>

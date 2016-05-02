@@ -12,9 +12,9 @@
 
                 <div class="form-group">
                 {!!Form::label('equipo','Equipo:')!!}
-                {!!Form::select('equipo', ['Computadora' => 'Computadora', 'Pantalla' => 'Pantalla','Retroproyector'=>'Retroproyector',
+                {!!Form::select('equipo', [''=>'Seleccione el equipo','Computadora' => 'Computadora', 'Pantalla' => 'Pantalla','Retroproyector'=>'Retroproyector',
                 'Video Beam'=>'Video Beam','Radiograbadora'=>'Radiograbadora','Extensión eléctrica'=>'Extensión eléctrica','Parlantes'=>'Parlantes',
-                'Televisor'=>'Televisor','Regleta'=>'Regleta','10'=>'Otro'],null,['class'=>'form-control','onchange'=>'especificarOtro()'])!!}
+                'Televisor'=>'Televisor','Regleta'=>'Regleta','10'=>'Otro'],null,['class'=>'form-control','onchange'=>'especificarOtro()','id'=>'equipo'])!!}
                 </div>
 
                 <label for="otro" id="l_otro" style="visibility: hidden">Otro:</label>
