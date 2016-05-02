@@ -10,6 +10,10 @@
                         <thead>
                             <tr>
                                 <th>Nombre del solicitante</th>
+                                <th>Equipo</th>
+                                <th>Marca</th>
+                                <th>Modelo</th>
+                                <th>Serie</th>
                                 <th>Fecha de préstamo</th>
                                 <th>Acciones</th>
                             </tr>
@@ -18,9 +22,12 @@
                         <tbody>
                             <tr>
                                 <td>{{$prestamoAudiovisual->nombreSolicitante}}</td>
-
+                                <td>{{$prestamoAudiovisual->equipo}}</td>
+                                <td>{{$prestamoAudiovisual->marca}}</td>
+                                <td>{{$prestamoAudiovisual->modelo}}</td>
+                                <td>{{$prestamoAudiovisual->numeroSerie}}</td>
                                 <td>{{$prestamoAudiovisual->fecha}}</td>
-                                <td>{!!link_to_action('PrestamoAudiovisualController@eliminarPrestamo', $title = 'Eliminar', $parameters = $prestamoAudiovisual->id, $attributes = ['class'=>'btn-danger btn-sm'])!!} </td>
+                                <td>{!!link_to_action('PrestamoAudiovisualController@eliminarPrestamo', $title = 'Terminar', $parameters = $prestamoAudiovisual->id, $attributes = ['class'=>'btn-danger btn-sm'])!!} </td>
                             </tr>
                             @endforeach
                         </tbody>

@@ -6,13 +6,18 @@ use Illuminate\Http\Request;
 
 use gestorBiblioteca\Http\Requests;
 use DB;
-use gestorBiblioteca\PrestamoLibroDocente;
+
 
 class PrestamoLibroDocenteController extends Controller
 {
 
-  public function show($id)
+  public function show()
   {
+    $libro = \gestorBiblioteca\PrestamoLibroDocente::find($id);
+    return view ('libro/prestarDocente',['libro'=>$libro]);
+  }
+
+  public function mostrar($id){
     $libro = \gestorBiblioteca\Libro::find($id);
     return view ('libro/prestarDocente',['libro'=>$libro]);
   }
@@ -31,6 +36,7 @@ class PrestamoLibroDocenteController extends Controller
     DB::update('update libro set prestado = 1 where id = ?',[$request['id']]);
     return redirect ('/');
   }
+
 
   public function buscarPrestamos()
   {

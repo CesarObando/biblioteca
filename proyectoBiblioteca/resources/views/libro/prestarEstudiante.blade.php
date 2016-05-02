@@ -3,19 +3,18 @@
 <div class="container">
             <h1>Préstamo de Libro</h1>
             <br>
-            {!!Form::open(['route'=>'prestamoLibroEstudiante.store','method'=>'post'])!!}
-            <form name="prestamoLibroEstudiante" action="listarPrestamoLibrosEstudiante.html">
+            {!!Form::model($libro,['route'=>['PrestamoLibroEstudiante.store',$libro->id],'method'=>'post'])!!}
                 <label for="signatura">Signatura:</label>
-                <input type="text" class="form-control" name="signatura" id="signatura" required="">
+                <input type="text" class="form-control" name="signatura" id="signatura" required="" value="{{$libro->signatura}}">
                 <br>
                 <label for="numeroInscripcion">Número de Inscripción:</label>
-                <input type="number" class="form-control" name="numeroInscripcion" required="">
+                <input type="number" class="form-control" name="numeroInscripcion" required="" value="{{$libro->numeroInscripcion}}">
                 <br>
                 <label for="autor">Autor:</label>
-                <input type="text" class="form-control" name="autor" required="">
+                <input type="text" class="form-control" name="autor" required="" value="{{$libro->autor}}">
                 <br>
                 <label for="titulo">Título:</label>
-                <input type="text" class="form-control" name="titulo" required="">
+                <input type="text" class="form-control" name="titulo" required="" value="{{$libro->titulo}}">
                 <br>
                 <label for="fecha">Fecha:</label>
                 <input type="date" class="form-control" name="fecha" required="">
@@ -41,6 +40,5 @@
                 <input type="submit" name="prestamoLibroEstudiante" value="Préstamo" class="btn-success btn-lg">
                 {!!Form::close()!!}
                 <br><br>
-            </form>
         </div>
 @stop

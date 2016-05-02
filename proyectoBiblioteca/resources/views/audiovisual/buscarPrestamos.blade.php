@@ -9,17 +9,17 @@
                 <br>
                 <label for="equipo">Equipo:</label>
                 <select name="equipo" id="equipo" class="form-control">
-                    <option value="">Seleccione el equipo</option>
-                    <option value="1">Computadora</option>
-                    <option value="2">Pantalla</option>
-                    <option value="3">Retroproyector</option>
-                    <option value="4">Video Beam</option>
-                    <option value="5">Radiograbadora</option>
-                    <option value="6">Extensión eléctrica</option>
-                    <option value="7">Parlantes</option>
-                    <option value="8">Televisor</option>
-                    <option value="9">Regleta</option>
-                    <option value="10">Otro</option>
+                  <option value="">Seleccione el equipo</option>
+                  <option value="Computadora">Computadora</option>
+                  <option value="Pantalla">Pantalla</option>
+                  <option value="Retroproyector">Retroproyector</option>
+                  <option value="Video Beam">Video Beam</option>
+                  <option value=" Radiograbadora">Radiograbadora</option>
+                  <option value="Extensión eléctrica">Extensión eléctrica</option>
+                  <option value="Parlantes">Parlantes</option>
+                  <option value="Televisor">Televisor</option>
+                  <option value="Regleta">Regleta</option>
+                  <option value="10">Otro</option>
                 </select>
                 <br>
                 <label for="fecha">Fecha:</label>
