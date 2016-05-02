@@ -22,17 +22,15 @@
                           @foreach($prestamosMaterialDidactico as $prestamoMaterialDidactico)
                             <tr>
                                 <td>{{$prestamoMaterialDidactico->nombreSolicitante}}</td>
-                                <td>{{$prestamoMaterialDidactico->materialComplementario->nombre}}</td>
-                                <td>{{$prestamoMaterialDidactico->materialComplementario->marca}}</td>
-                                <td>{{$prestamoMaterialDidactico->materialComplementario->especificacion}}</td>
-                                <td>{{$prestamoMaterialDidactico->materialComplementario->numeroSerie}}</td>
+
                                 <td>{{$prestamoMaterialDidactico->fecha}}</td>
                                 <td>
                                   {!!link_to_action('PrestamoMaterialDidacticoController@terminarPrestamo',
                                                     $title = 'Terminar Prestamo',
                                                     $parameters = $prestamoMaterialDidactico->id,
                                                     $attributes = ['class'=>'btn-warning btn-sm'])!!}
-                                  <a href="listarPrestamoDidactico.html" class="btn-danger btn-sm">Terminar préstamo</a>
+
+
                                 </td>
                             </tr>
                           @endforeach
