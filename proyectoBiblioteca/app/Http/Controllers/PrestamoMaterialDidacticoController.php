@@ -30,6 +30,7 @@ class PrestamoMaterialDidacticoController extends Controller
         'fecha' => $request['fecha'],
         'hora' => $request['hora'],
       ]);
+      DB::update('update material_complementario set prestado = 1 where id = ?',[$request['id']]);
     return redirect ('/');
   }
 public function terminarPrestamo($id)

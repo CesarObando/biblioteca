@@ -49,7 +49,7 @@ class MaterialDidacticoController extends Controller
     //$prestamosMaterialDidactico = \gestorBiblioteca\PrestamoMaterialDidactico::join('material_didactico', 'materialComplementario.id', '=', 'material_complemetario.id')
     $prestamosMaterialDidactico = \gestorBiblioteca\PrestamoMaterialDidactico::where('nombreSolicitante', 'like', '%'.$request['nombreSolicitante'].'%')
                                                                //-> where('material_complementario.nombre', $request['equipo'])
-                                                               ->where('fecha', '=', $request['fecha'])
+                                                               //->where('fecha', '=', $request['fecha'])
                                                                ->where('terminado','=',0)
                                                                -> get();
     return view ('materialDidactico/listarPrestamos', compact('prestamosMaterialDidactico'));
