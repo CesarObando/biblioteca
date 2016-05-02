@@ -26,13 +26,13 @@ class PrestamoLibroEstudianteController extends Controller
   {
     \gestorBiblioteca\PrestamoLibroEstudiante::create([
       'libro' => $request['id'],
-      'fechaPrestamo' => $request['fechaPrestamo'],
-      'fechaVencimiento' => $request['fechaVencimientoa'],
-      'nombreSolicitante' => $request['nombreSolicitante'],
-      'correoSolicitante' => $request['correoSolicitante'],
-      'telefonoSolicitante' => $request['telefonoSolicitante'],
-      'direccionSolicitante' => $request['direccionSolicitante'],
-      'seccionSolicitante' => $request['seccionSolicitante'],
+      'fechaPrestamo' => $request['fecha'],
+      'fechaVencimiento' => $request['vence'],
+      'nombreSolicitante' => $request['nombre'],
+      'correoSolicitante' => $request['correo'],
+      'telefonoSolicitante' => $request['telefono'],
+      'direccionSolicitante' => $request['direccion'],
+      'seccionSolicitante' => $request['seccion'],
     ]);
     DB::update('update libro set prestado = 1 where id = ?',[$request['id']]);
     return redirect ('/');
