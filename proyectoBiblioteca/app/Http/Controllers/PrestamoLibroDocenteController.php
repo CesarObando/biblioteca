@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use gestorBiblioteca\Http\Requests;
 use DB;
-use gestorBiblioteca\PrestamoLibroDocente;
+
 
 class PrestamoLibroDocenteController extends Controller
 {
@@ -31,6 +31,7 @@ class PrestamoLibroDocenteController extends Controller
     DB::update('update libro set prestado = 1 where id = ?',[$request['id']]);
     return redirect ('/');
   }
+
 
   public function buscarPrestamos()
   {

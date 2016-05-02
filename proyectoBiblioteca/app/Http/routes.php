@@ -32,21 +32,20 @@ Route::resource('libro','LibroController');
 
 Route::resource('libro','LibroController',['only'=> ['create','store','edit','update','destroy']]);
 
-Route::get('libro/prestarDocente','PrestamoLibroDocenteController@prestar');
+Route::get('libro/prestarDocente','PrestamoLibroDocenteController@store');
 Route::get('libro/buscarPrestamosDocente','PrestamoLibroDocenteController@buscarPrestamos');
 Route::get('libro/listarPrestamosDocente','PrestamoLibroDocenteController@listarPrestamos');
 Route::get('libro/eliminarPrestamo/{id}','PrestamoLibroDocenteController@eliminarPrestamo');
-Route::resource('prestamoLibroDocente','PrestamoLibroDocenteController');
+Route::resource('prestarDocente','PrestamoLibroDocenteController');
 
-Route::resource('prestamoLibroDocente','PrestamoLibroDocenteController',['only'=> ['create','store','edit','update','destroy']]);
 
-Route::get('libro/prestarEstudiante','PrestamoLibroEstudianteController@prestar');
+Route::get('libro/prestarEstudiante','PrestamoLibroEstudianteController@store');
 Route::get('libro/buscarPrestamosEstudiante','PrestamoLibroEstudianteController@buscarPrestamos');
 Route::get('libro/listarPrestamosEstudiante','PrestamoLibroEstudianteController@listarPrestamos');
 Route::get('libro/eliminarPrestamo/{id}','PrestamoLibroEstudianteController@eliminarPrestamo');
 Route::resource('prestamoLibroDocente','PrestamoLibroEstudianteController');
 
-Route::resource('PrestamoLibroEstudiante','PrestamoLibroEstudianteController',['only'=> ['create','store','edit','update','destroy']]);
+Route::resource('PrestamoLibroEstudiante','PrestamoLibroEstudianteController',['only'=> ['create','edit','update','destroy']]);
 
 //Audiovisual
 Route::get('audiovisual/buscar','AudiovisualController@buscar');

@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 use gestorBiblioteca\Http\Requests;
 use DB;
-use gestorBiblioteca\PrestamoLibroEstudiante;
 
 class PrestamoLibroEstudianteController extends Controller
 {
