@@ -27,7 +27,7 @@
                                 <td>{{$prestamoAudiovisual->modelo}}</td>
                                 <td>{{$prestamoAudiovisual->numeroSerie}}</td>
                                 <td>{{$prestamoAudiovisual->fecha}}</td>
-                                <td>{!!link_to_action('PrestamoAudiovisualController@eliminarPrestamo', $title = 'Eliminar', $parameters = $prestamoAudiovisual->id, $attributes = ['class'=>'btn-danger btn-sm'])!!} </td>
+                                <td>{!!link_to_action('PrestamoAudiovisualController@eliminarPrestamo', $title = 'Terminar', $parameters = $prestamoAudiovisual->id, $attributes = ['class'=>'btn-danger btn-sm'])!!} </td>
                             </tr>
                             @endforeach
                         </tbody>

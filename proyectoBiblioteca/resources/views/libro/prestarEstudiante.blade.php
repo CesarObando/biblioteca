@@ -3,7 +3,7 @@
 <div class="container">
             <h1>Préstamo de Libro</h1>
             <br>
-            {!!Form::open(['route'=>'prestamoLibroEstudiante.store','method'=>'post'])!!}
+            {!!Form::open(['route'=>'PrestamoLibroEstudiante.store','method'=>'post'])!!}
             <form name="prestamoLibroEstudiante" action="listarPrestamoLibrosEstudiante.html">
                 <label for="signatura">Signatura:</label>
                 <input type="text" class="form-control" name="signatura" id="signatura" required="">
