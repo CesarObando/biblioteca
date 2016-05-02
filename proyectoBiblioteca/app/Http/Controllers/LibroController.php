@@ -5,6 +5,7 @@ namespace gestorBiblioteca\Http\Controllers;
 use Illuminate\Http\Request;
 use gestorBiblioteca\Http\Requests;
 use gestorBiblioteca\Libro;
+use DB;
 
 class LibroController extends Controller
 {
@@ -28,9 +29,12 @@ class LibroController extends Controller
   {
     return view ('libro/insertar');
   }
-  public function listar()
+  public function listar(Request $request)
   {
-    $libros = \gestorBiblioteca\Libro::All();
+    $libros = \gestorBiblioteca\Libro::where('numeroInscripcion', 'like', '%'.$request['numeroInscripcion'].'%')
+                                                               -> where('titulo', 'like', '%'.$request['titulo'].'%')
+                                                               -> where ('descartado','=', 0)
+                                                               -> get();
     return view ('libro/listar',compact('libros'));
   }
 
@@ -56,20 +60,25 @@ class LibroController extends Controller
       'editorial' => $request['editorial'],
       'ano' => $request['ano'],
       'observaciones' => $request['observaciones'],
-      'prestado' => $request['prestado'],
-      'descartado' => $request['descartado'],
+      'descartado' => 0,
+      'prestamo' => 0,
     ]);
     return view ('index');
   }
 
   public function update($id, Request $request)
   {
-    $audiovisual = \gestorBiblioteca\Libro::find($id);
-    $audiovisual->fill($request->all());
-    $audiovisual->save();
+    $libro = \gestorBiblioteca\Libro::find($id);
+    $libro->fill($request->all());
+    $libro->save();
     return view ('index');
   }
 
+  public function eliminar($id)
+  {
+    DB::update('update libro set descartado = 1 where id = ?',[$id]);
+    return redirect ('/');
+  }
 
   public function listarPrestamosDocente()
   {

@@ -4,7 +4,7 @@
             <h1>Insertar Nuevo Libro</h1>
             <br>
 
-            {!!Form::open(['route'=>'libro.store','method'=>'post'])!!}
+                {!!Form::open(['route'=>'libro.store','method'=>'post'])!!}
 
             <form name="insertarLibro" action="index.html">
                <label for="signatura">Signatura:</label>
