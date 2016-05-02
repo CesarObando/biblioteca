@@ -59,9 +59,8 @@ class LibroController extends Controller
       'lugar' => $request['lugar'],
       'editorial' => $request['editorial'],
       'ano' => $request['ano'],
-      'observaciones' => $request['observaciones'],
-      'descartado' => 0,
-      'prestamo' => 0,
+      'observaciones' => $request['observaciones']
+
     ]);
     return view ('index');
   }
@@ -76,7 +75,13 @@ class LibroController extends Controller
 
   public function eliminar($id)
   {
-    DB::update('update libro set descartado = 1 where id = ?',[$id]);
+    DB::table('libro')
+        ->where('id', $id)
+        ->decrement('prestado');
+    DB::table('libro')
+        ->where('id', $id)
+        ->increment('descartado');
+
     return redirect ('/');
   }
 
