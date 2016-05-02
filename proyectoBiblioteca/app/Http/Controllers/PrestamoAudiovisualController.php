@@ -19,7 +19,7 @@ class PrestamoAudiovisualController extends Controller
   public function store(Request $request)
   {
     \gestorBiblioteca\PrestamoAudiovisual::create([
-      'audiovisual->id' => $request['id'],
+      'idaudiovisual' => $request['id'],
       'nombreSolicitante' => $request['nombreSolicitante'],
       'condicion' => $request['condicion'],
       'finesPrestamo' => $request['finesPrestamo'],
@@ -48,7 +48,7 @@ class PrestamoAudiovisualController extends Controller
   {
     DB::update('update prestamo_audiovisual set terminado = 1 where id = ?',[$id]);
     $prestamoAudiovisual = \gestorBiblioteca\PrestamoAudiovisual::find($id);
-    DB::update('update audiovisual set prestado = 0 where id = ?',[$prestamoAudiovisual->equipo]);
+    DB::update('update audiovisual set prestado = 0 where id = ?',[$prestamoAudiovisual->idaudiovisual]);
     return redirect ('/');
   }
 }
