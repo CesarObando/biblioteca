@@ -3,6 +3,7 @@
 <div class="container">
             <h1>Uso de Internet</h1>
             <br>
+            {!!Form::open(['route'=>'servicioInternet.store','method'=>'post'])!!}
             <form name="usoServicioInternet" action="listarUsoServicioInternet.html">
                 <label for="fecha">Fecha:</label>
                 <input type="date" class="form-control" name="fecha" id="fecha" required="">
@@ -25,6 +26,6 @@
                 <hr>
                 <input type="submit" name="usoServicioInternet" value="Insertar" class="btn-success btn-lg">
                 <br><br>
-            </form>
-        </div>  
+            {!!Form::close()!!}
+        </div>
 @stop
