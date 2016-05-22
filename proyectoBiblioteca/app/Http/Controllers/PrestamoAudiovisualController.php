@@ -37,7 +37,12 @@ class PrestamoAudiovisualController extends Controller
 
   public function listarPrestamos(Request $request)
   {
-    $prestamosAudiovisual = DB::select('CALL buscar_prestamos_audiovisuales(?,?,?)',[$request['nombreSolicitante'],$request['equipo'],$request['fecha']]);
+    $fecha = $request['fecha'];
+    if($fecha=='' || $fecha==null)
+    {
+      $fecha='0000.0.0';
+    }
+    $prestamosAudiovisual = DB::select('CALL buscar_prestamos_audiovisuales(?,?,?)',[$request['nombreSolicitante'],$request['equipo'],$fecha]);
     return view ('audiovisual/listarPrestamos',compact('prestamosAudiovisual'));
   }
 

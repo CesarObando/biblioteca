@@ -78,7 +78,7 @@ Route::get('prestamosMaterialDidactico/terminarPrestamo/{id}', 'PrestamoMaterial
 //SalaAudiovisuales
 Route::get('salaAudiovisuales/buscarPrestamos','SalaAudiovisualesController@buscarPrestamos');
 Route::get('salaAudiovisuales/listar','SalaAudiovisualesController@listar');
-Route::get('salaAudiovisuales/prestar','SalaAudiovisualesController@prestar');
+Route::resource('salaAudiovisuales','SalaAudiovisualesController');
 
 //ServicioInternet
 Route::get('servicioInternet/buscarPrestamos','ServicioInternetController@buscarPrestamos');
