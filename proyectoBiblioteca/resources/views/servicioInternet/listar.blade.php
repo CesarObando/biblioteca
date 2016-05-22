@@ -10,8 +10,9 @@
                         <thead>
                             <tr>
                                 <th>Nombre del solicitante</th>
-                                <th>Fecha</th>
                                 <th>Sección</th>
+                                <th>Tema</th>
+                                <th>Fecha</th>
                                 <th>Hora de entrada</th>
                                 <th>Hora de salida</th>
                                 <th>Acciones</th>
@@ -20,12 +21,12 @@
                         <tbody>
                           @foreach($prestamosInternet as $prestamoInternet)
                             <tr>
-                                <td>$prestamoInternet->nombreSolicitante</td>
-                                <td>$prestamoInternet->fecha</td>
-                                <td>$prestamoInternet->seccion</td>
-                                <td>$prestamoInternet->horaEntrada</td>
-                                <td>$prestamoInternet->horaSalida</td>
-                                <td>$prestamoInternet</td>
+                                <td>{{$prestamoInternet->nombreSolicitante}}</td>
+                                <td>{{$prestamoInternet->seccion}}</td>
+                                <td>{{$prestamoInternet->tema}}</td>
+                                <td>{{$prestamoInternet->fecha}}</td>
+                                <td>{{$prestamoInternet->horaEntrada}}</td>
+                                <td>{{$prestamoInternet->horaSalida}}</td>
                                 <td><a class="btn-danger btn-sm">Terminar préstamo</a> </td>
                             </tr>
                             @endforeach

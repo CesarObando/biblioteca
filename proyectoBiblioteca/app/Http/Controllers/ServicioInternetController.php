@@ -5,6 +5,7 @@ namespace gestorBiblioteca\Http\Controllers;
 use Illuminate\Http\Request;
 
 use gestorBiblioteca\Http\Requests;
+use DB;
 
 class ServicioInternetController extends Controller
 {
@@ -16,23 +17,15 @@ class ServicioInternetController extends Controller
   {
     $hora = $request['horaEntrada'];
     $fecha = $request['fecha'];
-    $operadorHora = '=';
-    $operadorFecha = '=';
     if($hora == '' || $hora == null)
     {
-      $hora == '00.00';
-      $operadorHora = '>';
+      $hora == '00:00';
     }
     if($fecha == '' || $fecha == null)
     {
       $fecha = '0000.0.0';
-      $operadorFecha = '>';
     }
-    $prestamosInternet = \gestorBiblioteca\ServicioInternet::where('fecha', $operadorFecha, $fecha)
-                                                           -> where('nombreSolicitante', 'like', '%'.$request['nombre'].'%')
-                                                           -> where('seccion', 'like', '$'.$request['seccion'].'%')
-                                                           -> where('horaEntrada', $operadorHora, $hora)
-                                                           -> get();
+    $prestamosInternet = DB::select('CALL buscar_prestamo_internet(?,?,?,?)',[$fecha, $hora, $request['nombre'],$request['seccion']]);
 
     return view ('servicioInternet/listar', compact('prestamosInternet'));
   }
