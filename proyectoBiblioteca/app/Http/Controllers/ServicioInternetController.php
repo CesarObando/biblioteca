@@ -14,12 +14,26 @@ class ServicioInternetController extends Controller
   }
   public function listar(Request $request)
   {
+    $hora = $request['horaEntrada'];
+    $fecha = $request['fecha'];
+    $operadorHora = '=';
+    $operadorFecha = '=';
+    if($hora == '' || $hora == null)
+    {
+      $hora == '00.00';
+      $operadorHora = '>';
+    }
+    if($fecha == '' || $fecha == null)
+    {
+      $fecha = '0000.0.0';
+      $operadorFecha = '>';
+    }
+    $prestamosInternet = \gestorBiblioteca\ServicioInternet::where('fecha', $operadorFecha, $fecha)
+                                                           -> where('nombreSolicitante', 'like', '%'.$request['nombre'].'%')
+                                                           -> where('seccion', 'like', '$'.$request['seccion'].'%')
+                                                           -> where('horaEntrada', $operadorHora, $hora)
+                                                           -> get();
 
-      $prestamosInternet = \gestorBiblioteca\ServicioInternet::where('fecha', $request['fecha'])
-                                                             -> where('nombreSolicitante', 'like', '%'.$request['nombre'].'%')
-                                                             -> where('seccion', 'like', '$'.$request['seccion'].'%')
-                                                             -> where('horaEntrada', $request['horaEntrada'])
-                                                             -> get();
     return view ('servicioInternet/listar', compact('prestamosInternet'));
   }
   public function prestar()

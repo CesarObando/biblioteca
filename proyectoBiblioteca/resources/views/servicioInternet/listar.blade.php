@@ -18,15 +18,17 @@
                             </tr>
                         </thead>
                         <tbody>
+                          @foreach($prestamosInternet as $prestamoInternet)
                             <tr>
-                                <td>Cesar Obando Solano</td>
-                                <td>10/04/2016</td>
-                                <td>6-2</td>
-                                <td>09:00 a.m.</td>
-                                <td>10:0 a.m.</td>
+                                <td>$prestamoInternet->nombreSolicitante</td>
+                                <td>$prestamoInternet->fecha</td>
+                                <td>$prestamoInternet->seccion</td>
+                                <td>$prestamoInternet->horaEntrada</td>
+                                <td>$prestamoInternet->horaSalida</td>
+                                <td>$prestamoInternet</td>
                                 <td><a class="btn-danger btn-sm">Terminar préstamo</a> </td>
                             </tr>
-
+                            @endforeach
                         </tbody>
                     </table>
                 </form>
