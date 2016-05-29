@@ -17,7 +17,7 @@
                                 <th>Acciones</th>
                             </tr>
                         </thead>
-                        @foreach($prestamosSalaAudiovisuales as $prestamoSalaAudiovisuales)
+                        @foreach($prestamosSalaAudiovisuales as $prestamoSalaAudiovisual)
                         <tbody>
                             <tr>
                                 <td>{{$prestamoSalaAudiovisual->nombreSolicitante}}</td>
