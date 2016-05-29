@@ -47,7 +47,7 @@ class PrestamoLibroEstudianteController extends Controller
   {
 
     $prestamosLibroEstudiante = \gestorBiblioteca\PrestamoLibroEstudiante::where('nombreSolicitante', 'like', '%'.$request['nombreSolicitante'].'%')
-                                                               -> where('fecha', '=', $request['fecha'])
+                                                               -> where('fechaPrestamo', '=', $request['fecha'])
                                                                -> where ('terminado','=', 0)
                                                                -> get();
     return view ('libro/listarPrestamosEstudiante',compact('prestamosLibroEstudiante'));
