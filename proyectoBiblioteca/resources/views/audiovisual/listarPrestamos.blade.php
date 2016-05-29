@@ -32,7 +32,8 @@
                             @endforeach
                         </tbody>
                     </table>
-                </form>
+                    <form>
+
                 <br>
                 <br>
 

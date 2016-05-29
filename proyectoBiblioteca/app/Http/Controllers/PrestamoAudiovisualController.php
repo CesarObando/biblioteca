@@ -3,7 +3,7 @@
 namespace gestorBiblioteca\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use PDF;
 use gestorBiblioteca\Http\Requests;
 use DB;
 
@@ -35,6 +35,11 @@ class PrestamoAudiovisualController extends Controller
     return view ('audiovisual/buscarPrestamos');
   }
 
+  public function buscarPrestamosTerminados()
+  {
+    return view ('audiovisual/buscarPrestamosTerminados');
+  }
+
   public function listarPrestamos(Request $request)
   {
     $fecha = $request['fecha'];
@@ -43,7 +48,28 @@ class PrestamoAudiovisualController extends Controller
       $fecha='0000.0.0';
     }
     $prestamosAudiovisual = DB::select('CALL buscar_prestamos_audiovisuales(?,?,?)',[$request['nombreSolicitante'],$request['equipo'],$fecha]);
+
+    $pdf = PDF::loadView('audiovisual/pdfPrestamos',['prestamosAudiovisual'=>$prestamosAudiovisual]);
+    return $pdf->download('prestamosAudiovisuales.pdf');
+
     return view ('audiovisual/listarPrestamos',compact('prestamosAudiovisual'));
+  }
+
+  public function listarPrestamosTerminados(Request $request)
+  {
+    $fecha = $request['fecha'];
+    if($fecha=='' || $fecha==null)
+    {
+      $fecha='0000.0.0';
+    }
+    $prestamosAudiovisualTerminados = DB::select('CALL buscar_prestamos_audiovisuales_terminados(?,?,?)',[$request['nombreSolicitante'],$request['equipo'],$fecha]);
+    return view ('audiovisual/listarPrestamosTerminados',compact('prestamosAudiovisualTerminados'));
+  }
+
+  public function generarReporte($prestamos)
+  {
+    $pdf = PDF::loadView('audiovisual/pdfPrestamos',['prestamosAudiovisual'=>$prestamos]);
+    return $pdf->download('prestamosAudiovisuales.pdf');
   }
 
   public function eliminarPrestamo($id)

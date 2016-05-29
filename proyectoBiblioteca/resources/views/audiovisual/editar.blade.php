@@ -12,8 +12,7 @@
 
                 <div class="form-group">
                 {!!Form::label('equipo','Equipo:')!!}
-                {!!Form::select('equipo', [''=>'Seleccione el equipo',
-                                          'Computadora' => 'Computadora',
+                {!!Form::select('equipo', ['Computadora' => 'Computadora',
                                           'Pantalla' => 'Pantalla',
                                           'Retroproyector'=>'Retroproyector',
                                           'Video Beam'=>'Video Beam',
@@ -22,8 +21,12 @@
                                           'Parlantes'=>'Parlantes',
                                           'Televisor'=>'Televisor',
                                           'Regleta'=>'Regleta',
-                                          '10'=>'Otro'],null,['class'=>'form-control',
-                                          'placeholder'=>'Seleccione el equipo'])!!}
+                                          'Otro'=>'Otro'],null,['class'=>'form-control',
+                                          'placeholder'=>'Seleccione el equipo','onchange'=>'especificarOtro()'])!!}
+                </div>
+                <div class="form-group">
+                {!!Form::label('otro','Otro:',['class'=>'form-control','style'=>'visibility: hidden'])!!}
+                {!!Form::text('otro',null,['class'=>'form-control','style'=>'visibility: hidden'])!!}
                 </div>
                 <div class="form-group">
                 {!!Form::label('marca','Marca:')!!}
@@ -44,7 +47,7 @@
         <script>
             function especificarOtro(){
                 opcion = document.getElementById("equipo");
-                if(opcion.value === "10"){
+                if(opcion.value === "Otro"){
                     document.getElementById("l_otro").setAttribute("style","visibility: visible");
                     document.getElementById("otro").setAttribute("style","visibility: visible");
                 }else{

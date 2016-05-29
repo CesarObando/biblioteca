@@ -23,7 +23,7 @@
                     <option value="Parlantes">Parlantes</option>
                     <option value="Televisor">Televisor</option>
                     <option value="Regleta">Regleta</option>
-                    <option value="10">Otro</option>
+                    <option value="Otro">Otro</option>
                 </select>
                 <label for="otro" id="l_otro" style="visibility: hidden">Otro:</label>
                 <input type="text" class="form-control" name="otro" id="otro" style="visibility: hidden">
@@ -40,7 +40,7 @@
             <script>
                 function especificarOtro(){
                     opcion = document.getElementById("equipo");
-                    if(opcion.value === "10"){
+                    if(opcion.value === "Otro"){
                         document.getElementById("l_otro").setAttribute("style","visibility: visible");
                         document.getElementById("otro").setAttribute("style","visibility: visible");
                     }else{

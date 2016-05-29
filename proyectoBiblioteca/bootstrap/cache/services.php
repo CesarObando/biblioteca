@@ -27,6 +27,7 @@
     23 => 'gestorBiblioteca\\Providers\\EventServiceProvider',
     24 => 'gestorBiblioteca\\Providers\\RouteServiceProvider',
     25 => 'Collective\\Html\\HtmlServiceProvider',
+    26 => 'Barryvdh\\DomPDF\\ServiceProvider',
   ),
   'eager' => 
   array (
@@ -43,6 +44,7 @@
     10 => 'gestorBiblioteca\\Providers\\AuthServiceProvider',
     11 => 'gestorBiblioteca\\Providers\\EventServiceProvider',
     12 => 'gestorBiblioteca\\Providers\\RouteServiceProvider',
+    13 => 'Barryvdh\\DomPDF\\ServiceProvider',
   ),
   'deferred' => 
   array (
