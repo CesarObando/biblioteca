@@ -56,8 +56,10 @@ class SalaAudiovisualesController extends Controller
     return view ('salaAudiovisuales/prestar');
   }
 
-  public function eliminar($id)
+  public function terminarPrestamo($id)
   {
+    DB::update('update prestamo_sala_audiovisuales set terminado = 1 where id = ?',[$id]);
 
+    return redirect ('/');
   }
 }
