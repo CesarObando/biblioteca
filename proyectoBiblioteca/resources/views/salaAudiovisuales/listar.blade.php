@@ -25,7 +25,7 @@
                                 <td>{{$prestamoSalaAudiovisual->fecha}}</td>
                                 <td>{{$prestamoSalaAudiovisual->horaEntrada}}</td>
                                 <td>{{$prestamoSalaAudiovisual->horaSalida}}</td>
-                                <td>{!!link_to_action('SalaAudiovisuales@eliminar', $title = 'Terminar', $parameters = $audiovisual->id, $attributes = ['class'=>'btn-danger btn-sm'])!!} </td>
+                                <td><a class="btn-danger btn-sm">Terminar préstamo</a></td>
                             </tr>
                         </tbody>
                         @endforeach

@@ -19,7 +19,7 @@ class ServicioInternetController extends Controller
     $fecha = $request['fecha'];
     if($hora == '' || $hora == null)
     {
-      $hora == '00:00';
+      $hora == '00:00:00';
     }
     if($fecha == '' || $fecha == null)
     {

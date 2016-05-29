@@ -84,7 +84,7 @@
                                 <li role="presentation">
                                     <a>Sala de Audiovisuales</a>
                                     <ul>
-                                        <li role="presentation"><a href="<?php echo URL::to("salaAudiovisuales.show"); ?>">Prestar</a></li>
+                                        <li role="presentation"><a href="<?php echo URL::to("salaAudiovisuales/show"); ?>">Prestar</a></li>
                                         <li role="presentation"><a href="<?php echo URL::to("salaAudiovisuales/buscarPrestamos"); ?>">Ver Préstamos</a></li>
                                     </ul>
                                 </li>

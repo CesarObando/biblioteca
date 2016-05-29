@@ -37,18 +37,18 @@ class SalaAudiovisualesController extends Controller
   public function listar(Request $request)
   {
     $fecha = $request['fecha'];
-    $hora = $request['hora'];
+    $hora = $request['horaEntrada'];
     if($fecha=='' || $fecha==null)
     {
       $fecha='0000.0.0';
     }
     if($hora=='' || $hora==null)
     {
-      $hora='00.00';
+      $hora='00:00:00';
     }
-    $prestamosSalaAudiovisuales = DB::select('CALL buscar_prestamos_salaAudiovisuales(?,?,?)',[$request['nombreSolicitante'],$request['tema'],$fecha,$hora]);
+    $prestamosSalaAudiovisuales = DB::select('CALL buscar_prestamo_sala_audiovisuales(?,?,?,?)',[$fecha,$hora,$request['nombreSolicitante'],$request['tema']]);
     return view ('salaAudiovisuales/listar',compact('prestamosSalaAudiovisuales'));
-  
+
   }
 
   public function prestar()
