@@ -27,7 +27,7 @@
                                 <td>{{$prestamoInternet->fecha}}</td>
                                 <td>{{$prestamoInternet->horaEntrada}}</td>
                                 <td>{{$prestamoInternet->horaSalida}}</td>
-                                <td><a class="btn-danger btn-sm">Terminar préstamo</a> </td>
+                                <td>{!!link_to_action('ServicioInternetController@terminarPrestamo', $title = 'Terminar', $parameters = $prestamoInternet->id, $attributes = ['class'=>'btn-danger btn-sm'])!!} </td>
                             </tr>
                             @endforeach
                         </tbody>

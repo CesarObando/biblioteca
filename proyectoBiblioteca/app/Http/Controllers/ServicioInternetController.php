@@ -47,6 +47,12 @@ public function store(Request $request)
   return view ('index');
 }
 
+public function terminarPrestamo($id)
+{
+  DB::update('update prestamo_servicio_internet set terminado = 1 where id = ?',[$id]);
+
+  return redirect ('/');
+}
 
 
 }

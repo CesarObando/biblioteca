@@ -81,11 +81,12 @@ Route::get('prestamosMaterialDidactico/terminarPrestamo/{id}', 'PrestamoMaterial
 Route::get('salaAudiovisuales/buscarPrestamos','SalaAudiovisualesController@buscarPrestamos');
 Route::get('salaAudiovisuales/listar','SalaAudiovisualesController@listar');
 Route::get('salaAudiovisuales/prestar','SalaAudiovisualesController@prestar');
-Route::get('salaAudiovisuales/prestar','SalaAudiovisualesController@eliminar');
+Route::get('salaAudiovisuales/terminarPrestamo/{id}','SalaAudiovisualesController@terminarPrestamo');
 Route::resource('salaAudiovisuales','SalaAudiovisualesController');
 
 //ServicioInternet
 Route::get('servicioInternet/buscarPrestamos','ServicioInternetController@buscarPrestamos');
 Route::get('servicioInternet/listar','ServicioInternetController@listar');
 Route::get('servicioInternet/prestar','ServicioInternetController@prestar');
+Route::get('servicioInternet/terminarPrestamo/{id}', 'ServicioInternetController@terminarPrestamo');
 Route::resource('servicioInternet', 'ServicioInternetController');
