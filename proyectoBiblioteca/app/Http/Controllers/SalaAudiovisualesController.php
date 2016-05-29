@@ -3,8 +3,8 @@
 namespace gestorBiblioteca\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use gestorBiblioteca\Http\Requests;
+use DB;
 
 class SalaAudiovisualesController extends Controller
 {
@@ -33,7 +33,8 @@ class SalaAudiovisualesController extends Controller
   {
     return view ('salaAudiovisuales/buscarPrestamos');
   }
-  public function listar()
+
+  public function listar(Request $request)
   {
     $fecha = $request['fecha'];
     $hora = $request['hora'];
@@ -45,13 +46,18 @@ class SalaAudiovisualesController extends Controller
     {
       $hora='00.00';
     }
-    $prestamosAudiovisual = DB::select('CALL buscar_prestamos_salaAudiovisuales(?,?,?)',[$request['nombreSolicitante'],$request['tema'],$fecha,$hora]);
-    return view ('audiovisual/listarPrestamos',compact('prestamosAudiovisual'));
-    return view ('salaAudiovisuales/listar');
+    $prestamosSalaAudiovisuales = DB::select('CALL buscar_prestamos_salaAudiovisuales(?,?,?)',[$request['nombreSolicitante'],$request['tema'],$fecha,$hora]);
+    return view ('salaAudiovisuales/listar',compact('prestamosSalaAudiovisuales'));
+  
+  }
+
+  public function prestar()
+  {
+    return view ('salaAudiovisuales/prestar');
   }
 
   public function eliminar($id)
   {
-    
+
   }
 }

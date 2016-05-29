@@ -29,7 +29,7 @@
             <input type="text" class="form-control" name="observaciones">
             <hr>
             <input type="submit" name="usoSalaAudiovisuales" value="Insertar" class="btn-success btn-lg">
-            <br><br>    
+            <br><br>
             {!!Form::close()!!}
         </div>
 @stop
