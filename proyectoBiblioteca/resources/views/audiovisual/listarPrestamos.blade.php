@@ -33,7 +33,7 @@
                         </tbody>
                     </table>
                     <form>
-
+                    {!!link_to_action('PrestamoAudiovisualController@generarReporte', $title = 'Generar Reporte', $parameters = null, $attributes = ['class'=>'btn-danger btn-sm'])!!}
                 <br>
                 <br>
 

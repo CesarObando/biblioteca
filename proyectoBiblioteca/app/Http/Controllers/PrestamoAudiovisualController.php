@@ -7,9 +7,10 @@ use PDF;
 use gestorBiblioteca\Http\Requests;
 use DB;
 
+global $prestamos;
+
 class PrestamoAudiovisualController extends Controller
 {
-
   public function show($id)
   {
     $audiovisual = \gestorBiblioteca\Audiovisual::find($id);
@@ -49,8 +50,7 @@ class PrestamoAudiovisualController extends Controller
     }
     $prestamosAudiovisual = DB::select('CALL buscar_prestamos_audiovisuales(?,?,?)',[$request['nombreSolicitante'],$request['equipo'],$fecha]);
 
-    $pdf = PDF::loadView('audiovisual/pdfPrestamos',['prestamosAudiovisual'=>$prestamosAudiovisual]);
-    return $pdf->download('prestamosAudiovisuales.pdf');
+    $prestamos = $prestamosAudiovisual;
 
     return view ('audiovisual/listarPrestamos',compact('prestamosAudiovisual'));
   }
@@ -66,7 +66,7 @@ class PrestamoAudiovisualController extends Controller
     return view ('audiovisual/listarPrestamosTerminados',compact('prestamosAudiovisualTerminados'));
   }
 
-  public function generarReporte($prestamos)
+  public function generarReporte()
   {
     $pdf = PDF::loadView('audiovisual/pdfPrestamos',['prestamosAudiovisual'=>$prestamos]);
     return $pdf->download('prestamosAudiovisuales.pdf');
