@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use PDF;
 use gestorBiblioteca\Http\Requests;
 use DB;
+use View;
 
 global $prestamos;
 
@@ -49,9 +50,7 @@ class PrestamoAudiovisualController extends Controller
       $fecha='0000.0.0';
     }
     $prestamosAudiovisual = DB::select('CALL buscar_prestamos_audiovisuales(?,?,?)',[$request['nombreSolicitante'],$request['equipo'],$fecha]);
-
-    $prestamos = $prestamosAudiovisual;
-
+    View::share('prestamosAudiovisual', $prestamosAudiovisual);
     return view ('audiovisual/listarPrestamos',compact('prestamosAudiovisual'));
   }
 
@@ -68,7 +67,7 @@ class PrestamoAudiovisualController extends Controller
 
   public function generarReporte()
   {
-    $pdf = PDF::loadView('audiovisual/pdfPrestamos',['prestamosAudiovisual'=>$prestamos]);
+    $pdf = PDF::loadView('audiovisual/pdfPrestamos',['prestamosAudiovisual'=>$prestamosAudiovisual]);
     return $pdf->download('prestamosAudiovisuales.pdf');
   }
 
