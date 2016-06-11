@@ -67,6 +67,7 @@ class PrestamoAudiovisualController extends Controller
 
   public function generarReporte()
   {
+
     $pdf = PDF::loadView('audiovisual/pdfPrestamos',['prestamosAudiovisual'=>$prestamosAudiovisual]);
     return $pdf->download('prestamosAudiovisuales.pdf');
   }
