@@ -115,3 +115,7 @@ Route::get('servicioInternet/terminarPrestamo/{id}', 'ServicioInternetController
 Route::get('servicioInternet/reportePrestamos','ServicioInternetController@generarReporte');
 Route::get('servicioInternet/reportePrestamosTerminados','ServicioInternetController@generarReporteTerminados');
 Route::resource('servicioInternet', 'ServicioInternetController');
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
