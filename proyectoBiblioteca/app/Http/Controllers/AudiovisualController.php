@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use gestorBiblioteca\Http\Requests;
 use gestorBiblioteca\Audiovisual;
 use DB;
+use Session;
+use PDF;
 
 class AudiovisualController extends Controller
 {
@@ -29,7 +31,16 @@ class AudiovisualController extends Controller
                                                                -> where('marca', 'like', '%'.$request['marca'].'%')
                                                                -> where ('descartado','=', 0)
                                                                -> get();
+
+    Session::put('audiovisuales',$audiovisuales);
     return view ('audiovisual/listar',compact('audiovisuales'));
+  }
+
+  public function generarReporte()
+  {
+    $audiovisuales = Session::get('audiovisuales');
+    $pdf = PDF::loadView('audiovisual/pdfAudiovisuales',['audiovisuales'=>$audiovisuales]);
+    return $pdf->download('audiovisuales.pdf');
   }
 
   public function store(Request $request)

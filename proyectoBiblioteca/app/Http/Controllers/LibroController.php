@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use gestorBiblioteca\Http\Requests;
 use gestorBiblioteca\Libro;
 use DB;
+use PDF;
+use Session;
 
 class LibroController extends Controller
 {
@@ -13,35 +15,34 @@ class LibroController extends Controller
   {
     return view ('libro/buscar');
   }
-  public function buscarPrestamosDocente()
-  {
-    return view ('libro/buscarPrestamosDocente');
-  }
-  public function buscarPrestamosEstudiante()
-  {
-    return view ('libro/buscarPrestamosEstudiante');
-  }
+
   public function edit($id){
     $libro = \gestorBiblioteca\Libro::find($id);
     return view ('libro/editar',['libro'=>$libro]);
   }
+
   public function insertar()
   {
     return view ('libro/insertar');
   }
+
   public function listar(Request $request)
   {
-    $libros = \gestorBiblioteca\Libro::where('numeroInscripcion', 'like', '%'.$request['numeroInscripcion'].'%')
+    $libros = \gestorBiblioteca\Libro::where('autor', 'like', '%'.$request['autor'].'%')
                                                                -> where('titulo', 'like', '%'.$request['titulo'].'%')
+                                                               ->where('editorial', 'like', '%'.$request['editorial'].'%')
                                                                -> where ('descartado','=', 0)
                                                                -> get();
+    Session::put('libros',$libros);
     return view ('libro/listar',compact('libros'));
   }
 
-  /*public function index(){
-    $libro = \gestorBiblioteca\Libro::All();
-    return view ('libro/listar',compact('libros'));
-  }*/
+  public function generarReporte()
+  {
+    $libros = Session::get('libros');
+    $pdf = PDF::loadView('libro/pdfLibros',['libros'=>$libros]);
+    return $pdf->download('libros.pdf');
+  }
 
   public function show(){
     return view ('libro/insertar');
@@ -85,20 +86,4 @@ class LibroController extends Controller
     return redirect ('/');
   }
 
-  public function listarPrestamosDocente()
-  {
-    return view ('libro/listarPrestamosDocente');
-  }
-  public function listarPrestamosEstudiante()
-  {
-    return view ('libro/listarPrestamosEstudiante');
-  }
-  public function prestarDocente()
-  {
-    return view ('libro/prestarDocente');
-  }
-  public function prestarEstudiante()
-  {
-    return view ('libro/prestarEstudiante');
-  }
 }

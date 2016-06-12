@@ -6,11 +6,16 @@ use Illuminate\Http\Request;
 use PDF;
 use gestorBiblioteca\Http\Requests;
 use DB;
+use View;
+use Session;
 
 class PrestamoAudiovisualController extends Controller
 {
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 9ce6a13edb587bdc46ebbc2e473bcdd4bb17718a
   public function show($id)
   {
     $audiovisual = \gestorBiblioteca\Audiovisual::find($id);
@@ -49,12 +54,16 @@ class PrestamoAudiovisualController extends Controller
       $fecha='0000.0.0';
     }
     $prestamosAudiovisual = DB::select('CALL buscar_prestamos_audiovisuales(?,?,?)',[$request['nombreSolicitante'],$request['equipo'],$fecha]);
+<<<<<<< HEAD
     global $prestamos;
     print_r($prestamos);
     $prestamos = $prestamosAudiovisual;
     //$pdf = PDF::loadView('audiovisual/pdfPrestamos',['prestamosAudiovisual'=>$prestamosAudiovisual]);
     //return $pdf->download('prestamosAudiovisuales.pdf');
 
+=======
+    Session::put('prestamosAudiovisual',$prestamosAudiovisual);
+>>>>>>> 9ce6a13edb587bdc46ebbc2e473bcdd4bb17718a
     return view ('audiovisual/listarPrestamos',compact('prestamosAudiovisual'));
   }
 
@@ -66,14 +75,26 @@ class PrestamoAudiovisualController extends Controller
       $fecha='0000.0.0';
     }
     $prestamosAudiovisualTerminados = DB::select('CALL buscar_prestamos_audiovisuales_terminados(?,?,?)',[$request['nombreSolicitante'],$request['equipo'],$fecha]);
+    Session::put('prestamosAudiovisualTerminados',$prestamosAudiovisualTerminados);
     return view ('audiovisual/listarPrestamosTerminados',compact('prestamosAudiovisualTerminados'));
   }
 
   public function generarReporte()
   {
+<<<<<<< HEAD
     global $prestamos;
     $pdf = PDF::loadView('audiovisual/pdfPrestamos',['prestamosAudiovisual'=>$prestamos]);
+=======
+    $prestamosAudiovisual = Session::get('prestamosAudiovisual');
+    $pdf = PDF::loadView('audiovisual/pdfPrestamos',['prestamosAudiovisual'=>$prestamosAudiovisual]);
+>>>>>>> 9ce6a13edb587bdc46ebbc2e473bcdd4bb17718a
     return $pdf->download('prestamosAudiovisuales.pdf');
+  }
+  public function generarReporteTerminados()
+  {
+    $prestamosAudiovisual = Session::get('prestamosAudiovisualTerminados');
+    $pdf = PDF::loadView('audiovisual/pdfPrestamosTerminados',['prestamosAudiovisual'=>$prestamosAudiovisual]);
+    return $pdf->download('prestamosAudiovisualesTerminados.pdf');
   }
 
   public function eliminarPrestamo($id)

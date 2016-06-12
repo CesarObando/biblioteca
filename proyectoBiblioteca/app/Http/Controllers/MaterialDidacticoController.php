@@ -5,6 +5,8 @@ namespace gestorBiblioteca\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use gestorBiblioteca\Http\Requests;
+use PDF;
+use Session;
 
 class MaterialDidacticoController extends Controller
 {
@@ -12,10 +14,7 @@ class MaterialDidacticoController extends Controller
   {
     return view ('materialDidactico/buscar');
   }
-  public function buscarPrestamos()
-  {
-    return view ('materialDidactico/buscarPrestamos');
-  }
+
   public function editar()
   {
     return view ('materialDidactico/editar');
@@ -42,18 +41,17 @@ class MaterialDidacticoController extends Controller
                                                                -> where('marca', 'like', '%'.$request['marca'].'%')
                                                                -> where('descartado', '=', 0)
                                                                -> get();
+    Session::put('materialesDidacticos',$materialesDidacticos);
     return view ('materialDidactico/listar', compact('materialesDidacticos'));
   }
-  public function listarPrestamos(Request $request)
+
+  public function generarReporte()
   {
-    $fecha = $request['fecha'];
-    if($fecha=='' || $fecha==null)
-    {
-      $fecha='0000.0.0';
-    }
-    $prestamosMaterialDidactico = DB::select('CALL buscar_prestamos_materiales_didacticos(?,?,?)',[$request['nombreSolicitante'],$request['equipo'],$fecha]);
-    return view ('materialDidactico/listarPrestamos', compact('prestamosMaterialDidactico'));
+    $materialesDidacticos = Session::get('materialesDidacticos');
+    $pdf = PDF::loadView('materialDidactico/pdfMateriales',['materialesDidacticos'=>$materialesDidacticos]);
+    return $pdf->download('materialesDidacticos.pdf');
   }
+
   public function prestar($id)
   {
     $materialDidactico = \gestorBiblioteca\MaterialDidactico::find($id);
