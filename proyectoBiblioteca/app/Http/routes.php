@@ -12,7 +12,7 @@
 */
 
 Route::get('/','Controller@index');
-Route::resource('controleler','Controller');
+Route::resource('controller','Controller');
 
 //Libro
 Route::get('libro/buscar','LibroController@buscar');
@@ -68,6 +68,7 @@ Route::get('audiovisual/buscarPrestamosTerminados','PrestamoAudiovisualControlle
 Route::get('audiovisual/listarPrestamos','PrestamoAudiovisualController@listarPrestamos');
 Route::get('audiovisual/listarPrestamosTerminados','PrestamoAudiovisualController@listarPrestamosTerminados');
 Route::get('audiovisual/generarReporte','PrestamoAudiovisualController@generarReporte');
+
 Route::get('audiovisual/generarReporteTerminados','PrestamoAudiovisualController@generarReporteTerminados');
 Route::get('audiovisual/eliminarPrestamo/{id}','PrestamoAudiovisualController@eliminarPrestamo');
 Route::resource('prestamoAudiovisual','PrestamoAudiovisualController');

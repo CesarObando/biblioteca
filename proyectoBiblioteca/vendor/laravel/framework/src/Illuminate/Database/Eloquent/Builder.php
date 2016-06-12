@@ -1057,7 +1057,11 @@ class Builder
 
             $query->callScope($constraints);
 
+<<<<<<< HEAD
             $query->mergeModelDefinedRelationConstraints($relation->getQuery());
+=======
+            $this->mergeModelDefinedRelationWheresToHasQuery($query, $relation);
+>>>>>>> 3ef61ea3e8c3c49a3d5853831d93055f65b89f27
 
             $this->selectSub($query->toBase(), snake_case($name).'_count');
         }

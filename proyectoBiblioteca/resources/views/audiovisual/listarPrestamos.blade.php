@@ -1,8 +1,7 @@
 @extends('layouts.principal')
 @section('content')
 <div class="table-responsive container">
-  <br>
-  <br>
+
   <h1>Préstamo de audiovisuales</h1>
   <br>
   <form>
@@ -36,10 +35,9 @@
         @endforeach
       </tbody>
     </table>
-    <form>
+  </form>
       {!!link_to_action('PrestamoAudiovisualController@generarReporte', $title = 'Generar Reporte', $parameters = null, $attributes = ['class'=>'btn-success btn-lg'])!!}
       <br>
       <br>
-
     </div>
     @stop

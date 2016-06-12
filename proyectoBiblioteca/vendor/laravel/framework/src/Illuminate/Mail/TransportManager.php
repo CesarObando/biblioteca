@@ -162,7 +162,11 @@ class TransportManager extends Manager
     }
 
     /**
+<<<<<<< HEAD
      * Get the default mail driver name.
+=======
+     * Get the default cache driver name.
+>>>>>>> 3ef61ea3e8c3c49a3d5853831d93055f65b89f27
      *
      * @return string
      */

@@ -30,6 +30,7 @@ class MorphTo extends BelongsTo
      */
     protected $dictionary = [];
 
+<<<<<<< HEAD
     /**
      * A buffer of dynamic calls to query macros.
      *
@@ -37,6 +38,8 @@ class MorphTo extends BelongsTo
      */
     protected $macroBuffer = [];
 
+=======
+>>>>>>> 3ef61ea3e8c3c49a3d5853831d93055f65b89f27
     /**
      * Create a new morph to relationship instance.
      *
@@ -183,11 +186,16 @@ class MorphTo extends BelongsTo
 
         $key = $instance->getTable().'.'.$instance->getKeyName();
 
+<<<<<<< HEAD
         $eagerLoads = $this->getQuery()->nestedRelations($this->relation);
 
         $query = $this->replayMacros($instance->newQuery())
             ->mergeModelDefinedRelationConstraints($this->getQuery())
             ->setEagerLoads($eagerLoads);
+=======
+        $query = clone $this->query;
+        $query->setModel($instance);
+>>>>>>> 3ef61ea3e8c3c49a3d5853831d93055f65b89f27
 
         return $query->whereIn($key, $this->gatherKeysByType($type)->all())->get();
     }
@@ -239,6 +247,7 @@ class MorphTo extends BelongsTo
     {
         return $this->dictionary;
     }
+<<<<<<< HEAD
 
     /**
      * Replay stored macro calls on the actual related instance.
@@ -277,4 +286,6 @@ class MorphTo extends BelongsTo
             return $this;
         }
     }
+=======
+>>>>>>> 3ef61ea3e8c3c49a3d5853831d93055f65b89f27
 }
