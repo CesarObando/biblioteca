@@ -12,10 +12,7 @@
 */
 
 Route::get('/','Controller@index');
-
-
-Route::get('login/login','LoginController@login');
-Route::resource('login','LoginController');
+Route::resource('controleler','Controller');
 
 //Libro
 Route::get('libro/buscar','LibroController@buscar');
