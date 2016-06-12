@@ -1,7 +1,7 @@
 @extends('layouts.principal')
 @section('content')
 <div class="container">
-            <h1>Buscar uso de la sala de audiovisuales</h1>
+            <h1>Préstamos de la sala de audiovisuales</h1>
             <br>
             <form name="buscarBsoSalaAudiovisuales" action="{!!URL::to("salaAudiovisuales/listar")!!}">
               <label for="nombreSolicitante">Nombre del solicitante:</label>

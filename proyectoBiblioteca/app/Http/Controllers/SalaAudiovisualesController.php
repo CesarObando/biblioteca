@@ -5,6 +5,8 @@ namespace gestorBiblioteca\Http\Controllers;
 use Illuminate\Http\Request;
 use gestorBiblioteca\Http\Requests;
 use DB;
+use PDF;
+use Session;
 
 class SalaAudiovisualesController extends Controller
 {
@@ -34,6 +36,11 @@ class SalaAudiovisualesController extends Controller
     return view ('salaAudiovisuales/buscarPrestamos');
   }
 
+  public function buscarPrestamosTerminados()
+  {
+    return view ('salaAudiovisuales/buscarPrestamosTerminados');
+  }
+
   public function listar(Request $request)
   {
     $fecha = $request['fecha'];
@@ -47,8 +54,41 @@ class SalaAudiovisualesController extends Controller
       $hora='00:00:00';
     }
     $prestamosSalaAudiovisuales = DB::select('CALL buscar_prestamo_sala_audiovisuales(?,?,?,?)',[$fecha,$hora,$request['nombreSolicitante'],$request['tema']]);
+    Session::put('prestamosSalaAudiovisuales',$prestamosSalaAudiovisuales);
     return view ('salaAudiovisuales/listar',compact('prestamosSalaAudiovisuales'));
 
+  }
+
+  public function listarPrestamosTerminados(Request $request)
+  {
+    $fecha = $request['fecha'];
+    $hora = $request['horaEntrada'];
+    if($fecha=='' || $fecha==null)
+    {
+      $fecha='0000.0.0';
+    }
+    if($hora=='' || $hora==null)
+    {
+      $hora='00:00:00';
+    }
+    $prestamosSalaAudiovisuales = DB::select('CALL buscar_prestamo_sala_audiovisuales_terminados(?,?,?,?)',[$fecha,$hora,$request['nombreSolicitante'],$request['tema']]);
+    Session::put('prestamosSalaAudiovisuales',$prestamosSalaAudiovisuales);
+    return view ('salaAudiovisuales/listar',compact('prestamosSalaAudiovisuales'));
+
+  }
+
+  public function generarReporte()
+  {
+    $prestamosSalaAudiovisuales = Session::get('prestamosSalaAudiovisuales');
+    $pdf = PDF::loadView('salaAudiovisuales/pdfPrestamosSalaAudiovisuales',['prestamosSalaAudiovisuales'=>$prestamosSalaAudiovisuales]);
+    return $pdf->download('prestamosSalaAudiovisuales.pdf');
+  }
+
+  public function generarReporteTerminados()
+  {
+    $prestamosSalaAudiovisuales = Session::get('prestamosSalaAudiovisuales');
+    $pdf = PDF::loadView('salaAudiovisuales/pdfPrestamosSalaAudiovisualesTerminados',['prestamosSalaAudiovisuales'=>$prestamosSalaAudiovisuales]);
+    return $pdf->download('prestamosSalaAudiovisualesTerminados.pdf');
   }
 
   public function prestar()

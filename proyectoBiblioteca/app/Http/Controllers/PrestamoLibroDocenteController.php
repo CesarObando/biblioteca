@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use gestorBiblioteca\Http\Requests;
 use DB;
-
+use View;
+use Session;
+use PDF;
 
 class PrestamoLibroDocenteController extends Controller
 {
@@ -45,12 +47,44 @@ class PrestamoLibroDocenteController extends Controller
 
   public function listarPrestamos(Request $request)
   {
-
-    $prestamosLibroDocente = \gestorBiblioteca\PrestamoLibroDocente::where('nombreSolicitante', 'like', '%'.$request['nombreSolicitante'].'%')
-                                                               -> where('fecha', '=', $request['fecha'])
-                                                               -> where ('terminado','=', 0)
-                                                               -> get();
+    $fecha = $request['fecha'];
+    if($fecha=='' || $fecha==null)
+    {
+      $fecha='0000.0.0';
+    }
+    $prestamosLibroDocente = DB::select('CALL buscar_prestamos_libros_docente(?,?,?,?)',[$request['nombreDocente'],$request['seccion'],$fecha,$request['materia']]);
+    Session::put('prestamosLibroDocente',$prestamosLibroDocente);
     return view ('libro/listarPrestamosDocente',compact('prestamosLibroDocente'));
+  }
+
+  public function buscarPrestamosTerminados()
+  {
+    return view ('libro/buscarPrestamosDocenteTerminados');
+  }
+
+  public function listarPrestamosTerminados(Request $request)
+  {
+    $fecha = $request['fecha'];
+    if($fecha=='' || $fecha==null)
+    {
+      $fecha='0000.0.0';
+    }
+    $prestamosLibroDocente = DB::select('CALL buscar_prestamos_libros_docente_terminados(?,?,?,?)',[$request['nombreDocente'],$request['seccion'],$fecha,$request['materia']]);
+    Session::put('prestamosLibroDocente',$prestamosLibroDocente);
+    return view ('libro/listarPrestamosDocenteTerminados',compact('prestamosLibroDocente'));
+  }
+
+  public function generarReporte()
+  {
+    $prestamosLibroDocente = Session::get('prestamosLibroDocente');
+    $pdf = PDF::loadView('libro/pdfPrestamosDocente',['prestamosLibroDocente'=>$prestamosLibroDocente]);
+    return $pdf->download('prestamosLibroDocentes.pdf');
+  }
+  public function generarReporteTerminados()
+  {
+    $prestamosLibroDocente = Session::get('prestamosLibroDocente');
+    $pdf = PDF::loadView('libro/pdfPrestamosDocenteTerminados',['prestamosLibroDocente'=>$prestamosLibroDocente]);
+    return $pdf->download('prestamosLibroDocentesTerminados.pdf');
   }
 
   public function eliminarPrestamo($id)
