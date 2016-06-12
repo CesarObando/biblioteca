@@ -32,6 +32,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {!!link_to_action('PrestamoAudiovisualController@generarReporte', $title = 'Reporte', $attributes = ['class'=>'btn-danger btn-sm'])!!}
                     <form>
 
                 <br>

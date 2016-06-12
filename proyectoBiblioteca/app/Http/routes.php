@@ -61,7 +61,7 @@ Route::get('audiovisual/buscarPrestamos','PrestamoAudiovisualController@buscarPr
 Route::get('audiovisual/buscarPrestamosTerminados','PrestamoAudiovisualController@buscarPrestamosTerminados');
 Route::get('audiovisual/listarPrestamos','PrestamoAudiovisualController@listarPrestamos');
 Route::get('audiovisual/listarPrestamosTerminados','PrestamoAudiovisualController@listarPrestamosTerminados');
-Route::get('audiovisual/generarReporte/{prestamos}','PrestamoAudiovisualController@generarReporte');
+Route::get('audiovisual/generarReporte','PrestamoAudiovisualController@generarReporte');
 Route::get('audiovisual/eliminarPrestamo/{id}','PrestamoAudiovisualController@eliminarPrestamo');
 Route::resource('prestamoAudiovisual','PrestamoAudiovisualController');
 

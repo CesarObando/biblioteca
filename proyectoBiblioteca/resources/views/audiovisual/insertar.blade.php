@@ -12,8 +12,8 @@
             {!!Form::open(['route'=>'audiovisual.store','method'=>'post'])!!}
 
                 <label for="equipo">Equipo:</label>
-                <select name="equipo" id="equipo" class="form-control" required="" onchange="especificarOtro()">
-                    <option value="">Seleccione el equipo</option>
+                <select name="equipo" id="equipo" class="form-control" required="false" onchange="especificarOtro()" >
+
                     <option value="Computadora">Computadora</option>
                     <option value="Pantalla">Pantalla</option>
                     <option value="Retroproyector">Retroproyector</option>
@@ -25,8 +25,8 @@
                     <option value="Regleta">Regleta</option>
                     <option value="Otro">Otro</option>
                 </select>
-                <label for="otro" id="l_otro" style="visibility: hidden">Otro:</label>
-                <input type="text" class="form-control" name="otro" id="otro" style="visibility: hidden">
+
+                <input type="hidden" class="form-control" name="otro" id="otro" placeholder="Otro" onkeypress="setValue()" value="">
                 <label for="marca">Marca:</label>
                 <input type="text" class="form-control" name="marca" required="">
                 <label for="modelo">Modelo:</label>
@@ -34,19 +34,20 @@
                 <label for="numeroSerie">Número de serie:</label>
                 <input type="text" class="form-control" name="numeroSerie" required="">
                 <hr>
-                <input type="submit" name="insertarAudiovisual" value="Insertar" class="btn-success btn-lg">
+                <input type="submit" name="insertarAudiovisual" value="Insertar" class="btn-success btn-lg" >
                 {!!Form::close()!!}
 
             <script>
                 function especificarOtro(){
                     opcion = document.getElementById("equipo");
                     if(opcion.value === "Otro"){
-                        document.getElementById("l_otro").setAttribute("style","visibility: visible");
-                        document.getElementById("otro").setAttribute("style","visibility: visible");
+                        document.getElementById("otro").setAttribute("type","text");
                     }else{
-                        document.getElementById("l_otro").setAttribute("style","visibility: hidden");
-                        document.getElementById("otro").setAttribute("style","visibility: hidden");
+                        document.getElementById("otro").setAttribute("type","hidden");
                     }
+                }
+                function setValue(){
+                    document.getElementById("equipo").value = document.getElementById("otro").value;
                 }
             </script>
 

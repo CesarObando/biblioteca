@@ -71,6 +71,7 @@
                                         <li role="presentation"><a href="<?php echo URL::to("audiovisual/insertar"); ?>">Insertar</a></li>
                                         <li role="presentation"><a href="<?php echo URL::to("audiovisual/buscar"); ?>">Prestar/Modificar/Eliminar</a></li>
                                         <li role="presentation"><a href="<?php echo URL::to("audiovisual/buscarPrestamos"); ?>">Ver Préstamos</a></li>
+                                        <li role="presentation"><a href="<?php echo URL::to("audiovisual/buscarPrestamosTerminados"); ?>">Ver Préstamos Termiandos</a></li>
                                     </ul>
                                 </li>
                                 <li role="presentation">
