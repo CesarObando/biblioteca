@@ -5,15 +5,8 @@
   {!!Form::model($materialDidactico,['route'=>['materialDidactico.update',$materialDidactico->id],'method'=>'PUT'])!!}
 
   <div class="form-group">
-    {!!Form::label('nombre','Equipo:')!!}
-    {!!Form::select('nombre', ['Mapa' => 'Mapa',
-    'Juego'=>'Juego',
-    'Abaco'=>'Abaco',
-    'Lapices'=>'Lapices',
-    'Laminas'=>'Laminas',
-    '6'=>'Otro'],null,
-    ['class'=>'form-control',
-    'placeholder'=>'Seleccione el material didactico'])!!}
+    {!!Form::label('equipo','Equipo:')!!}
+    {!!Form::text('equipo',null,['class'=>'form-control','disabled'=>''])!!}
   </div>
 
   <div class="form-group">

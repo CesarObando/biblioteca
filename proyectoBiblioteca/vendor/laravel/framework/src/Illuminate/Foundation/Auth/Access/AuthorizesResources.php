@@ -31,19 +31,12 @@ trait AuthorizesResources
     protected function resourceAbilityMap()
     {
         return [
-
             'index' => 'view',
             'create' => 'create',
             'store' => 'create',
             'show' => 'view',
             'edit' => 'update',
             'update' => 'update',
-            'index'   => 'view',
-            'create'  => 'create',
-            'store'   => 'create',
-            'show'    => 'view',
-            'edit'    => 'update',
-            'update'  => 'update',
             'destroy' => 'delete',
         ];
     }
