@@ -16,7 +16,7 @@
 			<div class="app-title">
 				<h1>Iniciar Sesión</h1>
 			</div>
-      {!!Form::open(['route'=>'login.store','method'=>'post'])!!}
+      {!!Form::open(['action'=>'LoginController@store','method'=>'post'])!!}
 			<div class="login-form">
 				<div class="control-group">
 				<input type="text" class="login-field" value="" placeholder="nombre de usuario" id="nombreUsuario">
@@ -27,8 +27,7 @@
 				<input type="password" class="login-field" value="" placeholder="contrasena" id="contrasena">
 				<label class="login-field-icon fui-lock" for="contrasena"></label>
 				</div>
-
-				<a class="btn btn-primary btn-large btn-block" href="#">Iniciar sesión</a>
+        <input type="submit" name="iniciarSesion" value="Iniciar Sesión" class="btn btn-primary btn-large btn-block" >
         {!!Form::close()!!}
 			</div>
 		</div>
