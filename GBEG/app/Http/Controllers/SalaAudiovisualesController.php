@@ -75,7 +75,7 @@ class SalaAudiovisualesController extends Controller
     }
     $prestamosSalaAudiovisuales = DB::select('CALL buscar_prestamo_sala_audiovisuales_terminados(?,?,?,?)',[$fecha,$hora,$request['nombreSolicitante'],$request['tema']]);
     Session::put('prestamosSalaAudiovisuales',$prestamosSalaAudiovisuales);
-    return view ('salaAudiovisuales/listar',compact('prestamosSalaAudiovisuales'));
+    return view ('salaAudiovisuales/listarPrestamosTerminados',compact('prestamosSalaAudiovisuales'));
 
   }
 
