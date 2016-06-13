@@ -44,7 +44,11 @@ class MaterialDidacticoController extends Controller
 
   public function listar(Request $request)
   {
-    $materialesDidacticos = \App\MaterialDidactico::where('nombre', 'like', '%'.$request['equipo'].'%')
+    $equipo = $request['equipo'];
+    if($equipo == "Otro"){
+      $equipo = $request['otro'];
+    }
+    $materialesDidacticos = \App\MaterialDidactico::where('nombre', 'like', '%'.$equipo.'%')
                                                                -> where('marca', 'like', '%'.$request['marca'].'%')
                                                                -> where('descartado', '=', 0)
                                                                -> get();

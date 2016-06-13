@@ -26,14 +26,14 @@
     <input type="submit" name="buscarAudiovisual" value="Buscar" class="btn-success btn-lg">
   </form>
   <script>
-      function especificarOtro(){
-          opcion = document.getElementById("equipo");
-          if(opcion.value === "Otro"){
-              document.getElementById("otro").setAttribute("type","text");
-          }else{
-              document.getElementById("otro").setAttribute("type","hidden");
-          }
-      }
+  function especificarOtro(){
+    opcion = document.getElementById("equipo");
+    if(opcion.value === "Otro"){
+      document.getElementById("otro").setAttribute("type","text");
+    }else{
+      document.getElementById("otro").setAttribute("type","hidden");
+    }
+  }
   </script>
 
 </div>

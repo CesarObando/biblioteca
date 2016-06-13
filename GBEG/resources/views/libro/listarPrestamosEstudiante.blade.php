@@ -9,7 +9,6 @@
     <table class="table table-condensed table-hover table-bordered table-responsive">
       <thead>
         <tr>
-          <th>Id</th>
           <th>Nombre del solicitante</th>
           <th>Correo Electrónico</th>
           <th>Teléfono</th>
@@ -25,7 +24,6 @@
       @foreach($prestamosLibroEstudiante as $prestamo)
       <tbody>
         <tr>
-          <td>{{$prestamo->id}}</td>
           <td>{{$prestamo->nombreSolicitante}}</td>
           <td>{{$prestamo->correoSolicitante}}</td>
           <td>{{$prestamo->telefonoSolicitante}}</td>

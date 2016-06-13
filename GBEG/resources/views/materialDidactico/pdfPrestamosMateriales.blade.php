@@ -19,23 +19,25 @@
       <thead>
         <tr>
           <th>Nombre del solicitante</th>
-          <th>Tema</th>
-          <th>Fecha</th>
-          <th>Hora de entrada</th>
-          <th>Hora de salida</th>
+          <th>Equipo</th>
+          <th>Marca</th>
+          <th>Especificación</th>
+          <th>Serie</th>
+          <th>Fecha de préstamo</th>
         </tr>
       </thead>
-      @foreach($prestamosSalaAudiovisuales as $prestamoSalaAudiovisual)
       <tbody>
+        @foreach($prestamosMaterialDidactico as $prestamoMaterialDidactico)
         <tr>
-          <td>{{$prestamoSalaAudiovisual->nombreSolicitante}}</td>
-          <td>{{$prestamoSalaAudiovisual->tema}}</td>
-          <td>{{$prestamoSalaAudiovisual->fecha}}</td>
-          <td>{{$prestamoSalaAudiovisual->horaEntrada}}</td>
-          <td>{{$prestamoSalaAudiovisual->horaSalida}}</td>
+          <td>{{$prestamoMaterialDidactico->nombreSolicitante}}</td>
+          <td>{{$prestamoMaterialDidactico->nombre}}</td>
+          <td>{{$prestamoMaterialDidactico->marca}}</td>
+          <td>{{$prestamoMaterialDidactico->especificacion}}</td>
+          <td>{{$prestamoMaterialDidactico->numeroSerie}}</td>
+          <td>{{$prestamoMaterialDidactico->fecha}}</td>
         </tr>
+        @endforeach
       </tbody>
-      @endforeach
     </table>
     <br>
     <br>

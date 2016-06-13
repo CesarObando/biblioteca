@@ -67,26 +67,42 @@ class PrestamoMaterialDidacticoController extends Controller
 
   public function listarPrestamos(Request $request)
   {
+    $equipo = $request['equipo'];
+    if($equipo == "Otro"){
+      $equipo = $request['otro'];
+    }
+
     $fecha = $request['fecha'];
     if($fecha=='' || $fecha==null)
     {
       $fecha='0000.0.0';
     }
-    $prestamosMaterialDidactico = DB::select('CALL buscar_prestamos_materiales_didacticos(?,?,?)',[$request['nombreSolicitante'],$request['equipo'],$fecha]);
+    $prestamosMaterialDidactico = DB::select('CALL buscar_prestamos_materiales_didacticos(?,?,?)',[$request['nombreSolicitante'],$equipo,$fecha]);
     Session::put('prestamosMaterialDidactico',$prestamosMaterialDidactico);
     return view ('materialDidactico/listarPrestamos', compact('prestamosMaterialDidactico'));
   }
 
   public function listarPrestamosTerminados(Request $request)
   {
+    $equipo = $request['equipo'];
+    if($equipo == "Otro"){
+      $equipo = $request['otro'];
+    }
     $fecha = $request['fecha'];
     if($fecha=='' || $fecha==null)
     {
       $fecha='0000.0.0';
     }
-    $prestamosMaterialDidactico = DB::select('CALL buscar_prestamos_materiales_didacticos_terminados(?,?,?)',[$request['nombreSolicitante'],$request['equipo'],$fecha]);
+    $prestamosMaterialDidactico = DB::select('CALL buscar_prestamos_materiales_didacticos_terminados(?,?,?)',[$request['nombreSolicitante'],$equipo,$fecha]);
     Session::put('prestamosMaterialDidactico',$prestamosMaterialDidactico);
     return view ('materialDidactico/listarPrestamosTerminados', compact('prestamosMaterialDidactico'));
+  }
+
+  public function generarReporte()
+  {
+    $prestamosMaterialDidactico = Session::get('prestamosMaterialDidactico');
+    $pdf = PDF::loadView('materialDidactico/pdfPrestamosMateriales',['prestamosMaterialDidactico'=>$prestamosMaterialDidactico]);
+    return $pdf->download('prestamosMaterialesDidacticos.pdf');
   }
 
   public function generarReporteTerminados()
