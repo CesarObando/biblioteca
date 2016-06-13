@@ -68,7 +68,7 @@ class PrestamoLibroEstudianteController extends Controller
 
   public function buscarPrestamosTerminados()
   {
-    return view ('libro/buscarPrestamosEstudiante');
+    return view ('libro/buscarPrestamosEstudianteTerminados');
   }
 
   public function listarPrestamosTerminados(Request $request)
