@@ -63,6 +63,7 @@ class PrestamoLibroEstudianteController extends Controller
     }
     $prestamosLibroEstudiante = DB::select('CALL buscar_prestamos_libros_estudiante(?,?,?,?,?)',[$request['autor'],$request['titulo'],$fecha,$vence,$request['nombre']]);
     Session::put('prestamosLibroEstudiante',$prestamosLibroEstudiante);
+    //print_r($prestamosLibroEstudiante);
     return view ('libro/listarPrestamosEstudiante',compact('prestamosLibroEstudiante'));
   }
 
