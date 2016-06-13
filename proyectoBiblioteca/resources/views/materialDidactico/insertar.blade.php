@@ -13,8 +13,7 @@
     <option value="Laminas">Laminas educativas</option>
     <option value="Otro">Otro</option>
   </select>
-  <label for="otro" id="l_otro" style="visibility: hidden">Otro:</label>
-  <input type="text" class="form-control" name="otro" id="otro" style="visibility: hidden">
+  <input type="hidden" class="form-control" name="otro" id="otro" placeholder="Otro" value="">
   <label for="marca">Marca:</label>
   <input type="text" class="form-control" name="marca" required="">
   <label for="modelo">Especificación:</label>
@@ -25,15 +24,13 @@
   <input type="submit" name="insertarDidactico" value="Insertar" class="btn-success btn-lg">
   {!!Form::close()!!}
   <script>
-  function especificarOtro() {
-    opcion = document.getElementById("equipo");
-    if (opcion.value === "6") {
-      document.getElementById("l_otro").setAttribute("style", "visibility: visible");
-      document.getElementById("otro").setAttribute("style", "visibility: visible");
-    }else{
-      document.getElementById("l_otro").setAttribute("style","visibility: hidden");
-      document.getElementById("otro").setAttribute("style","visibility: hidden");
-    }
+  function especificarOtro(){
+      opcion = document.getElementById("equipo");
+      if(opcion.value === "Otro"){
+          document.getElementById("otro").setAttribute("type","text");
+      }else{
+          document.getElementById("otro").setAttribute("type","hidden");
+      }
   }
   </script>
 

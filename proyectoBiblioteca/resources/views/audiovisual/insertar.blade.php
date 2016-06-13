@@ -6,7 +6,7 @@
   {!!Form::open(['route'=>'audiovisual.store','method'=>'post'])!!}
 
                 <label for="equipo">Equipo:</label>
-                <select name="equipo" id="equipo" class="form-control" required="false" onchange="especificarOtro()" >
+                <select name="equipo" id="equipo" class="form-control" onchange="especificarOtro()" >
 
                     <option value="Computadora">Computadora</option>
                     <option value="Pantalla">Pantalla</option>
@@ -20,7 +20,7 @@
                     <option value="Otro">Otro</option>
                 </select>
 
-                <input type="hidden" class="form-control" name="otro" id="otro" placeholder="Otro" onkeypress="setValue()" value="">
+                <input type="hidden" class="form-control" name="otro" id="otro" placeholder="Otro" value="">
                 <label for="marca">Marca:</label>
                 <input type="text" class="form-control" name="marca" required="">
                 <label for="modelo">Modelo:</label>
@@ -38,9 +38,6 @@
                         }else{
                             document.getElementById("otro").setAttribute("type","hidden");
                         }
-                    }
-                    function setValue(){
-                        document.getElementById("equipo").value = document.getElementById("otro").value;
                     }
                 </script>
 

@@ -19,11 +19,19 @@ class PrestamoAudiovisualController extends Controller
 
   public function store(Request $request)
   {
+    $condicion = $request['condicion'];
+    if($condicion == "Otro"){
+      $condicion = $request['otracondicion'];
+    }
+    $finesPrestamo = $request['finesPrestamo'];
+    if($finesPrestamo == "Otro"){
+      $finesPrestamo = $request['otromotivo'];
+    }
     \gestorBiblioteca\PrestamoAudiovisual::create([
       'idaudiovisual' => $request['id'],
       'nombreSolicitante' => $request['nombreSolicitante'],
-      'condicion' => $request['condicion'],
-      'finesPrestamo' => $request['finesPrestamo'],
+      'condicion' => $condicion,
+      'finesPrestamo' => $finesPrestamo,
       'fecha' => $request['fecha'],
       'hora' => $request['hora'],
     ]);
