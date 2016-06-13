@@ -6,17 +6,7 @@
 
   <div class="form-group">
     {!!Form::label('equipo','Equipo:')!!}
-    {!!Form::select('equipo', ['Computadora' => 'Computadora',
-    'Pantalla' => 'Pantalla',
-    'Retroproyector'=>'Retroproyector',
-    'Video Beam'=>'Video Beam',
-    'Radiograbadora'=>'Radiograbadora',
-    'Extensión eléctrica'=>'Extensión eléctrica',
-    'Parlantes'=>'Parlantes',
-    'Televisor'=>'Televisor',
-    'Regleta'=>'Regleta',
-    'Otro'=>'Otro'],null,['class'=>'form-control',
-    'placeholder'=>'Seleccione el equipo','onchange'=>'especificarOtro()'])!!}
+    {!!Form::text('equipo',null,['class'=>'form-control','disabled'=>''])!!}
   </div>
   <div class="form-group">
     <input type="hidden" class="form-control" name="otro" id="otro" placeholder="Otro" value="">

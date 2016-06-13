@@ -6,14 +6,7 @@
 
   <div class="form-group">
     {!!Form::label('nombre','Equipo:')!!}
-    {!!Form::select('nombre', ['Mapa' => 'Mapa',
-    'Juego'=>'Juego',
-    'Abaco'=>'Abaco',
-    'Lapices'=>'Lapices',
-    'Laminas'=>'Laminas',
-    '6'=>'Otro'],null,
-    ['class'=>'form-control',
-    'placeholder'=>'Seleccione el material didactico'])!!}
+    {!!Form::text('nombre',null,['class'=>'form-control','disabled'=>''])!!}
   </div>
 
   <div class="form-group">
