@@ -23,6 +23,7 @@ Route::get('libro/prestarDocente','LibroController@prestarDocente');
 Route::get('libro/prestarEstudiante','LibroController@prestarEstudiante');
 Route::get('libro/generarReporteLibro','LibroController@generarReporte');
 
+Route::get('login/iniciarSesion','LibroController@iniciarSesion');
 Route::resource('login','LoginController',['only'=> ['create','store','edit','update','destroy']]);
 
 

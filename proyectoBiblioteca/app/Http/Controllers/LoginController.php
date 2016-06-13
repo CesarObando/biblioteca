@@ -24,7 +24,7 @@ class LoginController extends Controller
       	Session::put('admin', $nombreU);
   			Session::put('pass', $contrasena);
   			Session::put('success', 'success');
-  			return Redirect::to('index');
+  			return Redirect::to('/inicioAdmin');
       	 }
       	 return Redirect::to('login.login');
       }
