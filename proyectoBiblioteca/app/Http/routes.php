@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/','Controller@index');
+Route::get('/','Controller@login');
+Route::get('iniciarSesion','Controller@iniciarSesion');
 Route::resource('controller','Controller');
 
 //Libro

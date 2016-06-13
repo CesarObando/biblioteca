@@ -11,6 +11,15 @@ use Session;
 
 class PrestamoAudiovisualController extends Controller
 {
+
+  public function __construct()
+   {
+       // $this->middleware('auth');
+      if(!Session::has('success')){
+        $this->middleware('auth');
+       }
+   }
+
   public function show($id)
   {
     $audiovisual = \gestorBiblioteca\Audiovisual::find($id);

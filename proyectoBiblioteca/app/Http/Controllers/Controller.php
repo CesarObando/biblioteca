@@ -12,10 +12,36 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
 
-    public function index()
+    /*public function index()
     {
-      return view('welcome');
+      return view('index');
+    }*/
+
+    public function login()
+    {
+      return view('login.login');
     }
 
+    public function iniciarSesion(Request $request)
+        {
+
+        	 $nombreU=$_POST['nombreUsuario'];
+        	 $contrasena=$_POST['contrasena'];
+
+        	 if($nombreU=='admin'&&$contrasena=='admin')
+        	 {
+
+        	Session::put('admin', $nombreU);
+    			Session::put('pass', $contrasena);
+    			Session::put('success', 'success');
+    			return Redirect::to('index');
+        	 }
+        	 return Redirect::to('login.login');
+        }
+
+        public function cerrarSesion(){
+            Session::flush();
+            return Redirect::to('login.login');
+        }
 
 }

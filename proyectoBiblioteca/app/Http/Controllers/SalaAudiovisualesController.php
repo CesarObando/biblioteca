@@ -10,6 +10,15 @@ use Session;
 
 class SalaAudiovisualesController extends Controller
 {
+
+  public function __construct()
+   {
+       // $this->middleware('auth');
+      if(!Session::has('success')){
+        $this->middleware('auth');
+       }
+   }
+
   public function show($id)
   {
     $salaAudiovisuales = \gestorBiblioteca\SalaAudiovisuales::find($id);

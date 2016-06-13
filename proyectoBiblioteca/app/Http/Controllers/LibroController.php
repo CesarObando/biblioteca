@@ -11,6 +11,15 @@ use Session;
 
 class LibroController extends Controller
 {
+
+  public function __construct()
+   {
+       // $this->middleware('auth');
+      if(!Session::has('success')){
+        $this->middleware('auth');
+       }
+   }
+
   public function buscar()
   {
     return view ('libro/buscar');

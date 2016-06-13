@@ -13,6 +13,14 @@ use PDF;
 class PrestamoLibroDocenteController extends Controller
 {
 
+  public function __construct()
+   {
+       // $this->middleware('auth');
+      if(!Session::has('success')){
+        $this->middleware('auth');
+       }
+   }
+
   public function show()
   {
     $libro = \gestorBiblioteca\PrestamoLibroDocente::find($id);
