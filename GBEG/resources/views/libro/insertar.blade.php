@@ -32,7 +32,7 @@
     <input type="text" class="form-control" name="editorial" required="">
     <br>
     <label for="ano">Año:</label>
-    <input type="date" class="form-control" name="ano" required="">
+    <input type="number", class="form-control" name="ano" required="">
     <br>
     <label for="observaciones">Observaciones:</label>
     <input type="text" class="form-control" name="observaciones" required="">
