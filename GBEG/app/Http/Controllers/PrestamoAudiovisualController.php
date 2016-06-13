@@ -60,11 +60,6 @@ class PrestamoAudiovisualController extends Controller
       $fecha='0000.0.0';
     }
     $prestamosAudiovisual = DB::select('CALL buscar_prestamos_audiovisuales(?,?,?)',[$request['nombreSolicitante'],$request['equipo'],$fecha]);
-    global $prestamos;
-    print_r($prestamos);
-    $prestamos = $prestamosAudiovisual;
-    //$pdf = PDF::loadView('audiovisual/pdfPrestamos',['prestamosAudiovisual'=>$prestamosAudiovisual]);
-    //return $pdf->download('prestamosAudiovisuales.pdf');
 
     Session::put('prestamosAudiovisual',$prestamosAudiovisual);
     return view ('audiovisual/listarPrestamos',compact('prestamosAudiovisual'));
@@ -84,8 +79,6 @@ class PrestamoAudiovisualController extends Controller
 
   public function generarReporte()
   {
-    global $prestamos;
-    $pdf = PDF::loadView('audiovisual/pdfPrestamos',['prestamosAudiovisual'=>$prestamos]);
     $prestamosAudiovisual = Session::get('prestamosAudiovisual');
     $pdf = PDF::loadView('audiovisual/pdfPrestamos',['prestamosAudiovisual'=>$prestamosAudiovisual]);
     return $pdf->download('prestamosAudiovisuales.pdf');
