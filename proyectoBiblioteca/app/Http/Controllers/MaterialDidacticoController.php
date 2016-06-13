@@ -26,8 +26,12 @@ class MaterialDidacticoController extends Controller
 
   public function store(Request $request)
   {
+    $equipo = $request['equipo'];
+  if($equipo == "Otro"){
+    $equipo = $request['otro'];
+  }
     \gestorBiblioteca\MaterialDidactico::create([
-      'nombre' => $request['equipo'],
+      'nombre' => $equipo,
       'marca' => $request['marca'],
       'especificacion' => $request['especificacion'],
       'numeroSerie' => $request['serie']
@@ -37,7 +41,7 @@ class MaterialDidacticoController extends Controller
 
   public function listar(Request $request)
   {
-    $materialesDidacticos = \gestorBiblioteca\MaterialDidactico::where('nombre', $request['equipo'])
+    $materialesDidacticos = \gestorBiblioteca\MaterialDidactico::where('nombre', 'like', '%'.$request['equipo'].'%')
                                                                -> where('marca', 'like', '%'.$request['marca'].'%')
                                                                -> where('descartado', '=', 0)
                                                                -> get();

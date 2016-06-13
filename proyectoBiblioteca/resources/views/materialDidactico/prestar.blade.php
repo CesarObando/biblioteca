@@ -28,32 +28,24 @@
   {!!Form::select('condicion',['Docente'=>'Docente',
   'Administrativo'=>'Administrativo',
   'Estudiante'=>'Estudiante',
-  '4'=>'Otro'],null,
+  'Otro'=>'Otro'],null,
   ['placeholder'=>'Seleccione la condición del solicitante',
   'class'=>'form-control',
   'onchange'=>'especificarOtraCondicion()']
   )!!}
-  {!!Form::label('otracondicion','Otro', ['id'=>'l_otracondicion',
-  'style'=>'visibility: hidden'])!!}
-  {!!Form::text('otracondicion',null,['id'=>'otracondicion',
-  'style'=>'visibility: hidden',
-  'class'=>'form-control']) !!}
+  <input type="hidden" class="form-control" name="otracondicion" id="otracondicion" placeholder="Otro" value="">
   {!!Form::label('finesPrestamo','Fines del préstamo:')!!}
   {!!Form::select('finesPrestamo',['Desarollo curricular'=>'Desarollo curricular',
   'Reunión de padres de familia'=>'Reunión de padres de familia',
   'Escuela de padres'=>'Escuela de padres',
   'Capacitación docente'=>'Capacitación docente',
   'Consejo de profesores'=>'Consejo de profesores',
-  '6'=>'Otro'],null,
+  'Otro'=>'Otro'],null,
   ['placeholder'=>'Seleccione el motivo del prestamo',
   'class'=>'form-control',
   'onchange'=>'especificarOtroMotivo()']
   )!!}
-  {!!Form::label('otromotivo','Otro', ['id'=>'l_otromotivo',
-  'style'=>'visibility: hidden'])!!}
-  {!!Form::text('otromotivo',null,['id'=>'otromotivo',
-  'style'=>'visibility: hidden',
-  'class'=>'form-control']) !!}
+  <input type="hidden" class="form-control" name="otromotivo" id="otromotivo" placeholder="Otro" value="">
   {!!Form::label('fecha', 'Fecha') !!}
   {!!Form::date('fecha',null,['class'=>'form-control'])!!}
   {!!Form::label('hora', 'Hora') !!}
@@ -63,34 +55,20 @@
 
   {!!Form::close()!!}
   <script>
-  function especificarOtroEquipo(){
-    opcion = document.getElementById("equipo");
-    if(opcion.value === "6"){
-      document.getElementById("l_otro").setAttribute("style","visibility: visible");
-      document.getElementById("otro").setAttribute("style","visibility: visible");
-    }else{
-      document.getElementById("l_otro").setAttribute("style","visibility: hidden");
-      document.getElementById("otro").setAttribute("style","visibility: hidden");
-    }
-  }
   function especificarOtroMotivo(){
     opcion = document.getElementById("finesPrestamo");
-    if(opcion.value === "6"){
-      document.getElementById("l_otromotivo").setAttribute("style","visibility: visible");
-      document.getElementById("otromotivo").setAttribute("style","visibility: visible");
+    if(opcion.value === "Otro"){
+        document.getElementById("otromotivo").setAttribute("type","text");
     }else{
-      document.getElementById("l_otromotivo").setAttribute("style","visibility: hidden");
-      document.getElementById("otromotivo").setAttribute("style","visibility: hidden");
+        document.getElementById("otromotivo").setAttribute("type","hidden");
     }
   }
   function especificarOtraCondicion(){
     opcion = document.getElementById("condicion");
-    if(opcion.value === "4"){
-      document.getElementById("l_otracondicion").setAttribute("style","visibility: visible");
-      document.getElementById("otracondicion").setAttribute("style","visibility: visible");
+    if(opcion.value === "Otro"){
+        document.getElementById("otracondicion").setAttribute("type","text");
     }else{
-      document.getElementById("l_otracondicion").setAttribute("style","visibility: hidden");
-      document.getElementById("otracondicion").setAttribute("style","visibility: hidden");
+        document.getElementById("otracondicion").setAttribute("type","hidden");
     }
   }
   </script>

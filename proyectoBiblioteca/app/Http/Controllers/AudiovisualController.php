@@ -45,8 +45,12 @@ class AudiovisualController extends Controller
 
   public function store(Request $request)
   {
+    $equipo = $request['equipo'];
+    if($equipo == "Otro"){
+      $equipo = $request['otro'];
+    }
     \gestorBiblioteca\Audiovisual::create([
-      'equipo' => $request['equipo'],
+      'equipo' => $equipo,
       'marca' => $request['marca'],
       'modelo' => $request['modelo'],
       'numeroSerie' => $request['numeroSerie'],

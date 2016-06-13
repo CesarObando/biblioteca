@@ -24,11 +24,19 @@ class PrestamoMaterialDidacticoController extends Controller
 
   public function store(Request $request)
   {
+    $condicion = $request['condicion'];
+    if($condicion == "Otro"){
+      $condicion = $request['otracondicion'];
+    }
+    $finesPrestamo = $request['finesPrestamo'];
+    if($finesPrestamo == "Otro"){
+      $finesPrestamo = $request['otromotivo'];
+    }
     \gestorBiblioteca\PrestamoMaterialDidactico::create([
       'materialComplementario' => $request['id'],
       'nombreSolicitante' => $request['nombreSolicitante'],
-      'condicion' => $request['condicion'],
-      'finesPrestamo' => $request['finesPrestamo'],
+      'condicion' => $condicion,
+      'finesPrestamo' => $finesPrestamo,
       'fecha' => $request['fecha'],
       'hora' => $request['hora'],
     ]);

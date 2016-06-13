@@ -31,14 +31,9 @@
     <option value="Docente">Docente</option>
     <option value="Administrativo">Administrativo</option>
     <option value="Estudiante">Estudiante</option>
-    <option value="4">Otro</option>
+    <option value="Otro">Otro</option>
   </select>
-  <label for="otro" id="l_otracondicion" style="visibility: hidden">Otro:</label>
-  <input type="text" class="form-control" name="otracondicion" id="otracondicion" style="visibility: hidden">
-  <br>
-
-  <label for="otro" id="l_otro" style="visibility: hidden">Otro:</label>
-  <input type="text" class="form-control" name="otro" id="otro" style="visibility: hidden">
+  <input type="hidden" class="form-control" name="otracondicion" id="otracondicion" placeholder="Otro" value="">
   <br>
   <label for="finesPrestamo">Fines del préstamo:</label>
   <select name="finesPrestamo" id="finesPrestamo" class="form-control" required="" onchange="especificarOtroMotivo()">
@@ -48,10 +43,9 @@
     <option value="Escuela de padres">Escuela de padres</option>
     <option value="Capacitación docente">Capacitación docente</option>
     <option value="Consejo de profesores">Consejo de profesores</option>
-    <option value="6">Otro</option>
+    <option value="Otro">Otro</option>
   </select>
-  <label for="otromotivo" id="l_otromotivo" style="visibility: hidden">Otro:</label>
-  <input type="text" class="form-control" name="otromotivo" id="otromotivo" style="visibility: hidden">
+  <input type="hidden" class="form-control" name="otromotivo" id="otromotivo" placeholder="Otro" value="">
   <br>
   <label for="fecha">Fecha:</label>
   <input type="date" class="form-control" name="fecha" required="">
@@ -62,34 +56,21 @@
   {!!Form::submit('Prestar',['class'=>'btn-success btn-lg'])!!}
   {!!Form::close()!!}
   <script>
-  function especificarOtroEquipo(){
-    opcion = document.getElementById("equipo");
-    if(opcion.value === "10"){
-      document.getElementById("l_otro").setAttribute("style","visibility: visible");
-      document.getElementById("otro").setAttribute("style","visibility: visible");
-    }else{
-      document.getElementById("l_otro").setAttribute("style","visibility: hidden");
-      document.getElementById("otro").setAttribute("style","visibility: hidden");
-    }
-  }
+
   function especificarOtroMotivo(){
     opcion = document.getElementById("finesPrestamo");
-    if(opcion.value === "6"){
-      document.getElementById("l_otromotivo").setAttribute("style","visibility: visible");
-      document.getElementById("otromotivo").setAttribute("style","visibility: visible");
+    if(opcion.value === "Otro"){
+        document.getElementById("otromotivo").setAttribute("type","text");
     }else{
-      document.getElementById("l_otromotivo").setAttribute("style","visibility: hidden");
-      document.getElementById("otromotivo").setAttribute("style","visibility: hidden");
+        document.getElementById("otromotivo").setAttribute("type","hidden");
     }
   }
   function especificarOtraCondicion(){
     opcion = document.getElementById("condicion");
-    if(opcion.value === "4"){
-      document.getElementById("l_otracondicion").setAttribute("style","visibility: visible");
-      document.getElementById("otracondicion").setAttribute("style","visibility: visible");
+    if(opcion.value === "Otro"){
+        document.getElementById("otracondicion").setAttribute("type","text");
     }else{
-      document.getElementById("l_otracondicion").setAttribute("style","visibility: hidden");
-      document.getElementById("otracondicion").setAttribute("style","visibility: hidden");
+        document.getElementById("otracondicion").setAttribute("type","hidden");
     }
   }
   </script>

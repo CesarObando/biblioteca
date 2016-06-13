@@ -19,8 +19,7 @@
     'placeholder'=>'Seleccione el equipo','onchange'=>'especificarOtro()'])!!}
   </div>
   <div class="form-group">
-    {!!Form::label('otro','Otro:',['class'=>'form-control','style'=>'visibility: hidden'])!!}
-    {!!Form::text('otro',null,['class'=>'form-control','style'=>'visibility: hidden'])!!}
+    <input type="hidden" class="form-control" name="otro" id="otro" placeholder="Otro" value="">
   </div>
   <div class="form-group">
     {!!Form::label('marca','Marca:')!!}
@@ -40,14 +39,12 @@
 
 <script>
 function especificarOtro(){
-  opcion = document.getElementById("equipo");
-  if(opcion.value === "Otro"){
-    document.getElementById("l_otro").setAttribute("style","visibility: visible");
-    document.getElementById("otro").setAttribute("style","visibility: visible");
-  }else{
-    document.getElementById("l_otro").setAttribute("style","visibility: hidden");
-    document.getElementById("otro").setAttribute("style","visibility: hidden");
-  }
+    opcion = document.getElementById("equipo");
+    if(opcion.value === "Otro"){
+        document.getElementById("otro").setAttribute("type","text");
+    }else{
+        document.getElementById("otro").setAttribute("type","hidden");
+    }
 }
 </script>
 @stop
