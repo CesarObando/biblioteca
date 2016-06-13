@@ -54,12 +54,17 @@ class PrestamoAudiovisualController extends Controller
 
   public function listarPrestamos(Request $request)
   {
+    $equipo = $request['equipo'];
+    if($equipo == "Otro"){
+      $equipo = $request['otro'];
+    }
+
     $fecha = $request['fecha'];
     if($fecha=='' || $fecha==null)
     {
       $fecha='0000.0.0';
     }
-    $prestamosAudiovisual = DB::select('CALL buscar_prestamos_audiovisuales(?,?,?)',[$request['nombreSolicitante'],$request['equipo'],$fecha]);
+    $prestamosAudiovisual = DB::select('CALL buscar_prestamos_audiovisuales(?,?,?)',[$request['nombreSolicitante'],$equipo,$fecha]);
 
     Session::put('prestamosAudiovisual',$prestamosAudiovisual);
     return view ('audiovisual/listarPrestamos',compact('prestamosAudiovisual'));
@@ -67,12 +72,17 @@ class PrestamoAudiovisualController extends Controller
 
   public function listarPrestamosTerminados(Request $request)
   {
+    $equipo = $request['equipo'];
+    if($equipo == "Otro"){
+      $equipo = $request['otro'];
+    }
+
     $fecha = $request['fecha'];
     if($fecha=='' || $fecha==null)
     {
       $fecha='0000.0.0';
     }
-    $prestamosAudiovisualTerminados = DB::select('CALL buscar_prestamos_audiovisuales_terminados(?,?,?)',[$request['nombreSolicitante'],$request['equipo'],$fecha]);
+    $prestamosAudiovisualTerminados = DB::select('CALL buscar_prestamos_audiovisuales_terminados(?,?,?)',[$request['nombreSolicitante'],$equipo,$fecha]);
     Session::put('prestamosAudiovisualTerminados',$prestamosAudiovisualTerminados);
     return view ('audiovisual/listarPrestamosTerminados',compact('prestamosAudiovisualTerminados'));
   }
