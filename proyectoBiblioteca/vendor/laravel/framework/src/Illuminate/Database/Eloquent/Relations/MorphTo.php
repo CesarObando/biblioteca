@@ -2,6 +2,7 @@
 
 namespace Illuminate\Database\Eloquent\Relations;
 
+use BadMethodCallException;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -29,6 +30,16 @@ class MorphTo extends BelongsTo
      */
     protected $dictionary = [];
 
+<<<<<<< HEAD
+    /**
+     * A buffer of dynamic calls to query macros.
+     *
+     * @var array
+     */
+    protected $macroBuffer = [];
+
+=======
+>>>>>>> 3ef61ea3e8c3c49a3d5853831d93055f65b89f27
     /**
      * Create a new morph to relationship instance.
      *
@@ -175,8 +186,16 @@ class MorphTo extends BelongsTo
 
         $key = $instance->getTable().'.'.$instance->getKeyName();
 
+<<<<<<< HEAD
+        $eagerLoads = $this->getQuery()->nestedRelations($this->relation);
+
+        $query = $this->replayMacros($instance->newQuery())
+            ->mergeModelDefinedRelationConstraints($this->getQuery())
+            ->setEagerLoads($eagerLoads);
+=======
         $query = clone $this->query;
         $query->setModel($instance);
+>>>>>>> 3ef61ea3e8c3c49a3d5853831d93055f65b89f27
 
         return $query->whereIn($key, $this->gatherKeysByType($type)->all())->get();
     }
@@ -193,7 +212,6 @@ class MorphTo extends BelongsTo
 
         return collect($this->dictionary[$type])->map(function ($models) use ($foreign) {
             return head($models)->{$foreign};
-
         })->values()->unique();
     }
 
@@ -229,4 +247,45 @@ class MorphTo extends BelongsTo
     {
         return $this->dictionary;
     }
+<<<<<<< HEAD
+
+    /**
+     * Replay stored macro calls on the actual related instance.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    protected function replayMacros(Builder $query)
+    {
+        foreach ($this->macroBuffer as $macro) {
+            call_user_func_array([$query, $macro['method']], $macro['parameters']);
+        }
+
+        return $query;
+    }
+
+    /**
+     * Handle dynamic method calls to the relationship.
+     *
+     * @param  string  $method
+     * @param  array   $parameters
+     * @return mixed
+     */
+    public function __call($method, $parameters)
+    {
+        try {
+            return parent::__call($method, $parameters);
+        }
+
+        // If we tried to call a method that does not exist on the parent Builder instance,
+        // we'll assume that we want to call a query macro (e.g. withTrashed) that only
+        // exists on related models. We will just store the call and replay it later.
+        catch (BadMethodCallException $e) {
+            $this->macroBuffer[] = compact('method', 'parameters');
+
+            return $this;
+        }
+    }
+=======
+>>>>>>> 3ef61ea3e8c3c49a3d5853831d93055f65b89f27
 }
