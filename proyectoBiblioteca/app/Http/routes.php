@@ -117,3 +117,7 @@ Route::resource('servicioInternet', 'ServicioInternetController');
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

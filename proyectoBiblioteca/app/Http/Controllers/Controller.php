@@ -12,14 +12,9 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 3ef61ea3e8c3c49a3d5853831d93055f65b89f27
     public function index()
     {
-      return view('auth.login');
+      return view('welcome');
     }
 
 
