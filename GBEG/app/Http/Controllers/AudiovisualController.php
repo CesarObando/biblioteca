@@ -27,7 +27,11 @@ class AudiovisualController extends Controller
   }
   public function listar(Request $request)
   {
-    $audiovisuales = \App\Audiovisual::where('equipo', 'like', '%'.$request['equipo'].'%')
+    $equipo = $request['equipo'];
+    if($equipo == "Otro"){
+      $equipo = $request['otro'];
+    }
+    $audiovisuales = \App\Audiovisual::where('equipo', 'like', '%'.$equipo.'%')
                                                                -> where('marca', 'like', '%'.$request['marca'].'%')
                                                                -> where ('descartado','=', 0)
                                                                -> get();
