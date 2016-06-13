@@ -12,7 +12,7 @@ use Session;
 class LoginController extends Controller
 {
 
-  public function iniciarSesion(Request $request)
+  public function store(Request $request)
       {
 
       	 $nombreU=$_POST['nombreUsario'];

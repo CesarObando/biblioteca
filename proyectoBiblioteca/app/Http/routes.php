@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/','Controller@login');
-Route::get('iniciarSesion','Controller@iniciarSesion');
-Route::resource('controller','Controller');
+Route::get('/','Controller@index');
 
 //Libro
 Route::get('libro/buscar','LibroController@buscar');
@@ -24,6 +22,9 @@ Route::get('libro/eliminar/{id}','LibroController@eliminar');
 Route::get('libro/prestarDocente','LibroController@prestarDocente');
 Route::get('libro/prestarEstudiante','LibroController@prestarEstudiante');
 Route::get('libro/generarReporteLibro','LibroController@generarReporte');
+
+Route::get('login/iniciarSesion','LibroController@iniciarSesion');
+Route::resource('login','LoginController',['only'=> ['create','store','edit','update','destroy']]);
 
 
 Route::resource('libro','LibroController',['only'=> ['create','store','edit','update','destroy']]);
@@ -114,10 +115,6 @@ Route::get('servicioInternet/terminarPrestamo/{id}', 'ServicioInternetController
 Route::get('servicioInternet/reportePrestamos','ServicioInternetController@generarReporte');
 Route::get('servicioInternet/reportePrestamosTerminados','ServicioInternetController@generarReporteTerminados');
 Route::resource('servicioInternet', 'ServicioInternetController');
-
-Route::auth();
-
-Route::get('/home', 'HomeController@index');
 
 Route::auth();
 

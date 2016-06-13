@@ -16,7 +16,7 @@
 			<div class="app-title">
 				<h1>Iniciar Sesión</h1>
 			</div>
-      {!!Form::open(['route'=>'iniciarSesion','method'=>'post'])!!}
+      {!!Form::open(['route'=>'login.store','method'=>'post'])!!}
 			<div class="login-form">
 				<div class="control-group">
 				<input type="text" class="login-field" value="" placeholder="nombre de usuario" id="nombreUsuario">
