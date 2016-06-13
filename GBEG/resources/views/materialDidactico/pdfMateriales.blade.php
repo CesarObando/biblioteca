@@ -32,7 +32,6 @@
           <td>{{$materialDidactico->marca}}</td>
           <td>{{$materialDidactico->especificacion}}</td>
           <td>{{$materialDidactico->numeroSerie}}</td>
-          <td>
 
             @if($materialDidactico->prestado===0)
             <td>Disponible</td>
