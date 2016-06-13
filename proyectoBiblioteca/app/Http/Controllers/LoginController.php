@@ -26,12 +26,12 @@ class LoginController extends Controller
   			Session::put('success', 'success');
   			return Redirect::to('/inicioAdmin');
       	 }
-      	 return Redirect::to('login');
+      	 return Redirect::to('login.login');
       }
 
       public function cerrarSesion(){
           Session::flush();
-          return Redirect::to('login');
+          return Redirect::to('login.login');
       }
 
 }
