@@ -13,7 +13,7 @@
           <th>No. de Inscripción</th>
           <th>Autor</th>
           <th>Título</th>
-          <th>Edicón</th>
+          <th>Edición</th>
           <th>Fecha</th>
           <th>Lugar</th>
           <th>Editorial</th>

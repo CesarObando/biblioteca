@@ -21,10 +21,13 @@ Route::get('libro/buscar','LibroController@buscar');
 Route::get('libro/editar','LibroController@editar');
 Route::get('libro/insertar','LibroController@insertar');
 Route::get('libro/listar','LibroController@listar');
+Route::get('libro/listarEliminados','LibroController@listarEliminados');
 Route::get('libro/eliminar/{id}','LibroController@eliminar');
+Route::get('libro/recuperar/{id}','LibroController@recuperar');
 Route::get('libro/prestarDocente','LibroController@prestarDocente');
 Route::get('libro/prestarEstudiante','LibroController@prestarEstudiante');
 Route::get('libro/generarReporteLibro','LibroController@generarReporte');
+Route::get('libro/generarReporteLibroEliminado','LibroController@generarReporteEliminados');
 
 
 Route::resource('libro','LibroController',['only'=> ['create','store','edit','update','destroy']]);
@@ -59,8 +62,11 @@ Route::get('audiovisual/buscar','AudiovisualController@buscar');
 Route::get('audiovisual/editar','AudiovisualController@editar');
 Route::get('audiovisual/insertar','AudiovisualController@insertar');
 Route::get('audiovisual/listar','AudiovisualController@listar');
+Route::get('audiovisual/listarEliminados','AudiovisualController@listarEliminados');
 Route::get('audiovisual/generarReporteAudiovisuales','AudiovisualController@generarReporte');
+Route::get('audiovisual/generarReporteAudiovisualesEliminados','AudiovisualController@generarReporteEliminados');
 Route::get('audiovisual/eliminar/{id}','AudiovisualController@eliminar');
+Route::get('audiovisual/recuperar/{id}','AudiovisualController@recuperar');
 
 Route::resource('audiovisual','AudiovisualController',['only'=> ['create','store','edit','update','destroy']]);
 
@@ -82,12 +88,15 @@ Route::get('materialDidactico/buscarPrestamosTerminados','PrestamoMaterialDidact
 Route::get('materialDidactico/editar','MaterialDidacticoController@editar');
 Route::get('materialDidactico/insertar','MaterialDidacticoController@insertar');
 Route::get('materialDidactico/listar','MaterialDidacticoController@listar');
+Route::get('materialDidactico/listarEliminados','MaterialDidacticoController@listarEliminados');
 Route::get('materialDidactico/listarPrestamos','PrestamoMaterialDidacticoController@listarPrestamos');
 Route::get('materialDidactico/listarPrestamosTerminados','PrestamoMaterialDidacticoController@listarPrestamosTerminados');
 Route::get('materialDidactico/prestar','MaterialDidacticoController@prestar');
 Route::get('materialDidactico/storePrestamo/{id}', 'MaterialDidacticoController@storePrestamo');
 Route::get('materialDidactico/eliminar/{id}', 'MaterialDidacticoController@eliminar');
+Route::get('materialDidactico/recuperar/{id}', 'MaterialDidacticoController@recuperar');
 Route::get('materialDidactico/reporteMateriales','MaterialDidacticoController@generarReporte');
+Route::get('materialDidactico/reporteMaterialesEliminados','MaterialDidacticoController@generarReporteEliminados');
 Route::get('materialDidactico/reportePrestamos','PrestamoMaterialDidacticoController@generarReporte');
 Route::get('materialDidactico/reportePrestamosTerminados','PrestamoMaterialDidacticoController@generarReporteTerminados');
 Route::resource('materialDidactico', 'MaterialDidacticoController');

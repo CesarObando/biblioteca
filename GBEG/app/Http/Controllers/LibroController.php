@@ -32,12 +32,20 @@ class LibroController extends Controller
   public function listar(Request $request)
   {
     $libros = \App\Libro::where('autor', 'like', '%'.$request['autor'].'%')
-                                                               -> where('titulo', 'like', '%'.$request['titulo'].'%')
-                                                               ->where('editorial', 'like', '%'.$request['editorial'].'%')
-                                                               -> where ('descartado','=', 0)
-                                                               -> get();
+    -> where('titulo', 'like', '%'.$request['titulo'].'%')
+    ->where('editorial', 'like', '%'.$request['editorial'].'%')
+    -> where ('descartado','=', 0)
+    -> get();
     Session::put('libros',$libros);
     return view ('libro/listar',compact('libros'));
+  }
+
+  public function listarEliminados()
+  {
+    $libros = \App\Libro::where('descartado', '=', true)
+    -> get();
+    Session::put('libros',$libros);
+    return view ('libro/listarEliminados',compact('libros'));
   }
 
   public function generarReporte()
@@ -45,6 +53,13 @@ class LibroController extends Controller
     $libros = Session::get('libros');
     $pdf = PDF::loadView('libro/pdfLibros',['libros'=>$libros]);
     return $pdf->download('libros.pdf');
+  }
+
+  public function generarReporteEliminados()
+  {
+    $libros = Session::get('libros');
+    $pdf = PDF::loadView('libro/pdfLibrosEliminados',['libros'=>$libros]);
+    return $pdf->download('librosEliminados.pdf');
   }
 
   public function show(){
@@ -80,11 +95,20 @@ class LibroController extends Controller
   public function eliminar($id)
   {
     DB::table('libro')
-        ->where('id', $id)
-        ->decrement('prestado');
+    ->where('id', $id)
+    ->decrement('prestado');
     DB::table('libro')
-        ->where('id', $id)
-        ->increment('descartado');
+    ->where('id', $id)
+    ->increment('descartado');
+
+    return redirect ('/');
+  }
+
+  public function recuperar($id)
+  {
+    DB::table('libro')
+    ->where('id', $id)
+    ->decrement('descartado');
 
     return redirect ('/');
   }

@@ -13,7 +13,7 @@
   <div class="table-responsive container">
     <br>
     <br>
-    <h1>Libros</h1>
+    <h1>Libros Eliminados</h1>
     <br>
     <table class="table table-condensed table-hover table-bordered table-responsive">
       <thead>
@@ -23,7 +23,6 @@
           <th>Título</th>
           <th>Edición</th>
           <th>Fecha</th>
-          <th>Lugar</th>
           <th>Editorial</th>
           <th>Estado</th>
         </tr>
@@ -36,12 +35,11 @@
           <td>{{$libro->titulo}}</td>
           <td>{{$libro->edicion}}</td>
           <td>{{$libro->fecha}}</td>
-          <td>{{$libro->lugar}}</td>
           <td>{{$libro->editorial}}</td>
-          @if($libro->prestado===0)
+          @if($libro->descartado===0)
           <td>Disponible</td>
           @else
-          <td>Prestado</td>
+          <td>Descartado</td>
           @endif
         </tr>
       </tbody>

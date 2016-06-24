@@ -13,35 +13,29 @@
   <div class="table-responsive container">
     <br>
     <br>
-    <h1>Libros</h1>
+    <h1>Audiovisuales Eliminados</h1>
     <br>
     <table class="table table-condensed table-hover table-bordered table-responsive">
       <thead>
         <tr>
-          <th>No. de Inscripción</th>
-          <th>Autor</th>
-          <th>Título</th>
-          <th>Edición</th>
-          <th>Fecha</th>
-          <th>Lugar</th>
-          <th>Editorial</th>
+          <th>Equipo</th>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th>Serie</th>
           <th>Estado</th>
         </tr>
       </thead>
-      @foreach($libros as $libro)
+      @foreach($audiovisuales as $audiovisual)
       <tbody>
         <tr>
-          <td>{{$libro->numeroInscripcion}}</td>
-          <td>{{$libro->autor}}</td>
-          <td>{{$libro->titulo}}</td>
-          <td>{{$libro->edicion}}</td>
-          <td>{{$libro->fecha}}</td>
-          <td>{{$libro->lugar}}</td>
-          <td>{{$libro->editorial}}</td>
-          @if($libro->prestado===0)
+          <td>{{$audiovisual->equipo}}</td>
+          <td>{{$audiovisual->marca}}</td>
+          <td>{{$audiovisual->modelo}}</td>
+          <td>{{$audiovisual->numeroSerie}}</td>
+          @if($audiovisual->descartado===0)
           <td>Disponible</td>
           @else
-          <td>Prestado</td>
+          <td>Descartado</td>
           @endif
         </tr>
       </tbody>

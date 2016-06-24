@@ -65,6 +65,7 @@
                       <li role="presentation"><a href="{!!URL::to("libro/buscarPrestamosEstudianteTerminados")!!}">Estudiante</a></li>
                     </ul>
                   </li>
+                  <li role="presentation"><a href="{!!URL::to("libro/listarEliminados")!!}">Ver Libros Eliminados</a></li>
                 </ul>
               </li>
               <li role="presentation">
@@ -74,6 +75,7 @@
                   <li role="presentation"><a href="{!!URL::to("audiovisual/buscar")!!}">Prestar/Modificar/Eliminar</a></li>
                   <li role="presentation"><a href="{!!URL::to("audiovisual/buscarPrestamos")!!}">Ver Préstamos</a></li>
                   <li role="presentation"><a href="{!!URL::to("audiovisual/buscarPrestamosTerminados")!!}">Ver Préstamos Terminados</a></li>
+                  <li role="presentation"><a href="{!!URL::to("audiovisual/listarEliminados")!!}">Ver Audiovisuales Eliminados</a></li>
                 </ul>
               </li>
               <li role="presentation">
@@ -83,6 +85,7 @@
                   <li role="presentation"><a href="{!!URL::to("materialDidactico/buscar")!!}">Prestar/Modificar/Eliminar</a></li>
                   <li role="presentation"><a href="{!!URL::to("materialDidactico/buscarPrestamos")!!}">Ver Préstamos</a></li>
                   <li role="presentation"><a href="{!!URL::to("materialDidactico/buscarPrestamosTerminados")!!}">Ver Préstamos Terminados</a></li>
+                  <li role="presentation"><a href="{!!URL::to("materialDidactico/listarEliminados")!!}">Ver Materiales Eliminados</a></li>
                 </ul>
               </li>
               <li role="presentation">

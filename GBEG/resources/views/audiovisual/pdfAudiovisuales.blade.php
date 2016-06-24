@@ -22,7 +22,7 @@
           <th>Marca</th>
           <th>Modelo</th>
           <th>Serie</th>
-          <th>Estado</th>
+
         </tr>
       </thead>
       @foreach($audiovisuales as $audiovisual)
@@ -32,11 +32,6 @@
           <td>{{$audiovisual->marca}}</td>
           <td>{{$audiovisual->modelo}}</td>
           <td>{{$audiovisual->numeroSerie}}</td>
-          @if($audiovisual->prestado===0)
-          <td>Disponible</td>
-          @else
-          <td>Prestado</td>
-          @endif
         </tr>
       </tbody>
       @endforeach

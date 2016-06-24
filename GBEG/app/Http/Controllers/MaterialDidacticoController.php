@@ -56,11 +56,26 @@ class MaterialDidacticoController extends Controller
     return view ('materialDidactico/listar', compact('materialesDidacticos'));
   }
 
+  public function listarEliminados()
+  {
+    $materialesDidacticos = \App\MaterialDidactico::where('descartado', '=', true)
+    -> get();
+    Session::put('materialesDidacticos',$materialesDidacticos);
+    return view ('materialDidactico/listarEliminados', compact('materialesDidacticos'));
+  }
+
   public function generarReporte()
   {
     $materialesDidacticos = Session::get('materialesDidacticos');
     $pdf = PDF::loadView('materialDidactico/pdfMateriales',['materialesDidacticos'=>$materialesDidacticos]);
     return $pdf->download('materialesDidacticos.pdf');
+  }
+
+  public function generarReporteEliminados()
+  {
+    $materialesDidacticos = Session::get('materialesDidacticos');
+    $pdf = PDF::loadView('materialDidactico/pdfMaterialesEliminados',['materialesDidacticos'=>$materialesDidacticos]);
+    return $pdf->download('materialesDidacticosEliminados.pdf');
   }
 
   public function prestar($id)
@@ -82,6 +97,15 @@ class MaterialDidacticoController extends Controller
     DB::table('material_complementario')
         ->where('id', $id)
         ->increment('descartado');
+
+    return redirect ('/');
+  }
+
+  public function recuperar($id)
+  {
+    DB::table('material_complementario')
+        ->where('id', $id)
+        ->decrement('descartado');
 
     return redirect ('/');
   }

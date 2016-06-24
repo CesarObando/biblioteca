@@ -40,11 +40,27 @@ class AudiovisualController extends Controller
     return view ('audiovisual/listar',compact('audiovisuales'));
   }
 
+  public function listarEliminados()
+  {
+    $audiovisuales = \App\Audiovisual::where('descartado', '=', true)
+                                                               -> get();
+
+    Session::put('audiovisuales',$audiovisuales);
+    return view ('audiovisual/listarEliminados',compact('audiovisuales'));
+  }
+
   public function generarReporte()
   {
     $audiovisuales = Session::get('audiovisuales');
     $pdf = PDF::loadView('audiovisual/pdfAudiovisuales',['audiovisuales'=>$audiovisuales]);
     return $pdf->download('audiovisuales.pdf');
+  }
+
+  public function generarReporteEliminados()
+  {
+    $audiovisuales = Session::get('audiovisuales');
+    $pdf = PDF::loadView('audiovisual/pdfAudiovisualesEliminados',['audiovisuales'=>$audiovisuales]);
+    return $pdf->download('audiovisualesEliminados.pdf');
   }
 
   public function store(Request $request)
@@ -73,6 +89,12 @@ class AudiovisualController extends Controller
   public function eliminar($id)
   {
     DB::update('update audiovisual set descartado = 1 where id = ?',[$id]);
+    return redirect ('/');
+  }
+
+  public function recuperar($id)
+  {
+    DB::update('update audiovisual set descartado = 0 where id = ?',[$id]);
     return redirect ('/');
   }
 
